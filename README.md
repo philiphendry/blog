@@ -6,3 +6,12 @@ Hence the decision to bring things into GitHub which supports Jekyll. More impor
 
 ## Initial Setup
 
+1. Create a GitHub repository called *blog*.
+2. Add a branch called *gh-pages* - anything committed here is published to the GitHub website.
+3. To seed the project with some style I went to the repository settings and clicked the *Automatic page generator*.
+4. At this point I was also prompt to create a new Google Analytics project and assign the tracking id to the generated template.
+
+## Assigning my domain name
+
+1. Logged into 123-reg and added a CNAME record from blog.philiphendry.me.uk to philiphendry.github.io.
+2. Added a file called CNAME in the route of the GitHub repository with blog.philiphendry.me.uk inside.
