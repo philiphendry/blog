@@ -1,0 +1,4 @@
+
+markdown: redcarpet
+redcarpet:
+  extensions: ["tables"]
