@@ -15,3 +15,8 @@ Hence the decision to bring things into GitHub which supports Jekyll. More impor
 
 1. Logged into 123-reg and added a CNAME record from blog.philiphendry.me.uk to philiphendry.github.io.
 2. Added a file called CNAME in the route of the GitHub repository with blog.philiphendry.me.uk inside.
+
+## Install Jekyll
+
+1. [Jekyll installation](http://jekyllrb.com/docs/installation/)
+2. 
