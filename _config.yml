@@ -10,3 +10,5 @@ markdown: redcarpet
 redcarpet:
     extensions: ["tables"]
 permalink: pretty
+
+google_analytics_tracking_id: UA-51440511-1
