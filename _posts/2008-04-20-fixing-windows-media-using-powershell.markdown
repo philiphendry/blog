@@ -18,12 +18,12 @@ I may well have been able to do this in an easier fashion but I'm in the market 
 
 So I moved onto my next plan. Luckily for me the smaller files had been compressed as .wma files whilst my originals were .mp3. I could probably have just deleted everything that was .wma but I wanted to be sure I hadn't ripped anything as wma instead of mp3. So, the following script compares files with the same filenames but different extensions and deletes the .wma file if it exists and it's smaller than the mp3 I'm comparing it with. Nothing spectacular but it got the job done and I've made another step toward learning PowerShell.
     
-    <span style="color:#5f9ea0;">Get-ChildItem -Recurse -Include </span><span style="color:red;">*</span><span style="color:black;">.mp3 | </span><span style="color:#5f9ea0;">ForEach-Object -Process </span><span style="color:black;">{ 
-        </span><span style="color:purple;">$file </span><span style="color:red;">= </span><span style="color:navy;">$_</span><span style="color:black;">.Directory.ToString() </span><span style="color:red;">+ </span><span style="color:maroon;">"\" </span><span style="color:red;">+ </span><span style="color:navy;">$_</span><span style="color:black;">.Name.Substring(0, </span><span style="color:navy;">$_</span><span style="color:black;">.Name.LastIndexOf(</span><span style="color:maroon;">"."</span><span style="color:black;">)) </span><span style="color:red;">+ </span><span style="color:maroon;">".wma"</span><span style="color:black;">; 
-        </span><span style="color:purple;">$fileinfo </span><span style="color:red;">= </span><span style="color:#5f9ea0;">New-Object -TypeName </span><span style="color:maroon;">System.IO.FileInfo </span><span style="color:#5f9ea0;">-ArgumentList </span><span style="color:purple;">$file</span><span style="color:black;">; 
-        </span><span style="color:blue;">if </span><span style="color:black;">(</span><span style="color:purple;">$fileinfo</span><span style="color:black;">.Exists </span><span style="color:red;">-and </span><span style="color:purple;">$fileinfo</span><span style="color:black;">.Length </span><span style="color:red;">-le </span><span style="color:navy;">$_</span><span style="color:black;">.Length) { 
-            </span><span style="color:purple;">$fileinfo</span><span style="color:black;">.MoveTo(</span><span style="color:maroon;">'C:\\Temp\\SongsToDelete\\' </span><span style="color:red;">+ </span><span style="color:purple;">$fileinfo</span><span style="color:black;">.Name) 
-        } 
-    }</span>
-
-[](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)
+```
+Get-ChildItem -Recurse -Include *.mp3 | ForEach-Object -Process { 
+    $file = $_.Directory.ToString() + "\" + $_.Name.Substring(0, $_.Name.LastIndexOf(".")) + ".wma"; 
+    $fileinfo = New-Object -TypeName System.IO.FileInfo -ArgumentList $file; 
+    if ($fileinfo.Exists -and $fileinfo.Length -le $_.Length) { 
+        $fileinfo.MoveTo('C:\\Temp\\SongsToDelete\\' + $fileinfo.Name) 
+    } 
+}
+```

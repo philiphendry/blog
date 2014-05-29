@@ -16,8 +16,9 @@ Selecting data from a stored procedure in SQL Server is already a documented fea
 
  
     
-    <span style="color:blue;">insert into </span>#systables <span style="color:blue;">exec </span><span style="color:maroon;">sp_executesql </span>N<span style="color:red;">'select * from Northwind.sys.tables'</span>
-
+```
+insert into #systables exec sp_executesql N'select * from Northwind.sys.tables'
+```
 
 
 
@@ -26,16 +27,16 @@ Selecting data from a stored procedure in SQL Server is already a documented fea
 
 
 
-
+```
+select * into #systables 
+from openrowset(
+   'sqlncli', 
+   'server=.;trusted_connection=Yes', 
+   'sp_executesql N''select * from Northwind.sys.tables'''
+)
+```
     
-    <span style="color:blue;">select </span><span style="color:gray;">* </span><span style="color:blue;">into </span>#systables 
-    <span style="color:blue;">from openrowset</span><span style="color:gray;">(
-       </span><span style="color:red;">'sqlncli'</span><span style="color:gray;">, 
-       </span><span style="color:red;">'server=.;trusted_connection=Yes'</span><span style="color:gray;">, 
-       </span><span style="color:red;">'sp_executesql N''select * from Northwind.sys.tables'''
-    </span><span style="color:gray;">)</span>
 
-
-[](http://11011.net/software/vspaste)I wouldn’t necessarily use this as a day-to-day process on a production environment but for administration or scripting installations I think it fits the bill.
+I wouldn’t necessarily use this as a day-to-day process on a production environment but for administration or scripting installations I think it fits the bill.
 
 

@@ -26,69 +26,37 @@ XAML is a technology used to construct and initialise .Net objects and can be us
 The following quick examples defines a button that fills the entire viewing area and, with the .xaml extension, can be viewed in IE.
 
  
-    
-    <span style="color:#8b008b;"><Button </span><span style="color:red;">xmlns</span><span style="color:blue;">="http://schemas.microsoft.com/winfx/2006/xaml/presentation" </span><span style="color:red;">Content</span><span style="color:blue;">="Press Me!"</span><span style="color:#8b008b;">>
-      <Button.Background>
-        </span><span style="color:black;">LightGreen
-      </span><span style="color:#8b008b;"></Button.Background>
-    </Button></span>
-
-
-[](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)
-
-
+```    
+<Button xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Content="Press Me!">
+  <Button.Background>
+    LightGreen
+  </Button.Background>
+</Button>
+```
 
 The element name 'Button' represents the name of a class and is known as an _object element_. The XAML compiler must be told where to find these objects and this is done by specifying namespaces. The _Content_ attribute is called a _property attribute _and is a property on the _Button_ object and initialised to a string, although it will be seen later that the Content property is of type _Object_ and can accept far more than just a string. 
 
-
-
-
-
 The class must provide a parameterless constructor since all the properties are initialised after construction. The _Button.Background_ element is called a _property element_ and is an alternative way to provide values (often complex property values such as xml) for properties on the _Button_ object. The XAML above is equivalent to :
-
-
-
-
     
-    <span style="color:#2b91af;">Button </span>b = <span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>();
-    b.Content = <span style="color:#a31515;">"Press me!"</span>;
-    b.Background = <span style="color:blue;">new </span><span style="color:#2b91af;">SolidBrush</span>(<span style="color:#2b91af;">Color</span>.LightBlue);
-
-
-[](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)
-
-
+```
+Button b = new Button();
+b.Content = "Press me!";
+b.Background = new SolidBrush(Color.LightBlue);
+```
 
 ### Namespaces
 
-
-
-
-
 In order for XAML to know where a class can be found to instantiate, the Xml namespaces for these objects must be defined in advance of there use. The _[http://schemas.microsoft.com/winfx/2006/xaml/presentation](http://schemas.microsoft.com/winfx/2006/xaml/presentation)_ mapping to .Net namespaces is hard-coded in the WPF assemblies using _XmlnsDefinitionAttribute_. This namespace defines a number of namespaces including :
 
-
-
-
-
-
-  
+ 
   * System.Windows 
-
-
-  
+ 
   * System.Windows.Controls 
-
-
-  
+ 
   * System.Windows.Data 
-
-
-  
+ 
   * System.Windows.Media 
-
-
-  
+ 
   * System.Windows.Document 
 
 
@@ -125,14 +93,15 @@ The _Background_ property above would be equivalently written in C# as :
 
 
     
-    b.Background = (<span style="color:#2b91af;">Brush</span>)System.ComponentModel.<span style="color:#2b91af;">TypeDescriptor</span>.GetConverter(
-        <span style="color:blue;">typeof</span>(<span style="color:#2b91af;">Brush</span>)).ConvertFromInvariantString(<span style="color:#a31515;">"LightBlue"</span>);
+```
+b.Background = (Brush)System.ComponentModel.TypeDescriptor.GetConverter(
+    typeof(Brush)).ConvertFromInvariantString("LightBlue");
+```
 
 
 
 
-
-### [](http://11011.net/software/vspaste)Markup Extensions
+### Markup Extensions
 
 
 
@@ -150,15 +119,16 @@ A markup extension can be provided with a number of parameters which can either 
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Button </span><span style="color:red;">Background</span><span style="color:blue;">="{</span><span style="color:#a31515;">x</span><span style="color:blue;">:</span><span style="color:#a31515;">Null</span><span style="color:blue;">}"
-                </span><span style="color:red;">Height</span><span style="color:blue;">="{</span><span style="color:#a31515;">x</span><span style="color:blue;">:</span><span style="color:#a31515;">Static </span><span style="color:red;">SystemParameters</span><span style="color:blue;">.</span><span style="color:red;">IconHeight</span><span style="color:blue;">}"
-                </span><span style="color:red;">Content</span><span style="color:blue;">="{</span><span style="color:#a31515;">Binding </span><span style="color:red;">Path</span><span style="color:blue;">=Height </span><span style="color:red;">RelativeSource</span><span style="color:blue;">={</span><span style="color:#a31515;">RelativeSource </span><span style="color:red;">Self</span><span style="color:blue;">}}" /></span>
+```
+<Button Background="{x:Null}"
+            Height="{x:Static SystemParameters.IconHeight}"
+            Content="{Binding Path=Height RelativeSource={RelativeSource Self}}" />
+```
 
 
 
 
-
-[](http://11011.net/software/vspaste)In this example SystemParameters.IconHeight and Self are _positional parameters_ and Path and RelativeSource are _named parameters_. This example also demonstrates how markup extensions can be nested.
+In this example SystemParameters.IconHeight and Self are _positional parameters_ and Path and RelativeSource are _named parameters_. This example also demonstrates how markup extensions can be nested.
 
 
 
@@ -168,13 +138,14 @@ Because the markup extensions implement a default constructor they can also use 
 
 
 
-
+```
+<Button>
+    <Button.Background>
+        <x:Null/>
+    </Button.Background>
+</Button>
+```
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Button</span><span style="color:blue;">>
-        <</span><span style="color:#a31515;">Button.Background</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">x</span><span style="color:blue;">:</span><span style="color:#a31515;">Null</span><span style="color:blue;">/>
-        </</span><span style="color:#a31515;">Button.Background</span><span style="color:blue;">>
-    </</span><span style="color:#a31515;">Button</span><span style="color:blue;">></span>
 
 
-[](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)
+

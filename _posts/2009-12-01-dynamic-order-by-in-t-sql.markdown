@@ -15,34 +15,36 @@ I’ve been looking at some code that looked like this:
 
  
     
-    <span style="color:#0000FF;">CREATE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">PROCEDURE</span><span style="color:#000000;"> </span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">dbo</span><span style="color:#FF0000;">]</span><span style="color:#000000;">., 
-        </span><span style="color:#008000;">@DraftStatus</span><span style="color:#000000;"> </span><span style="color:#0000FF;">int</span><span style="color:#000000;">,
-        </span><span style="color:#008000;">@Surname</span><span style="color:#000000;"> </span><span style="color:#0000FF;">nvarchar</span><span style="color:#000000;">(</span><span style="color:#800000;font-weight:bold;">50</span><span style="color:#000000;">),
-        </span><span style="color:#008000;">@PayrollNo</span><span style="color:#000000;"> </span><span style="color:#0000FF;">nvarchar</span><span style="color:#000000;">(</span><span style="color:#800000;font-weight:bold;">50</span><span style="color:#000000;">),
-        </span><span style="color:#008000;">@StartRow</span><span style="color:#000000;"> </span><span style="color:#0000FF;">int</span><span style="color:#000000;">,
-        </span><span style="color:#008000;">@PageSize</span><span style="color:#000000;"> </span><span style="color:#0000FF;">int</span><span style="color:#000000;">,
-        </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#0000FF;">varchar</span><span style="color:#000000;">(</span><span style="color:#800000;font-weight:bold;">50</span><span style="color:#000000;">),
-        </span><span style="color:#008000;">@OrgLevelValueID</span><span style="color:#000000;"> </span><span style="color:#0000FF;">int</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#0000FF;">null</span><span style="color:#000000;">
-    </span><span style="color:#0000FF;">AS</span><span style="color:#000000;">
-    </span><span style="color:#0000FF;">BEGIN</span><span style="color:#000000;">
-        </span><span style="color:#0000FF;">SET</span><span style="color:#000000;"> NOCOUNT </span><span style="color:#0000FF;">ON</span><span style="color:#000000;">;
-        </span><span style="color:#0000FF;">DECLARE</span><span style="color:#000000;"> </span><span style="color:#008000;">@sql</span><span style="color:#000000;"> </span><span style="color:#0000FF;">nvarchar</span><span style="color:#000000;">(</span><span style="color:#800000;font-weight:bold;">4000</span><span style="color:#000000;">)
-        </span><span style="color:#0000FF;">set</span><span style="color:#000000;"> </span><span style="color:#008000;">@sql</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">SELECT * FROM </span><span style="color:#FF0000;">'</span><span style="color:#808080;">+</span><span style="color:#000000;">
-                </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">(SELECT *, ROW_NUMBER() OVER (ORDER BY </span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">) AS RowNum </span><span style="color:#FF0000;">'</span><span style="color:#808080;">+</span><span style="color:#000000;">
-                </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">FROM LMv_EmployeeDrafts </span><span style="color:#FF0000;">'</span><span style="color:#808080;">+</span><span style="color:#000000;">
-                </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">WHERE DraftStatus = </span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF00FF;">CONVERT</span><span style="color:#000000;">(</span><span style="color:#0000FF;">nvarchar</span><span style="color:#000000;">(</span><span style="color:#800000;font-weight:bold;">10</span><span style="color:#000000;">), </span><span style="color:#008000;">@DraftStatus</span><span style="color:#000000;">) </span><span style="color:#808080;">+</span><span style="color:#000000;">
-                    </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;"> AND Surname LIKE </span><span style="color:#FF0000;">''</span><span style="color:#FF0000;">%</span><span style="color:#FF0000;">'</span><span style="color:#808080;">+</span><span style="color:#008000;">@Surname</span><span style="color:#808080;">+</span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">%</span><span style="color:#FF0000;">''</span><span style="color:#FF0000;"> </span><span style="color:#FF0000;">'</span><span style="color:#808080;">+</span><span style="color:#000000;">
-                    </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;"> AND CONVERT(nvarchar(10), PayrollNo) LIKE </span><span style="color:#FF0000;">''</span><span style="color:#FF0000;">%</span><span style="color:#FF0000;">'</span><span style="color:#808080;">+</span><span style="color:#008000;">@PayrollNo</span><span style="color:#808080;">+</span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">%</span><span style="color:#FF0000;">''</span><span style="color:#FF0000;">) AS tmp </span><span style="color:#FF0000;">'</span><span style="color:#808080;">+</span><span style="color:#000000;">
-            </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">WHERE RowNum-1 BETWEEN </span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF00FF;">CONVERT</span><span style="color:#000000;">(</span><span style="color:#0000FF;">nvarchar</span><span style="color:#000000;">(</span><span style="color:#800000;font-weight:bold;">10</span><span style="color:#000000;">), </span><span style="color:#008000;">@StartRow</span><span style="color:#000000;">)</span><span style="color:#808080;">+</span><span style="color:#000000;">
-                </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;"> AND (</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF00FF;">CONVERT</span><span style="color:#000000;">(</span><span style="color:#0000FF;">nvarchar</span><span style="color:#000000;">(</span><span style="color:#800000;font-weight:bold;">10</span><span style="color:#000000;">), </span><span style="color:#008000;">@StartRow</span><span style="color:#000000;">) </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;"> + </span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF00FF;">CONVERT</span><span style="color:#000000;">(</span><span style="color:#0000FF;">nvarchar</span><span style="color:#000000;">(</span><span style="color:#800000;font-weight:bold;">10</span><span style="color:#000000;">), </span><span style="color:#008000;">@PageSize</span><span style="color:#000000;">) </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">) - 1</span><span style="color:#FF0000;">'</span><span style="color:#000000;">
-            </span><span style="color:#008080;">--</span><span style="color:#008080;">IF NOT(@OrgLevelValueID IS NULL) SET @sql = @sql + ' AND OrganisationLevelValueID = ' + CONVERT(varchar(max), @OrgLevelValueID)</span><span style="color:#008080;">
-    </span><span style="color:#000000;">        </span><span style="color:#008080;">--</span><span style="color:#008080;">IF NOT (@OrgLevelValueID IS NULL) SET @sql = @sql + ' AND (' + CONVERT(varchar(max), @OrgLevelValueID) + ' IN ' +</span><span style="color:#008080;">
-    </span><span style="color:#000000;">        </span><span style="color:#0000FF;">SET</span><span style="color:#000000;"> </span><span style="color:#008000;">@sql</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#008000;">@sql</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;"> AND (</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF00FF;">CONVERT</span><span style="color:#000000;">(</span><span style="color:#0000FF;">varchar</span><span style="color:#000000;">(</span><span style="color:#FF00FF;">max</span><span style="color:#000000;">), </span><span style="color:#008000;">@OrgLevelValueID</span><span style="color:#000000;">) </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;"> IN </span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;">
-            </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">(SELECT OrgLvlID FROM RMR_GetPreOrgLvlValues(OrganisationLevelValueID)))</span><span style="color:#FF0000;">'</span><span style="color:#000000;">
-    
-        </span><span style="color:#0000FF;">EXEC</span><span style="color:#000000;"> sp_executesql </span><span style="color:#008000;">@sql</span><span style="color:#000000;">
-        </span><span style="color:#0000FF;">PRINT</span><span style="color:#000000;"> </span><span style="color:#008000;">@sql</span><span style="color:#000000;">
-    </span><span style="color:#0000FF;">END</span>
+```
+CREATE PROCEDURE [dbo]., 
+    @DraftStatus int,
+    @Surname nvarchar(50),
+    @PayrollNo nvarchar(50),
+    @StartRow int,
+    @PageSize int,
+    @OrderBy varchar(50),
+    @OrgLevelValueID int = null
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DECLARE @sql nvarchar(4000)
+    set @sql = 'SELECT * FROM '+
+            '(SELECT *, ROW_NUMBER() OVER (ORDER BY ' + @OrderBy + ') AS RowNum '+
+            'FROM LMv_EmployeeDrafts '+
+            'WHERE DraftStatus = ' + CONVERT(nvarchar(10), @DraftStatus) +
+                ' AND Surname LIKE ''%'+@Surname+'%'' '+
+                ' AND CONVERT(nvarchar(10), PayrollNo) LIKE ''%'+@PayrollNo+'%'') AS tmp '+
+        'WHERE RowNum-1 BETWEEN ' + CONVERT(nvarchar(10), @StartRow)+
+            ' AND (' + CONVERT(nvarchar(10), @StartRow) + ' + ' + CONVERT(nvarchar(10), @PageSize) + ') - 1'
+        --IF NOT(@OrgLevelValueID IS NULL) SET @sql = @sql + ' AND OrganisationLevelValueID = ' + CONVERT(varchar(max), @OrgLevelValueID)
+        --IF NOT (@OrgLevelValueID IS NULL) SET @sql = @sql + ' AND (' + CONVERT(varchar(max), @OrgLevelValueID) + ' IN ' +
+        SET @sql = @sql + ' AND (' + CONVERT(varchar(max), @OrgLevelValueID) + ' IN ' +
+        '(SELECT OrgLvlID FROM RMR_GetPreOrgLvlValues(OrganisationLevelValueID)))'
+
+    EXEC sp_executesql @sql
+    PRINT @sql
+END
+```
 
 
 
@@ -60,33 +62,34 @@ The solution isn’t necessarily the prettiest either. However, it’s now not a
 
 
     
-    <span style="color:#0000FF;">SELECT</span><span style="color:#000000;"> </span><span style="color:#808080;">*</span><span style="color:#000000;"> </span><span style="color:#0000FF;">FROM</span><span style="color:#000000;"> (
-        </span><span style="color:#0000FF;">SELECT</span><span style="color:#000000;"> </span><span style="color:#808080;">*</span><span style="color:#000000;">, ROW_NUMBER() </span><span style="color:#0000FF;">OVER</span><span style="color:#000000;"> (
-            PARTITION </span><span style="color:#0000FF;">BY</span><span style="color:#000000;">
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrgLevelValueID</span><span style="color:#000000;"> </span><span style="color:#0000FF;">is</span><span style="color:#000000;"> </span><span style="color:#808080;">not</span><span style="color:#000000;"> </span><span style="color:#0000FF;">null</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> OrganisationLevelValueID </span><span style="color:#0000FF;">END</span><span style="color:#000000;">
-            </span><span style="color:#0000FF;">ORDER</span><span style="color:#000000;"> </span><span style="color:#0000FF;">BY</span><span style="color:#000000;"> 
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">DateAdded Desc</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> DateAdded </span><span style="color:#0000FF;">END</span><span style="color:#000000;"> </span><span style="color:#0000FF;">DESC</span><span style="color:#000000;">,
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">Title Desc</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> Title </span><span style="color:#0000FF;">END</span><span style="color:#000000;"> </span><span style="color:#0000FF;">DESC</span><span style="color:#000000;">,
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">Forename Desc</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> Forename </span><span style="color:#0000FF;">END</span><span style="color:#000000;"> </span><span style="color:#0000FF;">DESC</span><span style="color:#000000;">,
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">Surname Desc</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> Surname </span><span style="color:#0000FF;">END</span><span style="color:#000000;"> </span><span style="color:#0000FF;">DESC</span><span style="color:#000000;">,
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">PayrollNo Desc</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> PayrollNo </span><span style="color:#0000FF;">END</span><span style="color:#000000;"> </span><span style="color:#0000FF;">DESC</span><span style="color:#000000;">,
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">DateAdded</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> DateAdded </span><span style="color:#0000FF;">END</span><span style="color:#000000;">,
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">Title</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> Title </span><span style="color:#0000FF;">END</span><span style="color:#000000;">,
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">Forename</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> Forename </span><span style="color:#0000FF;">END</span><span style="color:#000000;">,
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">Surname</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> Surname </span><span style="color:#0000FF;">END</span><span style="color:#000000;">,
-                </span><span style="color:#FF00FF;">CASE</span><span style="color:#000000;"> </span><span style="color:#0000FF;">WHEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrderBy</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">PayrollNo</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#0000FF;">THEN</span><span style="color:#000000;"> PayrollNo </span><span style="color:#0000FF;">END</span><span style="color:#000000;">        
-            ) </span><span style="color:#0000FF;">AS</span><span style="color:#000000;"> RowNum  
-        </span><span style="color:#0000FF;">FROM</span><span style="color:#000000;"> LMv_EmployeeDrafts  
-        </span><span style="color:#0000FF;">WHERE</span><span style="color:#000000;"> 
-            DraftStatus </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#008000;">@DraftStatus</span><span style="color:#000000;">
-            </span><span style="color:#808080;">AND</span><span style="color:#000000;"> Surname </span><span style="color:#808080;">LIKE</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">%</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#008000;">@Surname</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">%</span><span style="color:#FF0000;">'</span><span style="color:#000000;">
-            </span><span style="color:#808080;">AND</span><span style="color:#000000;"> PayrollNo </span><span style="color:#808080;">LIKE</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">%</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#008000;">@PayrollNo</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">%</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> 
-    ) </span><span style="color:#0000FF;">AS</span><span style="color:#000000;"> tmp  
-    </span><span style="color:#0000FF;">WHERE</span><span style="color:#000000;"> 
-        RowNum </span><span style="color:#808080;">-</span><span style="color:#000000;"> </span><span style="color:#800000;font-weight:bold;">1</span><span style="color:#000000;"> </span><span style="color:#808080;">BETWEEN</span><span style="color:#000000;"> </span><span style="color:#008000;">@StartRow</span><span style="color:#000000;"> </span><span style="color:#808080;">AND</span><span style="color:#000000;"> </span><span style="color:#008000;">@StartRow</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#008000;">@PageSize</span><span style="color:#000000;"> </span><span style="color:#808080;">-</span><span style="color:#000000;"> </span><span style="color:#800000;font-weight:bold;">1</span><span style="color:#000000;"> 
-        </span><span style="color:#808080;">AND</span><span style="color:#000000;"> (</span><span style="color:#008000;">@OrgLevelValueID</span><span style="color:#000000;"> </span><span style="color:#0000FF;">is</span><span style="color:#000000;"> </span><span style="color:#0000FF;">null</span><span style="color:#000000;"> </span><span style="color:#808080;">OR</span><span style="color:#000000;"> </span><span style="color:#008000;">@OrgLevelValueID</span><span style="color:#000000;"> 
-            </span><span style="color:#808080;">IN</span><span style="color:#000000;"> (</span><span style="color:#0000FF;">SELECT</span><span style="color:#000000;"> OrgLvlID </span><span style="color:#0000FF;">FROM</span><span style="color:#000000;"> RMR_GetPreOrgLvlValues(OrganisationLevelValueID)))</span>
-
+```
+SELECT * FROM (
+    SELECT *, ROW_NUMBER() OVER (
+        PARTITION BY
+            CASE WHEN @OrgLevelValueID is not null THEN OrganisationLevelValueID END
+        ORDER BY 
+            CASE WHEN @OrderBy = 'DateAdded Desc' THEN DateAdded END DESC,
+            CASE WHEN @OrderBy = 'Title Desc' THEN Title END DESC,
+            CASE WHEN @OrderBy = 'Forename Desc' THEN Forename END DESC,
+            CASE WHEN @OrderBy = 'Surname Desc' THEN Surname END DESC,
+            CASE WHEN @OrderBy = 'PayrollNo Desc' THEN PayrollNo END DESC,
+            CASE WHEN @OrderBy = 'DateAdded' THEN DateAdded END,
+            CASE WHEN @OrderBy = 'Title' THEN Title END,
+            CASE WHEN @OrderBy = 'Forename' THEN Forename END,
+            CASE WHEN @OrderBy = 'Surname' THEN Surname END,
+            CASE WHEN @OrderBy = 'PayrollNo' THEN PayrollNo END        
+        ) AS RowNum  
+    FROM LMv_EmployeeDrafts  
+    WHERE 
+        DraftStatus = @DraftStatus
+        AND Surname LIKE '%' + @Surname + '%'
+        AND PayrollNo LIKE '%' + @PayrollNo + '%' 
+) AS tmp  
+WHERE 
+    RowNum - 1 BETWEEN @StartRow AND @StartRow + @PageSize - 1 
+    AND (@OrgLevelValueID is null OR @OrgLevelValueID 
+        IN (SELECT OrgLvlID FROM RMR_GetPreOrgLvlValues(OrganisationLevelValueID)))
+```
 
 
 

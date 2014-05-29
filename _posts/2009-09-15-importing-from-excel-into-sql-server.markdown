@@ -21,13 +21,13 @@ Here’s the SQL I’m using (slightly abridged!) :
 
   
     
-    <span style="color:#0000FF;">set</span><span style="color:#000000;"> </span><span style="color:#0000FF;">transaction</span><span style="color:#000000;"> </span><span style="color:#0000FF;">isolation</span><span style="color:#000000;"> </span><span style="color:#0000FF;">level</span><span style="color:#000000;"> </span><span style="color:#0000FF;">read</span><span style="color:#000000;"> </span><span style="color:#0000FF;">committed</span><span style="color:#000000;">
-    
-    </span><span style="color:#0000FF;">declare</span><span style="color:#000000;"> </span><span style="color:#008000;">@sql</span><span style="color:#000000;"> </span><span style="color:#0000FF;">nvarchar</span><span style="color:#000000;">(</span><span style="color:#800000;font-weight:bold;">1024</span><span style="color:#000000;">)
-    </span><span style="color:#0000FF;">set</span><span style="color:#000000;"> </span><span style="color:#008000;">@sql</span><span style="color:#000000;"> </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">select * into ##Temp from opendatasource(</span><span style="color:#FF0000;">''</span><span style="color:#FF0000;">Microsoft.Jet.OLEDB.4.0</span><span style="color:#FF0000;">''</span><span style="color:#FF0000;">, </span><span style="color:#FF0000;">''</span><span style="color:#FF0000;">Extended Properties=Excel 8.0;Data Source=</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#008000;">@ExcelFileToImport</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'''</span><span style="color:#FF0000;">)...</span><span style="color:#FF0000;">'</span><span style="color:#000000;"> </span><span style="color:#808080;">+</span><span style="color:#000000;"> </span><span style="color:#008000;">@ExcelWorkSheet</span><span style="color:#000000;">
-    </span><span style="color:#0000FF;">exec</span><span style="color:#000000;"> sp_executesql </span><span style="color:#008000;">@sql</span>
+```
+set transaction isolation level read committed
 
-
+declare @sql nvarchar(1024)
+set @sql = 'select * into ##Temp from opendatasource(''Microsoft.Jet.OLEDB.4.0'', ''Extended Properties=Excel 8.0;Data Source=' + @ExcelFileToImport + ''')...' + @ExcelWorkSheet
+exec sp_executesql @sql
+```
 
 
 
@@ -67,9 +67,10 @@ I was having trouble executing within a transaction but with the changes made ab
 
 
     
-    <span style="color:#0000FF;">using</span><span style="color:#000000;"> (TransactionScope scope </span><span style="color:#000000;">=</span><span style="color:#000000;"> </span><span style="color:#0000FF;">new</span><span style="color:#000000;"> TransactionScope())
-    {
-        UploadExcelIntoDatabase(importTicket, importFilename);
-        scope.Complete();
-    }
-    </span>
+```
+using (TransactionScope scope = new TransactionScope())
+{
+    UploadExcelIntoDatabase(importTicket, importFilename);
+    scope.Complete();
+}
+```

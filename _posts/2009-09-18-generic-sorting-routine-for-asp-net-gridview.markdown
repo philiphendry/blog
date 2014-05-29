@@ -16,19 +16,20 @@ I noticed a lot of code in the current project I’m working on which looked som
 
  
     
-    <span style="color:#0000FF;">switch</span><span style="color:#000000;"> (sortExpression)
-    {
-        </span><span style="color:#0000FF;">case</span><span style="color:#000000;"> </span><span style="color:#800000;">"</span><span style="color:#800000;">Name</span><span style="color:#800000;">"</span><span style="color:#000000;">:
-            items.OrderBy(i </span><span style="color:#000000;">=></span><span style="color:#000000;"> i.Name);
-            </span><span style="color:#0000FF;">break</span><span style="color:#000000;">;
-        </span><span style="color:#0000FF;">case</span><span style="color:#000000;"> </span><span style="color:#800000;">"</span><span style="color:#800000;">Date</span><span style="color:#800000;">"</span><span style="color:#000000;">:
-            items.OrderBy(i </span><span style="color:#000000;">=></span><span style="color:#000000;"> i.Date);
-            </span><span style="color:#0000FF;">break</span><span style="color:#000000;">;
-        </span><span style="color:#0000FF;">case</span><span style="color:#000000;"> </span><span style="color:#800000;">"</span><span style="color:#800000;">Cost</span><span style="color:#800000;">"</span><span style="color:#000000;">:
-            items.OrderBy(i </span><span style="color:#000000;">=></span><span style="color:#000000;"> i.Cost);
-            </span><span style="color:#0000FF;">break</span><span style="color:#000000;">;
-    }</span>
-
+```
+switch (sortExpression)
+{
+    case "Name":
+        items.OrderBy(i => i.Name);
+        break;
+    case "Date":
+        items.OrderBy(i => i.Date);
+        break;
+    case "Cost":
+        items.OrderBy(i => i.Cost);
+        break;
+}
+```
 
 
 
@@ -39,12 +40,14 @@ This was then repeated all over again for descending orders!! I’ve now replace
 
 
     
-    <span style="color:#0000FF;">private</span><span style="color:#000000;"> </span><span style="color:#0000FF;">void</span><span style="color:#000000;"> Populate(</span><span style="color:#0000FF;">string</span><span style="color:#000000;"> sortExpression)
-    {
-       var items </span><span style="color:#000000;">=</span><span style="color:#000000;"> GetData();
-       gvList.DataSource </span><span style="color:#000000;">=</span><span style="color:#000000;"> CreateValueList(items).OrderByExpression(</span><span style="color:#0000FF;">new</span><span style="color:#000000;"> OrderByExpression(sortExpression));
-       gvList.DataBind();  
-    }</span>
+```
+private void Populate(string sortExpression)
+{
+   var items = GetData();
+   gvList.DataSource = CreateValueList(items).OrderByExpression(new OrderByExpression(sortExpression));
+   gvList.DataBind();  
+}
+```
 
 
 
@@ -56,16 +59,17 @@ The sort expression is handled by the GridView code such that AllowSorting is tu
 
 
     
-    <span style="color:#000000;"><</span><span style="color:#000000;">asp:GridView ID</span><span style="color:#000000;">=</span><span style="color:#800000;">"</span><span style="color:#800000;">gvList</span><span style="color:#800000;">"</span><span style="color:#000000;"> runat</span><span style="color:#000000;">=</span><span style="color:#800000;">"</span><span style="color:#800000;">server</span><span style="color:#800000;">"</span><span style="color:#000000;"> AllowSorting</span><span style="color:#000000;">=</span><span style="color:#800000;">"</span><span style="color:#800000;">True</span><span style="color:#800000;">"</span><span style="color:#000000;"> OnSorting</span><span style="color:#000000;">=</span><span style="color:#800000;">"</span><span style="color:#800000;">gvList_Sorting</span><span style="color:#800000;">"</span><span style="color:#000000;"> DataKeyNames</span><span style="color:#000000;">=</span><span style="color:#800000;">"</span><span style="color:#800000;">ID</span><span style="color:#800000;">"</span><span style="color:#000000;">></span><span style="color:#000000;">
-       </span><span style="color:#000000;"><</span><span style="color:#000000;">Columns</span><span style="color:#000000;">></span><span style="color:#000000;">
-           </span><span style="color:#000000;"><</span><span style="color:#000000;">asp:TemplateField HeaderText</span><span style="color:#000000;">=</span><span style="color:#800000;">"</span><span style="color:#800000;">Name</span><span style="color:#800000;">"</span><span style="color:#000000;"> SortExpression</span><span style="color:#000000;">=</span><span style="color:#800000;">"</span><span style="color:#800000;">Name</span><span style="color:#800000;">"</span><span style="color:#000000;">></span><span style="color:#000000;">
-               </span><span style="color:#000000;"><</span><span style="color:#000000;">ItemTemplate</span><span style="color:#000000;">></span><span style="color:#000000;">
-                   </span><span style="color:#000000;"><</span><span style="color:#000000;">asp:Label Text</span><span style="color:#000000;">=</span><span style="color:#800000;">'</span><span style="color:#800000;"><%# DataBinder.Eval(Container.DataItem, "Name") %></span><span style="color:#800000;">'</span><span style="color:#000000;"> runat</span><span style="color:#000000;">=</span><span style="color:#800000;">"</span><span style="color:#800000;">server</span><span style="color:#800000;">"</span><span style="color:#000000;"> ID</span><span style="color:#000000;">=</span><span style="color:#800000;">"</span><span style="color:#800000;">lblName</span><span style="color:#800000;">"</span><span style="color:#000000;"> </span><span style="color:#000000;">/></span><span style="color:#000000;">
-               </span><span style="color:#000000;"></</span><span style="color:#000000;">ItemTemplate</span><span style="color:#000000;">></span><span style="color:#000000;">
-           </span><span style="color:#000000;"></</span><span style="color:#000000;">asp:TemplateField</span><span style="color:#000000;">></span><span style="color:#000000;">
-       </span><span style="color:#000000;"></</span><span style="color:#000000;">Columns</span><span style="color:#000000;">></span><span style="color:#000000;">
-    </span><span style="color:#000000;"></</span><span style="color:#000000;">asp:GridView</span><span style="color:#000000;">></span><span style="color:#000000;">
-    </span>
+```
+<asp:GridView ID="gvList" runat="server" AllowSorting="True" OnSorting="gvList_Sorting" DataKeyNames="ID">
+   <Columns>
+       <asp:TemplateField HeaderText="Name" SortExpression="Name">
+           <ItemTemplate>
+               <asp:Label Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>' runat="server" ID="lblName" />
+           </ItemTemplate>
+       </asp:TemplateField>
+   </Columns>
+</asp:GridView>
+```
 
 
 
@@ -80,41 +84,42 @@ The code-behind deals with the sorting events and calls populate :
 
   
     
-    <span style="color:#0000FF;">protected</span><span style="color:#000000;"> </span><span style="color:#0000FF;">void</span><span style="color:#000000;"> gvList_Sorting(</span><span style="color:#0000FF;">object</span><span style="color:#000000;"> sender, GridViewSortEventArgs e)
-    {
-       Populate(e.SortExpression </span><span style="color:#000000;">+</span><span style="color:#000000;"> </span><span style="color:#800000;">"</span><span style="color:#800000;"> </span><span style="color:#800000;">"</span><span style="color:#000000;"> </span><span style="color:#000000;">+</span><span style="color:#000000;"> GetSortDirection(e.SortExpression));
-    }
-    
-    </span><span style="color:#0000FF;">private</span><span style="color:#000000;"> </span><span style="color:#0000FF;">string</span><span style="color:#000000;"> GetSortDirection(</span><span style="color:#0000FF;">string</span><span style="color:#000000;"> column)
-    {
-    
-       </span><span style="color:#008000;">//</span><span style="color:#008000;"> By default, set the sort direction to ascending.</span><span style="color:#008000;">
-    </span><span style="color:#000000;">   </span><span style="color:#0000FF;">string</span><span style="color:#000000;"> sortDirection </span><span style="color:#000000;">=</span><span style="color:#000000;"> </span><span style="color:#800000;">"</span><span style="color:#800000;">ASC</span><span style="color:#800000;">"</span><span style="color:#000000;">;
-    
-       </span><span style="color:#008000;">//</span><span style="color:#008000;"> Retrieve the last column that was sorted.</span><span style="color:#008000;">
-    </span><span style="color:#000000;">   </span><span style="color:#0000FF;">string</span><span style="color:#000000;"> sortExpression </span><span style="color:#000000;">=</span><span style="color:#000000;"> ViewState[</span><span style="color:#800000;">"</span><span style="color:#800000;">SortExpression</span><span style="color:#800000;">"</span><span style="color:#000000;">] </span><span style="color:#0000FF;">as</span><span style="color:#000000;"> </span><span style="color:#0000FF;">string</span><span style="color:#000000;">;
-    
-       </span><span style="color:#0000FF;">if</span><span style="color:#000000;"> (sortExpression </span><span style="color:#000000;">!=</span><span style="color:#000000;"> </span><span style="color:#0000FF;">null</span><span style="color:#000000;">)
-       {
-           </span><span style="color:#008000;">//</span><span style="color:#008000;"> Check if the same column is being sorted.
-           </span><span style="color:#008000;">//</span><span style="color:#008000;"> Otherwise, the default value can be returned.</span><span style="color:#008000;">
-    </span><span style="color:#000000;">       </span><span style="color:#0000FF;">if</span><span style="color:#000000;"> (sortExpression </span><span style="color:#000000;">==</span><span style="color:#000000;"> column)
-           {
-               </span><span style="color:#0000FF;">string</span><span style="color:#000000;"> lastDirection </span><span style="color:#000000;">=</span><span style="color:#000000;"> ViewState[</span><span style="color:#800000;">"</span><span style="color:#800000;">SortDirection</span><span style="color:#800000;">"</span><span style="color:#000000;">] </span><span style="color:#0000FF;">as</span><span style="color:#000000;"> </span><span style="color:#0000FF;">string</span><span style="color:#000000;">;
-               </span><span style="color:#0000FF;">if</span><span style="color:#000000;"> ((lastDirection </span><span style="color:#000000;">!=</span><span style="color:#000000;"> </span><span style="color:#0000FF;">null</span><span style="color:#000000;">) </span><span style="color:#000000;">&&</span><span style="color:#000000;"> (lastDirection </span><span style="color:#000000;">==</span><span style="color:#000000;"> </span><span style="color:#800000;">"</span><span style="color:#800000;">ASC</span><span style="color:#800000;">"</span><span style="color:#000000;">))
-               {
-                   sortDirection </span><span style="color:#000000;">=</span><span style="color:#000000;"> </span><span style="color:#800000;">"</span><span style="color:#800000;">DESC</span><span style="color:#800000;">"</span><span style="color:#000000;">;
-               }
-           }
-       }
-    
-       </span><span style="color:#008000;">//</span><span style="color:#008000;"> Save new values in ViewState.</span><span style="color:#008000;">
-    </span><span style="color:#000000;">   ViewState[</span><span style="color:#800000;">"</span><span style="color:#800000;">SortDirection</span><span style="color:#800000;">"</span><span style="color:#000000;">] </span><span style="color:#000000;">=</span><span style="color:#000000;"> sortDirection;
-       ViewState[</span><span style="color:#800000;">"</span><span style="color:#800000;">SortExpression</span><span style="color:#800000;">"</span><span style="color:#000000;">] </span><span style="color:#000000;">=</span><span style="color:#000000;"> column;
-    
-       </span><span style="color:#0000FF;">return</span><span style="color:#000000;"> sortDirection;
-    }
-    </span>
+```
+protected void gvList_Sorting(object sender, GridViewSortEventArgs e)
+  {
+     Populate(e.SortExpression + " " + GetSortDirection(e.SortExpression));
+  }
+  
+  private string GetSortDirection(string column)
+  {
+  
+     // By default, set the sort direction to ascending.
+     string sortDirection = "ASC";
+  
+     // Retrieve the last column that was sorted.
+     string sortExpression = ViewState["SortExpression"] as string;
+  
+     if (sortExpression != null)
+     {
+         // Check if the same column is being sorted.
+         // Otherwise, the default value can be returned.
+         if (sortExpression == column)
+         {
+             string lastDirection = ViewState["SortDirection"] as string;
+             if ((lastDirection != null) && (lastDirection == "ASC"))
+             {
+                 sortDirection = "DESC";
+             }
+         }
+     }
+  
+     // Save new values in ViewState.
+     ViewState["SortDirection"] = sortDirection;
+     ViewState["SortExpression"] = column;
+  
+     return sortDirection;
+  }
+  ```
 
 
 
@@ -129,19 +134,21 @@ What this all boils down to is the _OrderByExpression()_ extension method called
 
 
     
-    <span style="color:#000000;">   </span><span style="color:#0000FF;">public</span><span style="color:#000000;"> </span><span style="color:#0000FF;">static</span><span style="color:#000000;"> IEnumerable</span><span style="color:#000000;"><</span><span style="color:#000000;">TSource</span><span style="color:#000000;">></span><span style="color:#000000;"> OrderByExpression</span><span style="color:#000000;"><</span><span style="color:#000000;">TSource</span><span style="color:#000000;">></span><span style="color:#000000;">(</span><span style="color:#0000FF;">this</span><span style="color:#000000;"> IEnumerable</span><span style="color:#000000;"><</span><span style="color:#000000;">TSource</span><span style="color:#000000;">></span><span style="color:#000000;"> data, OrderByExpression expression)
-       {
-           </span><span style="color:#0000FF;">string</span><span style="color:#000000;"> sortOrderMethod </span><span style="color:#000000;">=</span><span style="color:#000000;"> (expression.SortOrder </span><span style="color:#000000;">==</span><span style="color:#000000;"> SortOrderEnum.Ascending) </span><span style="color:#000000;">?</span><span style="color:#000000;"> </span><span style="color:#800000;">"</span><span style="color:#800000;">OrderBy</span><span style="color:#800000;">"</span><span style="color:#000000;"> : </span><span style="color:#800000;">"</span><span style="color:#800000;">OrderByDescending</span><span style="color:#800000;">"</span><span style="color:#000000;">;
-    
-           </span><span style="color:#008000;">//</span><span style="color:#008000;"> data.OrderBy(o => o.propertyname);   </span><span style="color:#008000;">
-    </span><span style="color:#000000;">       var dataAsQueryable </span><span style="color:#000000;">=</span><span style="color:#000000;"> data.AsQueryable</span><span style="color:#000000;"><</span><span style="color:#000000;">TSource</span><span style="color:#000000;">></span><span style="color:#000000;">();
-           ParameterExpression lambdaParameter </span><span style="color:#000000;">=</span><span style="color:#000000;"> Expression.Parameter(</span><span style="color:#0000FF;">typeof</span><span style="color:#000000;">(TSource), </span><span style="color:#800000;">"</span><span style="color:#800000;">o</span><span style="color:#800000;">"</span><span style="color:#000000;">);
-           MemberExpression member </span><span style="color:#000000;">=</span><span style="color:#000000;"> Expression.PropertyOrField(lambdaParameter, expression.SortProperties[</span><span style="color:#800080;">0</span><span style="color:#000000;">]);
-           LambdaExpression lambda </span><span style="color:#000000;">=</span><span style="color:#000000;"> Expression.Lambda(member, lambdaParameter);
-           Type[] argumentTypes </span><span style="color:#000000;">=</span><span style="color:#000000;"> { dataAsQueryable.ElementType, lambda.Body.Type };
-           MethodCallExpression orderBy </span><span style="color:#000000;">=</span><span style="color:#000000;"> Expression.Call(</span><span style="color:#0000FF;">typeof</span><span style="color:#000000;">(Queryable), sortOrderMethod, argumentTypes, dataAsQueryable.Expression, lambda);
-           </span><span style="color:#0000FF;">return</span><span style="color:#000000;"> dataAsQueryable.Provider.CreateQuery</span><span style="color:#000000;"><</span><span style="color:#000000;">TSource</span><span style="color:#000000;">></span><span style="color:#000000;">(orderBy);
-       }</span>
+```
+ public static IEnumerable<TSource> OrderByExpression<TSource>(this IEnumerable<TSource> data, OrderByExpression expression)
+ {
+     string sortOrderMethod = (expression.SortOrder == SortOrderEnum.Ascending) ? "OrderBy" : "OrderByDescending";
+
+     // data.OrderBy(o => o.propertyname);   
+     var dataAsQueryable = data.AsQueryable<TSource>();
+     ParameterExpression lambdaParameter = Expression.Parameter(typeof(TSource), "o");
+     MemberExpression member = Expression.PropertyOrField(lambdaParameter, expression.SortProperties[0]);
+     LambdaExpression lambda = Expression.Lambda(member, lambdaParameter);
+     Type[] argumentTypes = { dataAsQueryable.ElementType, lambda.Body.Type };
+     MethodCallExpression orderBy = Expression.Call(typeof(Queryable), sortOrderMethod, argumentTypes, dataAsQueryable.Expression, lambda);
+     return dataAsQueryable.Provider.CreateQuery<TSource>(orderBy);
+ }
+ ```
 
 
 

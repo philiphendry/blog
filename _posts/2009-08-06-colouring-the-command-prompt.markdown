@@ -27,159 +27,55 @@ As an example here’s some test text…
     <style textcolour='Yellow'>This has <style textcolour='Red'>nested <style textcolour='Blue'>colouring</style> that </style> currently </style> isn't supported.
 
 
-[](http://11011.net/software/vspaste)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 which renders as :
 
-
-
-
-
 [![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb.png)](http://philiphendry.files.wordpress.com/2009/08/image.png)
-
-
-
-
 
 Note that nested styles are not supported.
 
-
-
-
-
 The code to accomplish this is below.
-
-
-
-
-
-
-
-
     
-    <span style="color:blue;">using </span>System;
-    <span style="color:blue;">using </span>System.Reflection;
-    <span style="color:blue;">using </span>System.Collections.Generic;
-    <span style="color:blue;">using </span>System.Text;
-    <span style="color:blue;">using </span>System.IO;
-    <span style="color:blue;">using </span>System.Text.RegularExpressions;
-    
-    <span style="color:blue;">namespace </span>Colourise
+```
+using System;
+using System.Reflection;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System.Text.RegularExpressions;
+
+namespace Colourise
+{
+    class Program
     {
-        <span style="color:blue;">class </span><span style="color:#2b91af;">Program
-        </span>{
-            <span style="color:blue;">static void </span>Main(<span style="color:blue;">string</span>[] args)
+        static void Main(string[] args)
+        {
+            string lineInput;
+            while ((lineInput = Console.ReadLine()) != null)
             {
-                <span style="color:blue;">string </span>lineInput;
-                <span style="color:blue;">while </span>((lineInput = <span style="color:#2b91af;">Console</span>.ReadLine()) != <span style="color:blue;">null</span>)
+                Stack<ConsoleColor> oldColourStack = new Stack<ConsoleColor>();
+                Regex rx = new Regex(@"(?<pretext>.*?)<style textcolour='(?<colour>[^']*)'>(?<colouredtext>.*?)</style>(?<posttext>.*?)");
+                MatchCollection matches = rx.Matches(lineInput);
+                if (matches.Count > 0)
                 {
-                    <span style="color:#2b91af;">Stack</span><<span style="color:#2b91af;">ConsoleColor</span>> oldColourStack = <span style="color:blue;">new </span><span style="color:#2b91af;">Stack</span><<span style="color:#2b91af;">ConsoleColor</span>>();
-                    <span style="color:#2b91af;">Regex </span>rx = <span style="color:blue;">new </span><span style="color:#2b91af;">Regex</span>(<span style="color:#a31515;">@"(?<pretext>.*?)<style textcolour='(?<colour>[^']*)'>(?<colouredtext>.*?)</style>(?<posttext>.*?)"</span>);
-                    <span style="color:#2b91af;">MatchCollection </span>matches = rx.Matches(lineInput);
-                    <span style="color:blue;">if </span>(matches.Count > 0)
+                    foreach (Match match in matches)
                     {
-                        <span style="color:blue;">foreach </span>(<span style="color:#2b91af;">Match </span>match <span style="color:blue;">in </span>matches)
-                        {
-                            <span style="color:#2b91af;">Console</span>.Write(match.Groups[<span style="color:#a31515;">"pretext"</span>].Value);
-                            oldColourStack.Push(<span style="color:#2b91af;">Console</span>.ForegroundColor);
-                            <span style="color:#2b91af;">Console</span>.ForegroundColor = (<span style="color:#2b91af;">ConsoleColor</span>)<span style="color:#2b91af;">Enum</span>.Parse(<span style="color:blue;">typeof</span>(<span style="color:#2b91af;">ConsoleColor</span>), match.Groups[<span style="color:#a31515;">"colour"</span>].Value, <span style="color:blue;">true</span>);
-                            <span style="color:#2b91af;">Console</span>.Write(match.Groups[<span style="color:#a31515;">"colouredtext"</span>].Value);
-                            <span style="color:#2b91af;">Console</span>.ForegroundColor = oldColourStack.Pop();
-                            <span style="color:#2b91af;">Console</span>.Write(match.Groups[<span style="color:#a31515;">"posttext"</span>].Value);
-                        }
-                        <span style="color:#2b91af;">Match </span>lastmatch = matches[matches.Count - 1];
-                        <span style="color:#2b91af;">Console</span>.WriteLine(lineInput.Substring(lastmatch.Index + lastmatch.Length));
+                        Console.Write(match.Groups["pretext"].Value);
+                        oldColourStack.Push(Console.ForegroundColor);
+                        Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), match.Groups["colour"].Value, true);
+                        Console.Write(match.Groups["colouredtext"].Value);
+                        Console.ForegroundColor = oldColourStack.Pop();
+                        Console.Write(match.Groups["posttext"].Value);
                     }
-                    <span style="color:blue;">else
-                    </span>{
-                        <span style="color:#2b91af;">Console</span>.WriteLine(lineInput);
-                    }
+                    Match lastmatch = matches[matches.Count - 1];
+                    Console.WriteLine(lineInput.Substring(lastmatch.Index + lastmatch.Length));
+                }
+                else
+                {
+                    Console.WriteLine(lineInput);
                 }
             }
         }
     }
-
-
-[](http://11011.net/software/vspaste)
+}
+```

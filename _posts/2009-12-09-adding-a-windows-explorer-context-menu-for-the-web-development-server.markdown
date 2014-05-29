@@ -24,15 +24,15 @@ And the solution… add the following to the registry :
 
  
     
-    <span style="color:#000000;">Windows Registry Editor Version </span><span style="color:#000000;">5.00</span><span style="color:#000000;">
-    
-    </span><span style="color:#800000;font-weight:bold;">[</span><span style="color:#800000;">HKEY_CLASSES_ROOT\Directory\shell\webdev</span><span style="color:#800000;font-weight:bold;">]</span><span style="color:#000000;">
-    @</span><span style="color:#000000;">=</span><span style="color:#000000;">"</span><span style="color:#000000;">Launch in WebDev Server</span><span style="color:#000000;">"</span><span style="color:#000000;">
-    
-    </span><span style="color:#800000;font-weight:bold;">[</span><span style="color:#800000;">HKEY_CLASSES_ROOT\Directory\shell\webdev\command</span><span style="color:#800000;font-weight:bold;">]</span><span style="color:#000000;">
-    @</span><span style="color:#000000;">=</span><span style="color:#000000;">"</span><span style="color:#000000;">\</span><span style="color:#000000;">"</span><span style="color:#000000;">c:\\windows\\microsoft.net\\framework\\v2</span><span style="color:#000000;">.0.50727</span><span style="color:#000000;">\\WebDev.WebServer.exe\</span><span style="color:#000000;">"</span><span style="color:#000000;"> /port:54321 /path:\</span><span style="color:#000000;">"</span><span style="color:#000000;">%V\</span><span style="color:#000000;">""</span><span style="color:#000000;">
-    
-    </span>
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\webdev]
+@="Launch in WebDev Server"
+
+[HKEY_CLASSES_ROOT\Directory\shell\webdev\command]
+@="\"c:\\windows\\microsoft.net\\framework\\v2.0.50727\\WebDev.WebServer.exe\" /port:54321 /path:\"%V\""
+```
 
 
 

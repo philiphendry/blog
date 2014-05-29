@@ -52,14 +52,15 @@ Initially this seemed tricky when thinking in terms of using _count()_ but there
 
  
     
-    <span style="color:#0000FF;">select</span><span style="color:#000000;"> ProjectName,
-       </span><span style="color:#FF00FF;">sum</span><span style="color:#000000;">(</span><span style="color:#FF00FF;">case</span><span style="color:#000000;"> </span><span style="color:#0000FF;">when</span><span style="color:#000000;"> IsMilestone </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#800000;font-weight:bold;">1</span><span style="color:#000000;"> 
-          </span><span style="color:#808080;">and</span><span style="color:#000000;"> TaskDate </span><span style="color:#808080;"><</span><span style="color:#000000;"> </span><span style="color:#008000;">@LateDate</span><span style="color:#000000;"> 
-          </span><span style="color:#808080;">and</span><span style="color:#000000;"> Taskdate </span><span style="color:#808080;">></span><span style="color:#008000;">@OneWeekLateDate</span><span style="color:#000000;">               
-          </span><span style="color:#0000FF;">then</span><span style="color:#000000;"> </span><span style="color:#800000;font-weight:bold;">1</span><span style="color:#000000;"> </span><span style="color:#0000FF;">else</span><span style="color:#000000;"> </span><span style="color:#800000;font-weight:bold;">0</span><span style="color:#000000;"> </span><span style="color:#0000FF;">end</span><span style="color:#000000;">) </span><span style="color:#0000FF;">as</span><span style="color:#000000;"> Week1LateMilestoneCount
-    </span><span style="color:#0000FF;">from</span><span style="color:#000000;"> Project
-    </span><span style="color:#0000FF;">group</span><span style="color:#000000;"> </span><span style="color:#0000FF;">by</span><span style="color:#000000;"> ProjectName</span>
-
+```
+select ProjectName,
+   sum(case when IsMilestone = 1 
+      and TaskDate < @LateDate 
+      and Taskdate >@OneWeekLateDate               
+      then 1 else 0 end) as Week1LateMilestoneCount
+from Project
+group by ProjectName
+```
 
 
 

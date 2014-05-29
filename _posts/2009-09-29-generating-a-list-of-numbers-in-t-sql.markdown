@@ -20,6 +20,8 @@ The following SQL creates a list of numbers from 0 to 2047 :
 
  
     
-    <span style="color:#0000FF;">select</span><span style="color:#000000;"> </span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">number</span><span style="color:#FF0000;">]</span><span style="color:#000000;">
-    </span><span style="color:#0000FF;">from</span><span style="color:#000000;"> master..spt_values
-    </span><span style="color:#0000FF;">where</span><span style="color:#000000;"> type </span><span style="color:#808080;">=</span><span style="color:#000000;"> </span><span style="color:#FF0000;">'</span><span style="color:#FF0000;">P</span><span style="color:#FF0000;">'</span>
+```
+select [number]
+from master..spt_values
+where type = 'P'
+```
