@@ -52,17 +52,7 @@ Code is a little harder. It supports [GitHub flavoured](https://help.github.com/
 
 
 
-will render as this :
-
-
-
-
-[code language="csharp"]
-function Test(string aParameter)
-{
-  Console.WriteLine(&quot;This is just a test.&quot;);
-}
-[/code]
+will render syntax highlighted (but give I no longer host this post on WordPress I can't demonstrate!!)
 
 
 

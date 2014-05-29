@@ -35,10 +35,9 @@ The data I’m submitting from the AngularJS client looks like this:
 
 
     
-<code class=" hljs json">{
-    "<span class="hljs-attribute">Firstname</span>": <span class="hljs-value"><span class="hljs-string">"Mickey"</span></span>,
-    "<span class="hljs-attribute">Surname</span>": <span class="hljs-value"><span class="hljs-string">"Mouse"</span>
-</span>}</code>
+```
+{ "Firstname": "Mickey", "Surname": "Mouse" }
+```
 
 
 
@@ -50,34 +49,38 @@ The problem here is I don’t have a model with _Firstname_ and _Surname_ define
 
 
     
-<code class=" hljs cs">[RoutePrefix(<span class="hljs-string">"api/form"</span>)]
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> WebApiController : ApiController
+```
+[RoutePrefix("api/form")]
+public class WebApiController : ApiController
 {
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> DbContext _dbContext = <span class="hljs-keyword">new</span> DbContext();
+    private readonly DbContext _dbContext = new DbContext();
 
-    [Route(<span class="hljs-string">""</span>)]
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Post</span>([FromBody] dynamic formData)
+    [Route("")]
+    public void Post([FromBody] dynamic formData)
     {
-        <span class="hljs-keyword">var</span> form = <span class="hljs-keyword">new</span> Form { 
-            ChangedOn = DateTime.Now, 
-            FieldValues = <span class="hljs-keyword">new</span> Collection<FieldValue>() 
-        };
-        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> item <span class="hljs-keyword">in</span> formData)
+        var form = new Form
         {
-            <span class="hljs-keyword">var</span> itemName = item.Name <span class="hljs-keyword">as</span> String;
-            <span class="hljs-keyword">var</span> fieldDefinitionId = _dbContext.FieldDefinitions
+            ChangedOn = DateTime.Now, 
+            FieldValues = new Collection<FieldValue>()
+        };
+        foreach (var item in formData)
+        {
+            var itemName = item.Name as String;             
+            var fieldDefinitionId = _dbContext.FieldDefinitions
                 .Where(fd => fd.Name == itemName)
-                .Select(fd => fd.Id).First();
-            <span class="hljs-keyword">var</span> field = <span class="hljs-keyword">new</span> FieldValue { 
+                .Select(fd => fd.Id).First(); 
+            var field = new FieldValue
+            {
                 FieldDefinitionId = fieldDefinitionId, 
-                Value = item.Value.Value 
-            };
+                Value = item.Value.Value
+            }; 
             nomination.FieldValues.Add(field);
-        }
-        _dbContext.Forms.Add(form);
+        } 
+        _dbContext.Forms.Add(form); 
         _dbContext.SaveChanges();
     }
-}</code>
+}
+```
 
 
 
