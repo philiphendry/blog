@@ -1,4 +1,12 @@
+# Site settings
+title: Philip Hendry's Blog
+email: blog@philiphendry.me.uk
+description: "Philip Hendry's Blog... one day they'll be enough time."
+baseurl: ""
+url: "http://blog.philiphendry.me.uk"
 
+# Build settings
 markdown: redcarpet
 redcarpet:
-  extensions: ["tables"]
+    extensions: ["tables"]
+permalink: pretty
