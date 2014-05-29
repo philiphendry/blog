@@ -35,31 +35,31 @@ I decided that keeping it client-side and written in javascript would be the bes
 
  
     
-    <span style="color:#0000FF;"><</span><span style="color:#800000;">script </span><span style="color:#FF0000;">type</span><span style="color:#0000FF;">="text/javascript"</span><span style="color:#FF0000;"> language</span><span style="color:#0000FF;">="javascript"</span><span style="color:#0000FF;">></span><span style="background-color:#F5F5F5;color:#000000;">
-       $(document).ready(</span><span style="background-color:#F5F5F5;color:#0000FF;">function</span><span style="background-color:#F5F5F5;color:#000000;">() {
-           $.fn.ajaxHistory.registerCallbacks(getHistory, setHistory, refreshHistory);
-           $(</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">#<%=ddlStore.ClientID%></span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">).ajaxHistory();
-           $(</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">#<%=btnSearch.ClientID%></span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">).ajaxHistory();
-       });
-       
-       </span><span style="background-color:#F5F5F5;color:#0000FF;">function</span><span style="background-color:#F5F5F5;color:#000000;"> getHistory() {
-           </span><span style="background-color:#F5F5F5;color:#0000FF;">return</span><span style="background-color:#F5F5F5;color:#000000;"> {
-               </span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">store</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">: $(</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">#<%=ddlStore.ClientID%></span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">).val(),
-               </span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">surname</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">: $(</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">#<%=txbSurname.ClientID%></span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">).val()
-           };
-       }
-    
-       </span><span style="background-color:#F5F5F5;color:#0000FF;">function</span><span style="background-color:#F5F5F5;color:#000000;"> setHistory(state) {
-           $(</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">#<%=ddlStore.ClientID%></span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">).val(state.store </span><span style="background-color:#F5F5F5;color:#000000;">||</span><span style="background-color:#F5F5F5;color:#000000;"> </span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">0</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">);
-           $(</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">#<%=txbSurname.ClientID%></span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">).val(state.surname </span><span style="background-color:#F5F5F5;color:#000000;">||</span><span style="background-color:#F5F5F5;color:#000000;"> </span><span style="background-color:#F5F5F5;color:#000000;">""</span><span style="background-color:#F5F5F5;color:#000000;">);
-       }
-    
-       </span><span style="background-color:#F5F5F5;color:#0000FF;">function</span><span style="background-color:#F5F5F5;color:#000000;"> refreshHistory() {
-           $(</span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">#<%=btnSearch.ClientID%></span><span style="background-color:#F5F5F5;color:#000000;">"</span><span style="background-color:#F5F5F5;color:#000000;">).click();
-       }
-    </span><span style="color:#0000FF;"></</span><span style="color:#800000;">script</span><span style="color:#0000FF;">></span>
+```
+<script type="text/javascript" language="javascript">
+   $(document).ready(function() {
+       $.fn.ajaxHistory.registerCallbacks(getHistory, setHistory, refreshHistory);
+       $("#<%=ddlStore.ClientID%>").ajaxHistory();
+       $("#<%=btnSearch.ClientID%>").ajaxHistory();
+   });
+   
+   function getHistory() {
+       return {
+           "store": $("#<%=ddlStore.ClientID%>").val(),
+           "surname": $("#<%=txbSurname.ClientID%>").val()
+       };
+   }
 
+   function setHistory(state) {
+       $("#<%=ddlStore.ClientID%>").val(state.store || "0");
+       $("#<%=txbSurname.ClientID%>").val(state.surname || "");
+   }
 
+   function refreshHistory() {
+       $("#<%=btnSearch.ClientID%>").click();
+   }
+</script>
+```
 
 
 
@@ -74,37 +74,37 @@ The plugin itself is written using a standard pattern and over all looks like th
 
 
 
-    
-    <span style="color:#000000;">(</span><span style="color:#0000FF;">function</span><span style="color:#000000;">($) {
-        </span><span style="color:#0000FF;">var</span><span style="color:#000000;"> _elements </span><span style="color:#000000;">=</span><span style="color:#000000;"> </span><span style="color:#0000FF;">new</span><span style="color:#000000;"> Array();
-    
-        $.fn.ajaxHistory </span><span style="color:#000000;">=</span><span style="color:#000000;"> </span><span style="color:#0000FF;">function</span><span style="color:#000000;">() {
-            </span><span style="color:#0000FF;">return</span><span style="color:#000000;"> </span><span style="color:#0000FF;">this</span><span style="color:#000000;">.each(</span><span style="color:#0000FF;">function</span><span style="color:#000000;">() {
-                </span><span style="color:#0000FF;">var</span><span style="color:#000000;"> element </span><span style="color:#000000;">=</span><span style="color:#000000;"> </span><span style="color:#000000;">"</span><span style="color:#000000;">#</span><span style="color:#000000;">"</span><span style="color:#000000;"> </span><span style="color:#000000;">+</span><span style="color:#000000;"> </span><span style="color:#0000FF;">this</span><span style="color:#000000;">.id;
-                bindEvent(element);
-                _elements.push(element);
-            });
-        };
-    
-        $.fn.ajaxHistory.initialise </span><span style="color:#000000;">=</span><span style="color:#000000;"> </span><span style="color:#0000FF;">function</span><span style="color:#000000;">() {
-            Sys.Application.add_navigate(onNavigate);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(onEndRequest);
-        };
-    
-    
-        </span><span style="color:#008000;">//</span><span style="color:#008000;"> onEndRequest will be called each time an ajax call is completed and therefore we can rebind all the events.</span><span style="color:#008000;">
-    </span><span style="color:#000000;">    </span><span style="color:#0000FF;">function</span><span style="color:#000000;"> onEndRequest(sender, e) {
-            $.each(_elements, </span><span style="color:#0000FF;">function</span><span style="color:#000000;">(index, item) {
-                bindEvent(item);
-            });
-        };
-    
-    })(jQuery);
-    
-    $(document).ready(</span><span style="color:#0000FF;">function</span><span style="color:#000000;">() {
-        $.fn.ajaxHistory.initialise();
-    });</span>
+```
+(function($) {
+    var _elements = new Array();
 
+    $.fn.ajaxHistory = function() {
+        return this.each(function() {
+            var element = "#" + this.id;
+            bindEvent(element);
+            _elements.push(element);
+        });
+    };
+
+    $.fn.ajaxHistory.initialise = function() {
+        Sys.Application.add_navigate(onNavigate);
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(onEndRequest);
+    };
+
+
+    // onEndRequest will be called each time an ajax call is completed and therefore we can rebind all the events.
+    function onEndRequest(sender, e) {
+        $.each(_elements, function(index, item) {
+            bindEvent(item);
+        });
+    };
+
+})(jQuery);
+
+$(document).ready(function() {
+    $.fn.ajaxHistory.initialise();
+});
+```
 
 
 
@@ -120,9 +120,9 @@ To remember history points I’m making use of the history functionality built i
 
 
 
-    
-    <span style="color:#0000FF;"><</span><span style="color:#800000;">asp:ScriptManager </span><span style="color:#FF0000;">ID</span><span style="color:#0000FF;">="ScriptManager1"</span><span style="color:#FF0000;"> runat</span><span style="color:#0000FF;">="server"</span><span style="color:#FF0000;"> EnableHistory</span><span style="color:#0000FF;">="true"</span><span style="color:#FF0000;"> </span><span style="color:#0000FF;">/></span>
-
+```
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnableHistory="true" />
+```
 
 
 
@@ -140,8 +140,9 @@ The Microsoft Ajax history functionality is then used in the plugin when the eve
 
   
     
-    <span style="color:#000000;">Sys.Application.addHistoryPoint(_getHistory(), document.title);</span>
-
+```
+Sys.Application.addHistoryPoint(_getHistory(), document.title);
+```
 
 
 
@@ -173,10 +174,12 @@ My own debugging in the Microsoft Ajax javascript lead me to the _onIFrameLoad j
 
 
     
-    <span style="color:#0000FF;"><</span><span style="color:#800000;">asp:ScriptManager </span><span style="color:#FF0000;">ID</span><span style="color:#0000FF;">="ScriptManager1"</span><span style="color:#FF0000;"> runat</span><span style="color:#0000FF;">="server"</span><span style="color:#FF0000;"> EnableHistory</span><span style="color:#0000FF;">="true"</span><span style="color:#FF0000;"> </span><span style="color:#0000FF;">/></span><span style="color:#000000;">
-    </span><span style="color:#0000FF;"><</span><span style="color:#800000;">script </span><span style="color:#FF0000;">type</span><span style="color:#0000FF;">="text/javascript"</span><span style="color:#FF0000;"> language</span><span style="color:#0000FF;">="javascript"</span><span style="color:#0000FF;">></span><span style="background-color:#F5F5F5;color:#000000;">
-        Sys.Application._enableHistoryInScriptManager();
-    </span><span style="color:#0000FF;"></</span><span style="color:#800000;">script</span><span style="color:#0000FF;">></span>
+```    
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnableHistory="true" />
+<script type="text/javascript" language="javascript">
+    Sys.Application._enableHistoryInScriptManager();
+</script>
+```
 
 
 

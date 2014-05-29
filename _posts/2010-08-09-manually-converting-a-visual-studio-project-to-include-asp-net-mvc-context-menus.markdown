@@ -24,11 +24,13 @@ To fix this I unloaded the project, edited the csproj and added the following li
 
  
     
-    <span style="color:#000000;">  </span><span style="color:#0000FF;"><</span><span style="color:#800000;">PropertyGroup</span><span style="color:#0000FF;">></span><span style="color:#000000;">
-        ...
-        </span><span style="color:#0000FF;"><</span><span style="color:#800000;">ProjectTypeGuids</span><span style="color:#0000FF;">></span><span style="color:#000000;">{603c0e0b-db56-11dc-be95-000d561079b0};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</span><span style="color:#0000FF;"></</span><span style="color:#800000;">ProjectTypeGuids</span><span style="color:#0000FF;">></span><span style="color:#000000;">
-        ...
-      </span><span style="color:#0000FF;"></</span><span style="color:#800000;">PropertyGroup</span><span style="color:#0000FF;">></span>
+```
+<PropertyGroup>
+    ...
+    <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    ...
+</PropertyGroup>
+```
 
 
 

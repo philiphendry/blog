@@ -19,13 +19,14 @@ I’ve just tried to call a stored procedure in another database via a synonym b
 Here’s how I defined the synonym and called it :
 
  
-    
-    <span style="color:#0000FF;">CREATE</span><span style="color:#000000;"> SYNONYM </span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">dbo</span><span style="color:#FF0000;">]</span><span style="color:#000000;">.</span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">LM_Employees_HasNewStoreTempsInStore</span><span style="color:#FF0000;">]</span><span style="color:#000000;"> 
-    </span><span style="color:#0000FF;">FOR</span><span style="color:#000000;"> </span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">PHENDRY</span><span style="color:#FF0000;">]</span><span style="color:#000000;">.</span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">LabourManager_DEV</span><span style="color:#FF0000;">]</span><span style="color:#000000;">.</span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">dbo</span><span style="color:#FF0000;">]</span><span style="color:#000000;">.</span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">LM_Employees_HasNewStoreTempsInStore</span><span style="color:#FF0000;">]</span><span style="color:#000000;">
-    </span><span style="color:#0000FF;">GO</span><span style="color:#000000;">
-    
-    </span><span style="color:#0000FF;">exec</span><span style="color:#000000;"> </span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">dbo</span><span style="color:#FF0000;">]</span><span style="color:#000000;">.</span><span style="color:#FF0000;">[</span><span style="color:#FF0000;">LM_Employees_HasNewStoreTempsInStore</span><span style="color:#FF0000;">]</span><span style="color:#000000;"> </span><span style="color:#800000;font-weight:bold;">1119</span><span style="color:#000000;">
-    </span><span style="color:#0000FF;">GO</span>
+```
+CREATE SYNONYM [dbo].[LM_Employees_HasNewStoreTempsInStore] 
+FOR [PHENDRY].[LabourManager_DEV].[dbo].[LM_Employees_HasNewStoreTempsInStore]
+GO
+
+exec [dbo].[LM_Employees_HasNewStoreTempsInStore] 1119
+GO
+```
 
 
 

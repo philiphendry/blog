@@ -15,11 +15,12 @@ In my client code I have a small chunk of javascript that fetches the data for m
 
  
     
-    <span style="color:#000000;">$.getJSON(_config.getUrl, </span><span style="color:#0000FF;">null</span><span style="color:#000000;">, </span><span style="color:#0000FF;">function</span><span style="color:#000000;">(data) {
-        _shiftPattern </span><span style="color:#000000;">=</span><span style="color:#000000;"> data;
-        renderModel();
-    });
-    </span>
+```
+$.getJSON(_config.getUrl, null, function(data) {
+    _shiftPattern = data;
+    renderModel();
+});
+```
 
 
 
@@ -31,16 +32,16 @@ However, my server code was only being called on the first visit to the page and
 
 
     
-    <span style="color:#000000;">[OutputCache(Duration </span><span style="color:#000000;">=</span><span style="color:#000000;"> </span><span style="color:#800080;">0</span><span style="color:#000000;">, VaryByParam </span><span style="color:#000000;">=</span><span style="color:#000000;"> </span><span style="color:#800000;">"</span><span style="color:#800000;">None</span><span style="color:#800000;">"</span><span style="color:#000000;">)]
-    </span><span style="color:#0000FF;">public</span><span style="color:#000000;"> ActionResult GetJson(</span><span style="color:#0000FF;">int</span><span style="color:#000000;"> id)
-    {
-        </span><span style="color:#0000FF;">return</span><span style="color:#000000;"> Content(
-            JsonHelper.Serialize(ShiftPatternBL.Get(id)), 
-            </span><span style="color:#800000;">"</span><span style="color:#800000;">application/json; charset=utf-8</span><span style="color:#800000;">"</span><span style="color:#000000;">
-            );
-    }
-    </span>
-
+```
+[OutputCache(Duration = 0, VaryByParam = "None")]
+public ActionResult GetJson(int id)
+{
+    return Content(
+        JsonHelper.Serialize(ShiftPatternBL.Get(id)), 
+        "application/json; charset=utf-8"
+        );
+}
+```
 
 
 

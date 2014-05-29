@@ -86,7 +86,7 @@ public class WebApiController : ApiController
 
 
 
-This isn’t the most efficient code but the key point to not is the _dynamic_ keyword used for the action parameter _formData_. I can then loop through the collection of items in this dynamic collection and access both the Name and Value.
+This isn’t the most efficient code but the key point to note is the _dynamic_ keyword used for the action parameter _formData_. I can then loop through the collection of items in this dynamic collection and access both the Name and Value.
 
 
 
