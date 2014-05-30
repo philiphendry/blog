@@ -1,7 +1,7 @@
 # Site settings
 title: Philip Hendry's Blog
 email: blog@philiphendry.me.uk
-description: "Philip Hendry's Blog... one day there'll be enough time."
+description: "One day there'll be enough time."
 baseurl: ""
 url: http://blog.philiphendry.me.uk
 rss: http://blog.philiphendry.me.uk/feed.xml
