@@ -16,7 +16,7 @@ I wanted to be able to launch a single folder – the results of an ASP.NET WebF
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2009/12/image_thumb.png)](http://philiphendry.files.wordpress.com/2009/12/image.png)
+[![image](/assets/2009/12/image_thumb.png)](/assets/2009/12/image.png)
 
  
 

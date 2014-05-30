@@ -24,4 +24,4 @@ I’ve just started work at a new company that’s got a lot of old hardware sto
   * A built-in 16 gray level gas-plasma screen running at 640x480
  
 
-![image](http://philiphendry.files.wordpress.com/2009/07/image_thumb1.png)
+![image](/assets/2009/07/image_thumb1.png)

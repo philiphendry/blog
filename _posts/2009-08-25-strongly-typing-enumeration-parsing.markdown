@@ -15,11 +15,11 @@ Given this enum :
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb3.png)](http://philiphendry.files.wordpress.com/2009/08/image3.png)
+[![image](/assets/2009/08/image_thumb3.png)](/assets/2009/08/image3.png)
 
  
 
-Instead of this code :[![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb4.png)](http://philiphendry.files.wordpress.com/2009/08/image4.png)
+Instead of this code :[![image](/assets/2009/08/image_thumb4.png)](/assets/2009/08/image4.png)
 
  
 
@@ -27,7 +27,7 @@ I would rather see this :
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb5.png)](http://philiphendry.files.wordpress.com/2009/08/image5.png)
+[![image](/assets/2009/08/image_thumb5.png)](/assets/2009/08/image5.png)
 
  
 
@@ -35,4 +35,4 @@ I can’t add an extension to the Enum system class but I can create a new gener
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb6.png)](http://philiphendry.files.wordpress.com/2009/08/image6.png)
+[![image](/assets/2009/08/image_thumb6.png)](/assets/2009/08/image6.png)

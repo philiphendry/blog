@@ -24,7 +24,7 @@ So I resorted to running the sproc then lazy loading the child objects I need. W
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb8.png)](http://philiphendry.files.wordpress.com/2009/08/image8.png)
+[![image](/assets/2009/08/image_thumb8.png)](/assets/2009/08/image8.png)
 
  
 

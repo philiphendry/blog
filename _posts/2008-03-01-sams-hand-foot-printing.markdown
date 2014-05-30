@@ -15,12 +15,12 @@ It was a hard days work on Thursday having been woken up with a support call at 
 
 The clay came first and here's a couple of pictures of Sam seeming to enjoy having his extremities pushed into damp clay...
 
-[![](http://philiphendry.files.wordpress.com/2008/03/img-1561.jpg)](http://philiphendry.files.wordpress.com/2008/03/img-1561-8x6.jpg)
+[![](/assets/2008/03/img-1561.jpg)](/assets/2008/03/img-1561-8x6.jpg)
 
-[![](http://philiphendry.files.wordpress.com/2008/03/img-1569.jpg)](http://philiphendry.files.wordpress.com/2008/03/img-1569-8x6.jpg)
+[![](/assets/2008/03/img-1569.jpg)](/assets/2008/03/img-1569-8x6.jpg)
 
 And after a bit of decorating and writing here's the final prints made on tiles ready for glazing...
 
-[![](http://philiphendry.files.wordpress.com/2008/03/img-1572.jpg)](http://philiphendry.files.wordpress.com/2008/03/img-1572-8x6.jpg)
+[![](/assets/2008/03/img-1572.jpg)](/assets/2008/03/img-1572-8x6.jpg)
 
-[![](http://philiphendry.files.wordpress.com/2008/03/img-1573.jpg)](http://philiphendry.files.wordpress.com/2008/03/img-1573-8x6.jpg)
+[![](/assets/2008/03/img-1573.jpg)](/assets/2008/03/img-1573-8x6.jpg)

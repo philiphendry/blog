@@ -10,6 +10,6 @@ categories:
 - Family
 ---
 
-[![](http://philiphendry.files.wordpress.com/2008/02/img-7446.jpg)](http://philiphendry.files.wordpress.com/2008/02/img-7446-8x6.jpg)
+[![](/assets/2008/02/img-7446.jpg)](/assets/2008/02/img-7446-8x6.jpg)
 
 I love this photo... it's not particularly clear (and I'm a bit of a stickler for sharp photos) but the expression is priceless.

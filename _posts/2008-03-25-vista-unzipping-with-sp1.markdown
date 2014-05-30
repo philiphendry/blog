@@ -14,6 +14,6 @@ categories:
 
 I've downloaded and installed SP1 for Vista now but am still surprised by how long unzipping small files can take! I've been staring at this dialog for about a minute now...
 
-[![image](http://philiphendry.files.wordpress.com/2008/03/image-thumb2.png)](http://philiphendry.files.wordpress.com/2008/03/image2.png)
+[![image](/assets/2008/03/image-thumb2.png)](/assets/2008/03/image2.png)
 
 Surely it's not that difficult :(

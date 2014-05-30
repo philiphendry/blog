@@ -30,7 +30,7 @@ As an example here’s some test text…
 
 which renders as :
 
-[![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb.png)](http://philiphendry.files.wordpress.com/2009/08/image.png)
+[![image](/assets/2009/08/image_thumb.png)](/assets/2009/08/image.png)
 
 Note that nested styles are not supported.
 

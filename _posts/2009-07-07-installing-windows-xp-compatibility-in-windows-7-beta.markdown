@@ -18,7 +18,7 @@ However, I didn’t think my Dell Inspiron 6400 was that old but it appears it d
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2009/07/image_thumb.png)](http://philiphendry.files.wordpress.com/2009/07/image.png)
+[![image](/assets/2009/07/image_thumb.png)](/assets/2009/07/image.png)
 
  
 

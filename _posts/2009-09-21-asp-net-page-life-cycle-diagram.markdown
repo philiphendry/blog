@@ -15,4 +15,4 @@ I saw this months ago and wondered where it had gone so when I came across it by
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2009/09/image_thumb.png)](http://philiphendry.files.wordpress.com/2009/09/image.png)
+[![image](/assets/2009/09/image_thumb.png)](/assets/2009/09/image.png)

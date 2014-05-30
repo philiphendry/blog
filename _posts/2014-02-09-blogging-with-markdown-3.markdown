@@ -29,7 +29,7 @@ A Google Extension, [Platen](https://chrome.google.com/webstore/detail/platen/kj
 
 
 
-[![Snippet of Platen](http://philiphendry.files.wordpress.com/2014/02/snippet_of_platen2.png)](http://philiphendry.files.wordpress.com/2014/02/snippet_of_platen2.png)
+[![Snippet of Platen](/assets/2014/02/snippet_of_platen2.png)](/assets/2014/02/snippet_of_platen2.png)
 
 
 

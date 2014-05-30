@@ -20,7 +20,7 @@ I could have manually put some instrumentation into my tests but I’d rather us
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2010/08/image_thumb1.png)](http://philiphendry.files.wordpress.com/2010/08/image1.png)
+[![image](/assets/2010/08/image_thumb1.png)](/assets/2010/08/image1.png)
 
  
 
@@ -28,7 +28,7 @@ Up pops the Performance Wizard which basically asks whether to Sample or Instrum
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2010/08/image_thumb2.png)](http://philiphendry.files.wordpress.com/2010/08/image2.png)
+[![image](/assets/2010/08/image_thumb2.png)](/assets/2010/08/image2.png)
 
  
 
@@ -36,7 +36,7 @@ Now all I have to do is click the third button on the toolbar ‘Launch with Pro
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2010/08/image_thumb3.png)](http://philiphendry.files.wordpress.com/2010/08/image3.png)
+[![image](/assets/2010/08/image_thumb3.png)](/assets/2010/08/image3.png)
 
  
 

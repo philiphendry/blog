@@ -17,11 +17,11 @@ Here's a quick tip for launching applications with a simple keypress rather than
 
 First up, I created a _Keyboard Shortcuts_ folder in my program files folder and added shortcuts for each of the applications I want to launch from a keypress. I've also included the shortcut key I've assigned in the name for simple reference. It's important to be able to track down which keys are assigned to which apps because you can re-assign the key without realising you're overwriting a previous one. Here's my shortcuts in the start menu...
 
-[![image](http://philiphendry.files.wordpress.com/2008/05/image-thumb2.png)](http://philiphendry.files.wordpress.com/2008/05/image2.png)
+[![image](/assets/2008/05/image-thumb2.png)](/assets/2008/05/image2.png)
 
 Then it's just a simple matter of assigning the keypress in the properties for each shortcut...
 
-[![image](http://philiphendry.files.wordpress.com/2008/05/image-thumb3.png)](http://philiphendry.files.wordpress.com/2008/05/image3.png)
+[![image](/assets/2008/05/image-thumb3.png)](/assets/2008/05/image3.png)
 
 The compatibility tab also lets you run programs automatically as admin if that's required.
 

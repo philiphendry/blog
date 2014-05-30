@@ -20,4 +20,4 @@ It’s a bit of a code smell adding code simply for testing purposes and in part
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb7.png)](http://philiphendry.files.wordpress.com/2009/08/image7.png)
+[![image](/assets/2009/08/image_thumb7.png)](/assets/2009/08/image7.png)

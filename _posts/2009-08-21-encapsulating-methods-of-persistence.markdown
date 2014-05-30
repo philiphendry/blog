@@ -14,7 +14,7 @@ categories:
 
 Here’s a question. What’s wrong with this code :
 
-[![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb1.png)](http://philiphendry.files.wordpress.com/2009/08/image1.png)
+[![image](/assets/2009/08/image_thumb1.png)](/assets/2009/08/image1.png)
 
 To be honest, there’s nothing wrong with it. And most applications would be absolutely fine. However, I find there are things I don’t like :
 
@@ -32,7 +32,7 @@ To be honest, there’s nothing wrong with it. And most applications would be ab
 
 That last point is probably my biggest reason for writing the code a differently. When UserAccess is fetched elsewhere in the code, each line will be hardcoded with the method of access. If I changed my mind and wanted to place the object elsewhere, in view state or configuration file for example, then I’d have more places to edit. So what would I replace it with?
 
-[![image](http://philiphendry.files.wordpress.com/2009/08/image_thumb2.png)](http://philiphendry.files.wordpress.com/2009/08/image2.png)
+[![image](/assets/2009/08/image_thumb2.png)](/assets/2009/08/image2.png)
 
 Seems like a lot of effort but some of that could be reduced by using templates if you don’t want to type too much! I cache the object so no matter how many times I use the property I’m not hitting the Session object and casting.  I’ve also added the property as virtual so a subclass of the page could override the access and replace it with something entirely different – which could be very useful for wrapping the code behind for the page in a unit test and therefore removing any need for ASP.NET objects.
 

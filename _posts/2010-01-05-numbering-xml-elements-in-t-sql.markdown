@@ -40,7 +40,7 @@ Which returns :
 
 
 
-[![image](http://philiphendry.files.wordpress.com/2010/01/image_thumb.png)](http://philiphendry.files.wordpress.com/2010/01/image.png)
+[![image](/assets/2010/01/image_thumb.png)](/assets/2010/01/image.png)
 
 
 
@@ -76,7 +76,7 @@ Which returns :
 
 
 
-[![image](http://philiphendry.files.wordpress.com/2010/01/image_thumb1.png)](http://philiphendry.files.wordpress.com/2010/01/image1.png)
+[![image](/assets/2010/01/image_thumb1.png)](/assets/2010/01/image1.png)
 
 
 

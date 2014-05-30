@@ -16,7 +16,7 @@ I’ve got a Visual Studio project that includes ASP.NET MVC controllers, models
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2010/08/image_thumb.png)](http://philiphendry.files.wordpress.com/2010/08/image.png)
+[![image](/assets/2010/08/image_thumb.png)](/assets/2010/08/image.png)
 
  
 

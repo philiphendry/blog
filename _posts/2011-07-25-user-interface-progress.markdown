@@ -15,7 +15,7 @@ I really feel the need to rant… I’ve just seen the following interface desig
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2011/07/image_thumb.png)](http://philiphendry.files.wordpress.com/2011/07/image.png)
+[![image](/assets/2011/07/image_thumb.png)](/assets/2011/07/image.png)
 
  
 
@@ -23,8 +23,8 @@ So, you tell me… does this mean Column Guides is already turned on or when you
 
    
 
-[![image](http://philiphendry.files.wordpress.com/2011/07/image_thumb1.png)](http://philiphendry.files.wordpress.com/2011/07/image1.png)
+[![image](/assets/2011/07/image_thumb1.png)](/assets/2011/07/image1.png)
 
  
 
-[![image](http://philiphendry.files.wordpress.com/2011/07/image_thumb2.png)](http://philiphendry.files.wordpress.com/2011/07/image2.png)
+[![image](/assets/2011/07/image_thumb2.png)](/assets/2011/07/image2.png)

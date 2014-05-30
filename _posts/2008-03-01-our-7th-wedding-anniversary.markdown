@@ -14,4 +14,4 @@ To celebrate our Anniversary, Ali, Sam and I went to Gunwharf in Portsmouth and 
 
 Well, food was fantastic as ever, but you gotta wonder how anyone can look so longingly into a pan of Mussels...
 
-[![](http://philiphendry.files.wordpress.com/2008/03/img-1576.png)](http://philiphendry.files.wordpress.com/2008/03/img-1576-8x6.jpg)
+[![](/assets/2008/03/img-1576.png)](/assets/2008/03/img-1576-8x6.jpg)
