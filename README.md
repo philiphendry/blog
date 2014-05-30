@@ -51,8 +51,25 @@ Ensured python was in the PATH, restarted command prompt, ran jekyll build - CLE
 
 ### Configure ExitWP for WordPress migration
 
-1. Download repository
-2. Install PyYaml
+1. Download repository.
+2. Install PyYaml.
 3. Install Python SetupTools for easy\_install pakage manager click [ez_setup.py](https://bootstrap.pypa.io/ez_setup.py) to download then run in the c:\tools\python27 folder.
-4. Execute c:\tools\python27\scripts\easy_install.exe beautifulsoup4
-5. Execute converter (python exitwp.py)
+4. Execute c:\tools\python27\scripts\easy_install.exe beautifulsoup4.
+5. Export blog from WordPress and place file in the appropriate ExitWP folder.
+6. Execute converter (python exitwp.py).
+7. Purchased the Site Redirection upgrade in the WordPress store so all original URLs are redirected to the new site - Google should realise the change and transfer the SEO stats automatically and I'll be able to retire the redirect in a years time.
+
+## Migrating WordPress images
+
+1. Search the code base for all image urls, sort the list and extract the unique ones (using regular expression searches in Sublime Text makes this very simple.)
+2. Using command line to fetch all urls in list - `for /f %a in (urls.txt) do wget -x "%a"`.
+3. Place all downloaded images in an assets folder.
+4. Replace all urls prefixs in all the blog posts (so something like http://files.wordpress.com/ is simply replaced with /assets/ - note root relative.)
+
+### Migrate Comments to Disqus
+
+1. Create a new website in Disqus.
+2. Used the Disqus manual import to bring all comments from the WordPress export.
+3. Change the Jeykll permalink configuration to remove category to bring the URLs into line with the original WordPress urls.
+4. In Disqus admin Discussions -> Tools run the Redirect Crawler which searches all the original URLs and updates them to the new site by following the redirect set up on the WordPress site.
+5. Added the Disqus HTML to the head.html Jekyll template (via an include.)
