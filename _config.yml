@@ -6,12 +6,13 @@ baseurl: ""
 url: http://blog.philiphendry.me.uk
 rss: http://blog.philiphendry.me.uk/feed.xml
 
+
 # Build settings
+permalink: /:year/:month/:day/:title
+paginate: 10
+paginate_path: "page/:num"
 markdown: redcarpet
 redcarpet:
     extensions: ["tables"]
-permalink: pretty
-paginate: 10
-paginate_path: "page/:num"
 
 google_analytics_tracking_id: UA-51440511-1
