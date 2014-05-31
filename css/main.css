@@ -25,6 +25,10 @@ a         { color: #fc0; text-decoration: none; }
 a:hover   { color: #f90; text-decoration: underline; }
 a:visited { color: #f40; }
 
+img { max-width: 100%; }
+
+p { word-wrap: break-word; }
+
 /* Utility */
 
 .wrap:before,
@@ -351,6 +355,7 @@ a:visited { color: #f40; }
 
   .wrap { padding: 0 12px; }
 
+  .post { padding: 10px; }
   .post-header h1 { font-size: 36px; }
   .post-content h2 { font-size: 28px; }
   .post-content h3 { font-size: 22px; }
@@ -358,11 +363,11 @@ a:visited { color: #f40; }
   .post-content blockquote { padding-left: 10px; }
   .post-content ul,
   .post-content ol { padding-left: 10px; }
-
   .site-footer .column {
     float: none;
     clear: both;
     width: auto;
-    margin: 0 0 15px; }
-
+    margin: 0 0 15px; 
+  }
+  .post pre, .post code { font-size: 10px; }
 }
