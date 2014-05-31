@@ -84,12 +84,12 @@ Startup object is specified in Main in Program.cs :
 
  
     
-    [<span style="color:#2b91af;">STAThread</span>]
-    <span style="color:blue;">static void </span>Main()
+    [STAThread]
+    static void Main()
     {
-        <span style="color:#2b91af;">Application</span>.EnableVisualStyles();
-        <span style="color:#2b91af;">Application</span>.SetCompatibleTextRenderingDefault(<span style="color:blue;">false</span>);
-        <span style="color:#2b91af;">Application</span>.Run(<span style="color:blue;">new </span><span style="color:#2b91af;">Form1</span>());
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new Form1());
     }
 
 
@@ -103,12 +103,12 @@ Startup object is specified in Main in Program.cs :
 
 
     
-    <span style="color:blue;">private void </span>Form1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+    private void Form1_Load(object sender, EventArgs e)
     {
-        System.Drawing.Drawing2D.<span style="color:#2b91af;">GraphicsPath </span>path = <span style="color:blue;">new </span>System.Drawing.Drawing2D.<span style="color:#2b91af;">GraphicsPath</span>();
-        path.AddEllipse(0, 0, <span style="color:blue;">this</span>.Width, <span style="color:blue;">this</span>.Height);
-        <span style="color:blue;">this</span>.FormBorderStyle = <span style="color:#2b91af;">FormBorderStyle</span>.None;
-        <span style="color:blue;">this</span>.Region = <span style="color:blue;">new </span><span style="color:#2b91af;">Region</span>(path);
+        System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+        path.AddEllipse(0, 0, this.Width, this.Height);
+        this.FormBorderStyle = FormBorderStyle.None;
+        this.Region = new Region(path);
     }
 
 
@@ -144,10 +144,10 @@ Every form and control has a _Controls_ collection. New controls can be added pr
 
 
     
-    <span style="color:#2b91af;">Button </span>button = <span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>();
-    button.Text = <span style="color:#a31515;">"Press me!"</span>;
-    button.Location = <span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>(20, 20);
-    <span style="color:blue;">this</span>.Controls.Add(button);
+    Button button = new Button();
+    button.Text = "Press me!";
+    button.Location = new Point(20, 20);
+    this.Controls.Add(button);
 
 
 [](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)
@@ -170,7 +170,7 @@ The _Anchor_ property can be set to any combination of _Top, Bottom, Left, Right
 
 
     
-    button.Anchor = <span style="color:#2b91af;">AnchorStyles</span>.Left | <span style="color:#2b91af;">AnchorStyles</span>.Right;
+    button.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 
 
 
@@ -194,7 +194,7 @@ The _Dock_ property can be set to one of _Left, Right, Top, Bottom, Fill _or _No
 
 
     
-    button.Dock = <span style="color:#2b91af;">DockStyle</span>.Top;
+    button.Dock = DockStyle.Top;
 
 
 
@@ -294,32 +294,32 @@ Inherits from _Panel_ :
 
 
     
-    <span style="color:#2b91af;">TableLayoutPanel </span>pnl = <span style="color:blue;">new </span><span style="color:#2b91af;">TableLayoutPanel</span>();
-    <span style="color:blue;">this</span>.Controls.Add(pnl);
+    TableLayoutPanel pnl = new TableLayoutPanel();
+    this.Controls.Add(pnl);
     
-    pnl.AutoScroll = <span style="color:blue;">true</span>;
-    pnl.CellBorderStyle = <span style="color:#2b91af;">TableLayoutPanelCellBorderStyle</span>.Single;
-    pnl.ColumnStyles.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">ColumnStyle</span>());
-    pnl.ColumnStyles.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">ColumnStyle</span>());
-    pnl.RowStyles.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">RowStyle</span>());
-    pnl.RowStyles.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">RowStyle</span>());
-    <span style="color:#2b91af;">Debug</span>.WriteLine(pnl.ColumnCount);
-    <span style="color:#2b91af;">Debug</span>.WriteLine(pnl.RowCount);
-    pnl.ColumnStyles[0].SizeType = <span style="color:#2b91af;">SizeType</span>.Percent;
+    pnl.AutoScroll = true;
+    pnl.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+    pnl.ColumnStyles.Add(new ColumnStyle());
+    pnl.ColumnStyles.Add(new ColumnStyle());
+    pnl.RowStyles.Add(new RowStyle());
+    pnl.RowStyles.Add(new RowStyle());
+    Debug.WriteLine(pnl.ColumnCount);
+    Debug.WriteLine(pnl.RowCount);
+    pnl.ColumnStyles[0].SizeType = SizeType.Percent;
     pnl.ColumnStyles[0].Width = 50;
-    pnl.ColumnStyles[1].SizeType = <span style="color:#2b91af;">SizeType</span>.Percent;
+    pnl.ColumnStyles[1].SizeType = SizeType.Percent;
     pnl.ColumnStyles[1].Width = 50;
-    pnl.RowStyles[0].SizeType = <span style="color:#2b91af;">SizeType</span>.Absolute;
+    pnl.RowStyles[0].SizeType = SizeType.Absolute;
     pnl.RowStyles[0].Height = 50;
-    pnl.RowStyles[1].SizeType = <span style="color:#2b91af;">SizeType</span>.Absolute;
+    pnl.RowStyles[1].SizeType = SizeType.Absolute;
     pnl.RowStyles[1].Height = 50;
-    pnl.Controls.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>(), 0, 0);
-    pnl.Controls.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>(), 0, 1);
-    pnl.Controls.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>(), 1, 0);
-    pnl.Controls.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>(), 1, 1);
+    pnl.Controls.Add(new Button(), 0, 0);
+    pnl.Controls.Add(new Button(), 0, 1);
+    pnl.Controls.Add(new Button(), 1, 0);
+    pnl.Controls.Add(new Button(), 1, 1);
     
-    pnl.GrowStyle = <span style="color:#2b91af;">TableLayoutPanelGrowStyle</span>.AddRows;
-    pnl.Controls.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>());
+    pnl.GrowStyle = TableLayoutPanelGrowStyle.AddRows;
+    pnl.Controls.Add(new Button());
 
 
 [](http://11011.net/software/vspaste)
@@ -332,18 +332,18 @@ Inherits from _Panel_ :
 
 
     
-    <span style="color:#2b91af;">TabControl </span>tab = <span style="color:blue;">new </span><span style="color:#2b91af;">TabControl</span>();
-    <span style="color:blue;">this</span>.Controls.Add(tab);
+    TabControl tab = new TabControl();
+    this.Controls.Add(tab);
     
-    tab.TabPages.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">TabPage</span>());
-    tab.TabPages.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">TabPage</span>());
-    tab.TabPages[0].Text = <span style="color:#a31515;">"First"</span>;
-    tab.TabPages[0].AutoScroll = <span style="color:blue;">true</span>;
-    tab.TabPages[0].BorderStyle = <span style="color:#2b91af;">BorderStyle</span>.Fixed3D; <span style="color:green;">// or FixedSingle, None
+    tab.TabPages.Add(new TabPage());
+    tab.TabPages.Add(new TabPage());
+    tab.TabPages[0].Text = "First";
+    tab.TabPages[0].AutoScroll = true;
+    tab.TabPages[0].BorderStyle = BorderStyle.Fixed3D; // or FixedSingle, None
     
-    </span>tab.Appearance = <span style="color:#2b91af;">TabAppearance</span>.Normal; <span style="color:green;">// or Buttons, FlatButtons
-    </span>tab.Alignment = <span style="color:#2b91af;">TabAlignment</span>.Left; <span style="color:green;">// or Top, Bottom, Right
-    </span>tab.Multiline = <span style="color:blue;">true</span>;
+    tab.Appearance = TabAppearance.Normal; // or Buttons, FlatButtons
+    tab.Alignment = TabAlignment.Left; // or Top, Bottom, Right
+    tab.Multiline = true;
 
 
 [](http://11011.net/software/vspaste)
@@ -360,31 +360,31 @@ Inherits from _Panel_ :
 
 
     
-    <span style="color:#2b91af;">SplitContainer </span>split = <span style="color:blue;">new </span><span style="color:#2b91af;">SplitContainer</span>();
-    <span style="color:blue;">this</span>.Controls.Add(split);
+    SplitContainer split = new SplitContainer();
+    this.Controls.Add(split);
     
-    split.Dock = <span style="color:#2b91af;">DockStyle</span>.Fill;
-    split.Orientation = <span style="color:#2b91af;">Orientation</span>.Vertical; <span style="color:green;">// or Horizontal
-    </span>split.IsSplitterFixed = <span style="color:blue;">false</span>; <span style="color:green;">// if true, use SplitterDistance
-    </span>split.SplitterDistance = 200; <span style="color:green;">// in pixels
-    </span>split.SplitterWidth = 30;
+    split.Dock = DockStyle.Fill;
+    split.Orientation = Orientation.Vertical; // or Horizontal
+    split.IsSplitterFixed = false; // if true, use SplitterDistance
+    split.SplitterDistance = 200; // in pixels
+    split.SplitterWidth = 30;
     split.Panel1MinSize = 40;
     split.Panel2MinSize = 20;
     
-    <span style="color:green;">// The following are mutually exclusive!!
-    </span>split.Panel1Collapsed = <span style="color:blue;">false</span>;
-    split.Panel2Collapsed = <span style="color:blue;">false</span>;
+    // The following are mutually exclusive!!
+    split.Panel1Collapsed = false;
+    split.Panel2Collapsed = false;
     
-    <span style="color:green;">// FixedPanel decides how to resize panels when the
+    // FixedPanel decides how to resize panels when the
     // SplitContainer is resized
-    </span>split.FixedPanel = <span style="color:#2b91af;">FixedPanel</span>.Panel1; <span style="color:green;">// or None, Panel2
+    split.FixedPanel = FixedPanel.Panel1; // or None, Panel2
     
     // Set the border style of the two SplitterPanels
-    </span>split.BorderStyle = <span style="color:#2b91af;">BorderStyle</span>.FixedSingle;
+    split.BorderStyle = BorderStyle.FixedSingle;
     
-    <span style="color:green;">// There are two SplitterPanel controls either side of the split
-    </span>split.Panel1.Controls.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>());
-    split.Panel2.Controls.Add(<span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>());
+    // There are two SplitterPanel controls either side of the split
+    split.Panel1.Controls.Add(new Button());
+    split.Panel2.Controls.Add(new Button());
 
 
 [](http://11011.net/software/vspaste)
@@ -622,7 +622,7 @@ Important properties :
 
 
     
-    <span style="color:#2b91af;">DialogResult </span>result = <span style="color:blue;">this</span>.ShowDialog();
+    DialogResult result = this.ShowDialog();
 
 
 [](http://11011.net/software/vspaste)
@@ -3311,13 +3311,13 @@ and events :
 
 
     
-    <span style="color:#2b91af;">SqlConnection </span>sqlConnection = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlConnection</span>(<span style="color:#a31515;">"Data Source=ServerName;Initial Catalog=DatabaseName;Integrated Security=True"</span>);
+    SqlConnection sqlConnection = new SqlConnection("Data Source=ServerName;Initial Catalog=DatabaseName;Integrated Security=True");
     
-    <span style="color:#2b91af;">OleDbConnection </span>oledbConnection = <span style="color:blue;">new </span><span style="color:#2b91af;">OleDbConnection</span>(<span style="color:#a31515;">"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"Nwind.mdb\";Persist Security Info=False"</span>);
+    OleDbConnection oledbConnection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"Nwind.mdb\";Persist Security Info=False");
     
-    <span style="color:#2b91af;">OdbcConnection </span>odbcConnection = <span style="color:blue;">new </span><span style="color:#2b91af;">OdbcConnection</span>(<span style="color:#a31515;">"Dsn=MS Access Database;dbq=C:\\DataSource;driverid=281;fil=MS Access;maxbuffersize=2048;pagetimeout=5;uid=admin"</span>);
+    OdbcConnection odbcConnection = new OdbcConnection("Dsn=MS Access Database;dbq=C:\\DataSource;driverid=281;fil=MS Access;maxbuffersize=2048;pagetimeout=5;uid=admin");
     
-    <span style="color:#2b91af;">OracleConnection </span>oracleConnection = <span style="color:blue;">new </span><span style="color:#2b91af;">OracleConnection</span>(<span style="color:#a31515;">"Data Source=Oracle8i;Integrated Security=yes"</span>);
+    OracleConnection oracleConnection = new OracleConnection("Data Source=Oracle8i;Integrated Security=yes");
 
 
 [](http://11011.net/software/vspaste)
@@ -3612,17 +3612,17 @@ It is recommended to set the _Persist Security Information_ connection string op
 
 
     
-    <span style="color:#2b91af;">Configuration </span>config = <span style="color:#2b91af;">ConfigurationManager</span>.OpenExeConfiguration(<span style="color:#2b91af;">ConfigurationUserLevel</span>.None);
-    <span style="color:#2b91af;">ConfigurationSection </span>connStrings = config.ConnectionStrings;
+    Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+    ConfigurationSection connStrings = config.ConnectionStrings;
     
-    <span style="color:green;">// Encrypt the section
-    </span>connStrings.SectionInformation.ProtectSection(<span style="color:#a31515;">"DataProtectionConfigurationProvider"</span>;
+    // Encrypt the section
+    connStrings.SectionInformation.ProtectSection("DataProtectionConfigurationProvider";
     
-    <span style="color:green;">// Decrypt the section
-    </span>connStrings.SectionInformation.UnprotectSection();
+    // Decrypt the section
+    connStrings.SectionInformation.UnprotectSection();
     
-    connStrings.SectionInformation.ForceSave = <span style="color:blue;">true</span>;
-    config.Save(<span style="color:#2b91af;">ConfigurationSaveMode</span>.Full);
+    connStrings.SectionInformation.ForceSave = true;
+    config.Save(ConfigurationSaveMode.Full);
 
 
 [](http://11011.net/software/vspaste)
@@ -3882,37 +3882,37 @@ Here’s code to retrieve an image from SQL Server :
 
 
     
-    <span style="color:#2b91af;">SqlCommand </span>command = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlCommand</span>(<span style="color:#a31515;">"SELECT pub_id, logo FROM pub_info"</span>, connection);
+    SqlCommand command = new SqlCommand("SELECT pub_id, logo FROM pub_info", connection);
     
-    <span style="color:#2b91af;">FileStream </span>stream;      <span style="color:green;">// Writes the BLOB to a file (*.bmp).
-    </span><span style="color:#2b91af;">BinaryWriter </span>writer;    <span style="color:green;">// Streams the BLOB to the FileStream object.
+    FileStream stream;      // Writes the BLOB to a file (*.bmp).
+    BinaryWriter writer;    // Streams the BLOB to the FileStream object.
     
-    </span><span style="color:blue;">int </span>bufferSize = 100;                   <span style="color:green;">// Size of the BLOB buffer.
-    </span><span style="color:blue;">byte</span>[] outByte = <span style="color:blue;">new byte</span>[bufferSize];  <span style="color:green;">// The BLOB byte[] buffer to be filled by GetBytes.
-    </span><span style="color:blue;">long </span>retval;                            <span style="color:green;">// The bytes returned from GetBytes.
-    </span><span style="color:blue;">long </span>startIndex = 0;                    <span style="color:green;">// The starting position in the BLOB output.
-    </span><span style="color:blue;">string </span>pubID = <span style="color:#a31515;">""</span>;                      <span style="color:green;">// The publisher id to use in the file name.
+    int bufferSize = 100;                   // Size of the BLOB buffer.
+    byte[] outByte = new byte[bufferSize];  // The BLOB byte[] buffer to be filled by GetBytes.
+    long retval;                            // The bytes returned from GetBytes.
+    long startIndex = 0;                    // The starting position in the BLOB output.
+    string pubID = "";                      // The publisher id to use in the file name.
     
-    </span>connection.Open();
-    <span style="color:#2b91af;">SqlDataReader </span>reader = command.ExecuteReader(<span style="color:#2b91af;">CommandBehavior</span>.SequentialAccess);
-    <span style="color:blue;">while </span>(reader.Read())
+    connection.Open();
+    SqlDataReader reader = command.ExecuteReader(CommandBehavior.SequentialAccess);
+    while (reader.Read())
     {
-        pubID = reader.GetString(0);        <span style="color:green;">// Get the publisher id, which must occur before getting the logo.
-        </span>stream = <span style="color:blue;">new </span><span style="color:#2b91af;">FileStream</span>(<span style="color:#a31515;">"logo" </span>+ pubID + <span style="color:#a31515;">".bmp"</span>, <span style="color:#2b91af;">FileMode</span>.OpenOrCreate, <span style="color:#2b91af;">FileAccess</span>.Write);
-        writer = <span style="color:blue;">new </span><span style="color:#2b91af;">BinaryWriter</span>(stream);
-        startIndex = 0;                     <span style="color:green;">// Reset the starting byte for the new BLOB.
+        pubID = reader.GetString(0);        // Get the publisher id, which must occur before getting the logo.
+        stream = new FileStream("logo" + pubID + ".bmp", FileMode.OpenOrCreate, FileAccess.Write);
+        writer = new BinaryWriter(stream);
+        startIndex = 0;                     // Reset the starting byte for the new BLOB.
     
         // Read bytes into outByte[] and retain the number of bytes returned.
-        </span>retval = reader.GetBytes(1, startIndex, outByte, 0, bufferSize);
-        <span style="color:blue;">while </span>(retval == bufferSize)        <span style="color:green;">// Continue while there are bytes beyond the size of the buffer.
-        </span>{
+        retval = reader.GetBytes(1, startIndex, outByte, 0, bufferSize);
+        while (retval == bufferSize)        // Continue while there are bytes beyond the size of the buffer.
+        {
             writer.Write(outByte);
             writer.Flush();
-            startIndex += bufferSize;       <span style="color:green;">// Reposition start index to end of last buffer and fill buffer.
-            </span>retval = reader.GetBytes(1, startIndex, outByte, 0, bufferSize);
+            startIndex += bufferSize;       // Reposition start index to end of last buffer and fill buffer.
+            retval = reader.GetBytes(1, startIndex, outByte, 0, bufferSize);
         }
-        writer.Write(outByte, 0, (<span style="color:blue;">int</span>)retval - 1);   <span style="color:green;">// Write the remaining buffer.
-        </span>writer.Flush();         
+        writer.Write(outByte, 0, (int)retval - 1);   // Write the remaining buffer.
+        writer.Flush();         
         writer.Close();
         stream.Close();
     }
@@ -3936,7 +3936,7 @@ BLOBs can be streamed into the database in much the same way as any other data. 
 
 
     
-    command.Parameters.Add(<span style="color:#a31515;">"@Photo"</span>, <span style="color:#2b91af;">SqlDbType</span>.Image, photo.Length).Value = photo;
+    command.Parameters.Add("@Photo", SqlDbType.Image, photo.Length).Value = photo;
 
 
 [](http://11011.net/software/vspaste)
@@ -3961,33 +3961,33 @@ However, this method can be very intensive therefore there is method of ‘chunk
 
 
     
-    <span style="color:blue;">public static int </span>AddEmployee(<span style="color:blue;">string </span>lastName, <span style="color:blue;">string </span>firstName, <span style="color:blue;">string </span>title, <span style="color:#2b91af;">DateTime </span>hireDate, <span style="color:blue;">int </span>reportsTo, <span style="color:blue;">string </span>photoFilePath)
+    public static int AddEmployee(string lastName, string firstName, string title, DateTime hireDate, int reportsTo, string photoFilePath)
     {
-        <span style="color:blue;">using </span>(<span style="color:#2b91af;">SqlConnection </span>connection = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlConnection</span>(<span style="color:#a31515;">"Data Source=(local);Integrated Security=true;Initial Catalog=Northwind;"</span>))
+        using (SqlConnection connection = new SqlConnection("Data Source=(local);Integrated Security=true;Initial Catalog=Northwind;"))
         {
-            <span style="color:#2b91af;">SqlCommand </span>addEmp = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlCommand</span>(
-                <span style="color:#a31515;">"INSERT INTO Employees (LastName, FirstName, Title, HireDate, ReportsTo, Photo) " </span>+
-                <span style="color:#a31515;">"Values(@LastName, @FirstName, @Title, @HireDate, @ReportsTo, 0x0);" </span>+
-                <span style="color:#a31515;">"SELECT @Identity = SCOPE_IDENTITY();" </span>+
-                <span style="color:#a31515;">"SELECT @Pointer = TEXTPTR(Photo) FROM Employees WHERE EmployeeID = @Identity"</span>, 
+            SqlCommand addEmp = new SqlCommand(
+                "INSERT INTO Employees (LastName, FirstName, Title, HireDate, ReportsTo, Photo) " +
+                "Values(@LastName, @FirstName, @Title, @HireDate, @ReportsTo, 0x0);" +
+                "SELECT @Identity = SCOPE_IDENTITY();" +
+                "SELECT @Pointer = TEXTPTR(Photo) FROM Employees WHERE EmployeeID = @Identity", 
                 connection);
     
-            addEmp.Parameters.Add(<span style="color:#a31515;">"@LastName"</span>, <span style="color:#2b91af;">SqlDbType</span>.NVarChar, 20).Value = lastName;
-            addEmp.Parameters.Add(<span style="color:#a31515;">"@FirstName"</span>, <span style="color:#2b91af;">SqlDbType</span>.NVarChar, 10).Value = firstName;
-            addEmp.Parameters.Add(<span style="color:#a31515;">"@Title"</span>, <span style="color:#2b91af;">SqlDbType</span>.NVarChar, 30).Value = title;
-            addEmp.Parameters.Add(<span style="color:#a31515;">"@HireDate"</span>, <span style="color:#2b91af;">SqlDbType</span>.DateTime).Value = hireDate;
-            addEmp.Parameters.Add(<span style="color:#a31515;">"@ReportsTo"</span>, <span style="color:#2b91af;">SqlDbType</span>.Int).Value = reportsTo;
+            addEmp.Parameters.Add("@LastName", SqlDbType.NVarChar, 20).Value = lastName;
+            addEmp.Parameters.Add("@FirstName", SqlDbType.NVarChar, 10).Value = firstName;
+            addEmp.Parameters.Add("@Title", SqlDbType.NVarChar, 30).Value = title;
+            addEmp.Parameters.Add("@HireDate", SqlDbType.DateTime).Value = hireDate;
+            addEmp.Parameters.Add("@ReportsTo", SqlDbType.Int).Value = reportsTo;
     
-            <span style="color:#2b91af;">SqlParameter </span>idParm = addEmp.Parameters.Add(<span style="color:#a31515;">"@Identity"</span>, <span style="color:#2b91af;">SqlDbType</span>.Int);
-            idParm.Direction = <span style="color:#2b91af;">ParameterDirection</span>.Output;
-            <span style="color:#2b91af;">SqlParameter </span>ptrParm = addEmp.Parameters.Add(<span style="color:#a31515;">"@Pointer"</span>, <span style="color:#2b91af;">SqlDbType</span>.Binary, 16);
-            ptrParm.Direction = <span style="color:#2b91af;">ParameterDirection</span>.Output;
+            SqlParameter idParm = addEmp.Parameters.Add("@Identity", SqlDbType.Int);
+            idParm.Direction = ParameterDirection.Output;
+            SqlParameter ptrParm = addEmp.Parameters.Add("@Pointer", SqlDbType.Binary, 16);
+            ptrParm.Direction = ParameterDirection.Output;
     
             connection.Open();
             addEmp.ExecuteNonQuery();
-            <span style="color:blue;">int </span>newEmpID = (<span style="color:blue;">int</span>)idParm.Value;
-            StorePhoto(photoFilePath, (<span style="color:blue;">byte</span>[])ptrParm.Value, connection);
-            <span style="color:blue;">return </span>newEmpID;
+            int newEmpID = (int)idParm.Value;
+            StorePhoto(photoFilePath, (byte[])ptrParm.Value, connection);
+            return newEmpID;
         }
     }
 
@@ -3996,24 +3996,24 @@ However, this method can be very intensive therefore there is method of ‘chunk
 
 
     
-    <span style="color:blue;">public static void </span>StorePhoto(<span style="color:blue;">string </span>fileName, <span style="color:blue;">byte</span>[] pointer, <span style="color:#2b91af;">SqlConnection </span>connection)
+    public static void StorePhoto(string fileName, byte[] pointer, SqlConnection connection)
     {
-        <span style="color:blue;">int </span>bufferLen = 128;    <span style="color:green;">// The size of the "chunks" of the image.
-        </span><span style="color:#2b91af;">SqlCommand </span>appendToPhoto = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlCommand</span>(<span style="color:#a31515;">"UPDATETEXT Employees.Photo @Pointer @Offset 0 @Bytes"</span>, connection);
-        <span style="color:#2b91af;">SqlParameter </span>ptrParm = appendToPhoto.Parameters.Add(<span style="color:#a31515;">"@Pointer"</span>, <span style="color:#2b91af;">SqlDbType</span>.Binary, 16);
+        int bufferLen = 128;    // The size of the "chunks" of the image.
+        SqlCommand appendToPhoto = new SqlCommand("UPDATETEXT Employees.Photo @Pointer @Offset 0 @Bytes", connection);
+        SqlParameter ptrParm = appendToPhoto.Parameters.Add("@Pointer", SqlDbType.Binary, 16);
         ptrParm.Value = pointer;
-        <span style="color:#2b91af;">SqlParameter </span>photoParm = appendToPhoto.Parameters.Add(<span style="color:#a31515;">"@Bytes"</span>, <span style="color:#2b91af;">SqlDbType</span>.Image, bufferLen);
-        <span style="color:#2b91af;">SqlParameter </span>offsetParm = appendToPhoto.Parameters.Add(<span style="color:#a31515;">"@Offset"</span>, <span style="color:#2b91af;">SqlDbType</span>.Int);
+        SqlParameter photoParm = appendToPhoto.Parameters.Add("@Bytes", SqlDbType.Image, bufferLen);
+        SqlParameter offsetParm = appendToPhoto.Parameters.Add("@Offset", SqlDbType.Int);
         offsetParm.Value = 0;
     
-        <span style="color:green;">// Read the image in and write it to the database 128 (bufferLen) bytes at a time.
+        // Read the image in and write it to the database 128 (bufferLen) bytes at a time.
         // Tune bufferLen for best performance. Larger values write faster, but
         // use more system resources.
-        </span><span style="color:#2b91af;">FileStream </span>fs = <span style="color:blue;">new </span><span style="color:#2b91af;">FileStream</span>(fileName, <span style="color:#2b91af;">FileMode</span>.Open, <span style="color:#2b91af;">FileAccess</span>.Read);
-        <span style="color:#2b91af;">BinaryReader </span>br = <span style="color:blue;">new </span><span style="color:#2b91af;">BinaryReader</span>(fs);
-        <span style="color:blue;">byte</span>[] buffer = br.ReadBytes(bufferLen);
-        <span style="color:blue;">int </span>offset_ctr = 0;
-        <span style="color:blue;">while </span>(buffer.Length > 0)
+        FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+        BinaryReader br = new BinaryReader(fs);
+        byte[] buffer = br.ReadBytes(bufferLen);
+        int offset_ctr = 0;
+        while (buffer.Length > 0)
         {
             photoParm.Value = buffer;
             appendToPhoto.ExecuteNonQuery();
@@ -4087,13 +4087,13 @@ The basic process for bulk copying data between tables is :
 
 
     
-    <span style="color:blue;">using </span>(<span style="color:#2b91af;">SqlConnection </span>connection = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlConnection</span>(connectionString))
+    using (SqlConnection connection = new SqlConnection(connectionString))
     {
-        <span style="color:blue;">string </span>queryString = <span style="color:#a31515;">@"BULK INSERT Northwind.dbo.[Order Details] " </span>+
-            <span style="color:#a31515;">@"FROM 'f:\mydata\data.tbl' " </span>+
-            <span style="color:#a31515;">@"WITH ( FORMATFILE='f:\mydata\data.fmt' )"</span>;
+        string queryString = @"BULK INSERT Northwind.dbo.[Order Details] " +
+            @"FROM 'f:\mydata\data.tbl' " +
+            @"WITH ( FORMATFILE='f:\mydata\data.fmt' )";
         connection.Open();
-        <span style="color:#2b91af;">SqlCommand </span>command = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlCommand</span>(queryString, connection);
+        SqlCommand command = new SqlCommand(queryString, connection);
         command.ExecuteNonQuery();
     }
 
@@ -4237,7 +4237,7 @@ To merge a _DataSet_ (or _DataTable_) with an existing _DataSet_ call _Merge()_.
 
 
     
-    ds.Merge(sourceDS, <span style="color:blue;">true</span>, <span style="color:#2b91af;">MissingSchemaAction</span>.Add);
+    ds.Merge(sourceDS, true, MissingSchemaAction.Add);
 
 
 [](http://11011.net/software/vspaste)
@@ -4282,59 +4282,59 @@ In the example below the creation of a _DataRelation_ automatically generates a 
 
 
     
-    <span style="color:#2b91af;">DataTable </span>ordersTable = <span style="color:blue;">new </span><span style="color:#2b91af;">DataTable</span>(<span style="color:#a31515;">"orders"</span>);
-    <span style="color:#2b91af;">DataTable </span>orderDetailsTable = <span style="color:blue;">new </span><span style="color:#2b91af;">DataTable</span>(<span style="color:#a31515;">"orderDetails"</span>);
+    DataTable ordersTable = new DataTable("orders");
+    DataTable orderDetailsTable = new DataTable("orderDetails");
     
-    <span style="color:#2b91af;">DataSet </span>ds = <span style="color:blue;">new </span><span style="color:#2b91af;">DataSet</span>(<span style="color:#a31515;">"myDataSet"</span>);
+    DataSet ds = new DataSet("myDataSet");
     ds.Tables.Add(ordersTable);
     ds.Tables.Add(orderDetailsTable);
     
-    <span style="color:green;">// Create an auto-incrementing OrderId column
-    </span>ordersTable.Columns.Add(<span style="color:#a31515;">"OrderId"</span>, <span style="color:#2b91af;">Type</span>.GetType(<span style="color:#a31515;">"System.Int32"</span>));
-    ordersTable.Columns[<span style="color:#a31515;">"OrderId"</span>].AutoIncrement = <span style="color:blue;">true</span>;
-    ordersTable.Columns[<span style="color:#a31515;">"OrderId"</span>].AutoIncrementSeed = 100;
-    ordersTable.Columns[<span style="color:#a31515;">"OrderId"</span>].AutoIncrementStep = 5;
+    // Create an auto-incrementing OrderId column
+    ordersTable.Columns.Add("OrderId", Type.GetType("System.Int32"));
+    ordersTable.Columns["OrderId"].AutoIncrement = true;
+    ordersTable.Columns["OrderId"].AutoIncrementSeed = 100;
+    ordersTable.Columns["OrderId"].AutoIncrementStep = 5;
     
-    <span style="color:green;">// An example of adding a column expression
-    </span>orderDetailsTable.Columns.Add(<span style="color:#a31515;">"TotalPrice"</span>, <span style="color:#2b91af;">Type</span>.GetType(<span style="color:#a31515;">"System.Double"</span>), <span style="color:#a31515;">"UnitPrice * Quantity"</span>);
+    // An example of adding a column expression
+    orderDetailsTable.Columns.Add("TotalPrice", Type.GetType("System.Double"), "UnitPrice * Quantity");
     
-    <span style="color:green;">// Some more examples of column properties
-    </span>orderDetailsTable.Columns.Add(<span style="color:#a31515;">"OrderId"</span>, <span style="color:#2b91af;">Type</span>.GetType(<span style="color:#a31515;">"System.Int32"</span>));
-    orderDetailsTable.Columns.Add(<span style="color:#a31515;">"OrderDetailId"</span>, <span style="color:#2b91af;">Type</span>.GetType(<span style="color:#a31515;">"System.Int32"</span>));
-    orderDetailsTable.Columns[<span style="color:#a31515;">"OrderDetailId"</span>].AllowDBNull = <span style="color:blue;">false</span>;
-    orderDetailsTable.Columns[<span style="color:#a31515;">"OrderDetailId"</span>].Unique = <span style="color:blue;">true</span>;
+    // Some more examples of column properties
+    orderDetailsTable.Columns.Add("OrderId", Type.GetType("System.Int32"));
+    orderDetailsTable.Columns.Add("OrderDetailId", Type.GetType("System.Int32"));
+    orderDetailsTable.Columns["OrderDetailId"].AllowDBNull = false;
+    orderDetailsTable.Columns["OrderDetailId"].Unique = true;
     
-    <span style="color:green;">// Creating a relationship (column data types must match)
-    </span><span style="color:#2b91af;">DataRelation </span>relation = <span style="color:blue;">new </span><span style="color:#2b91af;">DataRelation</span>(<span style="color:#a31515;">"Order_OrderDetails"</span>,
-        ordersTable.Columns[<span style="color:#a31515;">"OrderId"</span>],
-        orderDetailsTable.Columns[<span style="color:#a31515;">"OrderId"</span>]);
+    // Creating a relationship (column data types must match)
+    DataRelation relation = new DataRelation("Order_OrderDetails",
+        ordersTable.Columns["OrderId"],
+        orderDetailsTable.Columns["OrderId"]);
     ds.Relations.Add(relation);
     
-    <span style="color:green;">// The relationship can be found on both the child and parent tables
-    </span><span style="color:#2b91af;">DataRelation </span>childRelation = ordersTable.ChildRelations[<span style="color:#a31515;">"Order_OrderDetails"</span>];
-    <span style="color:#2b91af;">DataRelation </span>parentRelation = orderDetailsTable.ParentRelations[<span style="color:#a31515;">"Order_OrderDetails"</span>];
+    // The relationship can be found on both the child and parent tables
+    DataRelation childRelation = ordersTable.ChildRelations["Order_OrderDetails"];
+    DataRelation parentRelation = orderDetailsTable.ParentRelations["Order_OrderDetails"];
     
-    <span style="color:green;">// Now navigate the relationship using either the object or relationship name
-    </span><span style="color:#2b91af;">DataRow</span>[] orderDetailRows = ordersTable.Rows[0].GetChildRows(relation);
-    <span style="color:#2b91af;">DataRow </span>orderRow = orderDetailsTable.Rows[0].GetParentRow(<span style="color:#a31515;">"Order_OrderDetails"</span>);
+    // Now navigate the relationship using either the object or relationship name
+    DataRow[] orderDetailRows = ordersTable.Rows[0].GetChildRows(relation);
+    DataRow orderRow = orderDetailsTable.Rows[0].GetParentRow("Order_OrderDetails");
     
-    <span style="color:green;">// ALternative method for setting unique key constraint. There are
+    // ALternative method for setting unique key constraint. There are
     // also a variety of overloads for .Add() that offer quicker ways
     // to add the constraint features (e.g. name, data column and primary key bool)
-    </span><span style="color:#2b91af;">UniqueConstraint </span>unique = <span style="color:blue;">new </span><span style="color:#2b91af;">UniqueConstraint</span>(ordersTable.Columns[<span style="color:#a31515;">"OrderId"</span>], <span style="color:blue;">true</span>);
-    <span style="color:blue;">bool </span>isPrimary = unique.IsPrimaryKey; <span style="color:green;">// The primary key boolean is passed in the constructor
-    </span>unique.ConstraintName = <span style="color:#a31515;">"PK_Orders_OrderId"</span>;
+    UniqueConstraint unique = new UniqueConstraint(ordersTable.Columns["OrderId"], true);
+    bool isPrimary = unique.IsPrimaryKey; // The primary key boolean is passed in the constructor
+    unique.ConstraintName = "PK_Orders_OrderId";
     ordersTable.Constraints.Add(unique);
     
-    <span style="color:green;">// Create a Foreign Key between two tables which can be used to force a constraint
+    // Create a Foreign Key between two tables which can be used to force a constraint
     // between them. The DataColumn parameters can also be DataColumn[] if using a composite key
-    </span><span style="color:#2b91af;">ForeignKeyConstraint </span>foreignKey = <span style="color:blue;">new </span><span style="color:#2b91af;">ForeignKeyConstraint</span>(<span style="color:#a31515;">"FK_Orders_OrderDetails"</span>,
-        ordersTable.Columns[<span style="color:#a31515;">"OrderId"</span>],
-        orderDetailsTable.Columns[<span style="color:#a31515;">"OrderId"</span>]);
-    foreignKey.DeleteRule = <span style="color:#2b91af;">Rule</span>.Cascade; <span style="color:green;">// or None, SetDefault, SetNull
-    </span>foreignKey.UpdateRule = <span style="color:#2b91af;">Rule</span>.None;
-    foreignKey.AcceptRejectRule = <span style="color:#2b91af;">AcceptRejectRule</span>.Cascade; <span style="color:green;">// or None (enforced when calling AcceptChanges())
-    </span>ordersTable.Constraints.Add(foreignKey);
+    ForeignKeyConstraint foreignKey = new ForeignKeyConstraint("FK_Orders_OrderDetails",
+        ordersTable.Columns["OrderId"],
+        orderDetailsTable.Columns["OrderId"]);
+    foreignKey.DeleteRule = Rule.Cascade; // or None, SetDefault, SetNull
+    foreignKey.UpdateRule = Rule.None;
+    foreignKey.AcceptRejectRule = AcceptRejectRule.Cascade; // or None (enforced when calling AcceptChanges())
+    ordersTable.Constraints.Add(foreignKey);
 
 
 [](http://11011.net/software/vspaste)
@@ -4373,30 +4373,30 @@ _DataAdapter_ objects are provider-specific and contain connection information a
 
 
     
-    <span style="color:#2b91af;">SqlConnection </span>conn;
+    SqlConnection conn;
     
-    <span style="color:green;">// An example SqlDataAdapter that manually creates each SqlCommand
-    </span><span style="color:#2b91af;">SqlDataAdapter </span>adapter = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlDataAdapter</span>(<span style="color:#a31515;">"SELECT * FROM Customers"</span>, conn);
-    adapter.InsertCommand = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlCommand</span>(<span style="color:#a31515;">"INSERT INTO ..."</span>, conn);
-    adapter.UpdateCommand = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlCommand</span>(<span style="color:#a31515;">"UPDATE ... SET ..."</span>, conn);
-    adapter.DeleteCommand = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlCommand</span>(<span style="color:#a31515;">"DELETE FROM ..."</span>, conn);
-    <span style="color:green;">// now add any necessary parameters to each SqlCommand parameters collection
+    // An example SqlDataAdapter that manually creates each SqlCommand
+    SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Customers", conn);
+    adapter.InsertCommand = new SqlCommand("INSERT INTO ...", conn);
+    adapter.UpdateCommand = new SqlCommand("UPDATE ... SET ...", conn);
+    adapter.DeleteCommand = new SqlCommand("DELETE FROM ...", conn);
+    // now add any necessary parameters to each SqlCommand parameters collection
     
     // If the select returns data from a single table and the result set contains
     // either a primary key or unique column then the SqlCommandBuilder() can
     // generate the insert, update and delete automatically
-    </span><span style="color:#2b91af;">SqlDataAdapter </span>adapter2 = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlDataAdapter</span>(<span style="color:#a31515;">"SELECT * FROm Customers"</span>, conn);
-    <span style="color:#2b91af;">SqlCommandBuilder </span>commands = <span style="color:blue;">new </span><span style="color:#2b91af;">SqlCommandBuilder</span>(adapter2);
+    SqlDataAdapter adapter2 = new SqlDataAdapter("SELECT * FROm Customers", conn);
+    SqlCommandBuilder commands = new SqlCommandBuilder(adapter2);
     
-    <span style="color:green;">// To improve performance commands can be sent to the database in batches
+    // To improve performance commands can be sent to the database in batches
     // The RowUpdating event fires for each row whilst RowUpdated fires once for the batch
-    </span>adapter.UpdateBatchSize = 5;
+    adapter.UpdateBatchSize = 5;
     
-    <span style="color:green;">// Action to take if the mappings don't match
-    </span>adapter.MissingMappingAction = <span style="color:#2b91af;">MissingMappingAction</span>.Passthrough; <span style="color:green;">// or Error, Ignore
+    // Action to take if the mappings don't match
+    adapter.MissingMappingAction = MissingMappingAction.Passthrough; // or Error, Ignore
     
     // Action to take if a schema change has occured in the db when the select runs
-    </span>adapter.MissingSchemaAction = <span style="color:#2b91af;">MissingSchemaAction</span>.Add; <span style="color:green;">// or AddWithKey, Error, None</span>
+    adapter.MissingSchemaAction = MissingSchemaAction.Add; // or AddWithKey, Error, None
 
 
 [](http://11011.net/software/vspaste)
@@ -4409,12 +4409,12 @@ _DataAdapter_ objects are provider-specific and contain connection information a
 
 
     
-    <span style="color:#2b91af;">String </span>northwindConnectionString = <span style="color:#a31515;">"Provider=SQLOLEDB;Data Source=.\\sqlexpress;Integrated Security=SSPI;Initial Catalog=Northwind"</span>;
-    ADODB.<span style="color:#2b91af;">Recordset </span>rs = <span style="color:blue;">new </span>ADODB.<span style="color:#2b91af;">Recordset</span>();
-    rs.Open(<span style="color:#a31515;">"SELECT * FROM Customers"</span>, northwindConnectionString, ADODB.<span style="color:#2b91af;">CursorTypeEnum</span>.adOpenStatic, ADODB.<span style="color:#2b91af;">LockTypeEnum</span>.adLockBatchOptimistic, 0);
+    String northwindConnectionString = "Provider=SQLOLEDB;Data Source=.\\sqlexpress;Integrated Security=SSPI;Initial Catalog=Northwind";
+    ADODB.Recordset rs = new ADODB.Recordset();
+    rs.Open("SELECT * FROM Customers", northwindConnectionString, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockBatchOptimistic, 0);
     
-    <span style="color:#2b91af;">DataTable </span>customersTable = <span style="color:blue;">new </span><span style="color:#2b91af;">DataTable</span>(<span style="color:#a31515;">"Customers"</span>);
-    System.Data.OleDb.<span style="color:#2b91af;">OleDbDataAdapter </span>adapter = <span style="color:blue;">new </span>System.Data.OleDb.<span style="color:#2b91af;">OleDbDataAdapter</span>();
+    DataTable customersTable = new DataTable("Customers");
+    System.Data.OleDb.OleDbDataAdapter adapter = new System.Data.OleDb.OleDbDataAdapter();
     adapter.Fill(customersTable, rs);
 
 
@@ -4436,13 +4436,13 @@ _DataAdapter_ objects are provider-specific and contain connection information a
 
 
     
-    <span style="color:green;">// Typed DataSets provide named properties and tables...
-    </span><span style="color:#2b91af;">NorthwindDataSet</span>.<span style="color:#2b91af;">CustomersRow </span>newRow = (<span style="color:#2b91af;">NorthwindDataSet</span>.<span style="color:#2b91af;">CustomersRow</span>)northwindDataSet1.Customers.NewRow();
-    newRow.CustomerID = <span style="color:#a31515;">"WINGT"</span>;
-    newRow.CompanyName = <span style="color:#a31515;">"Wingtop Toys"</span>;
-    newRow.ContactName = <span style="color:#a31515;">"Somebody"</span>;
-    northwindDataSet1.Customers.Rows.Add(newRow);   <span style="color:green;">// state is Added
-    </span>newRow.AcceptChanges();                         <span style="color:green;">// state is now unchanged
+    // Typed DataSets provide named properties and tables...
+    NorthwindDataSet.CustomersRow newRow = (NorthwindDataSet.CustomersRow)northwindDataSet1.Customers.NewRow();
+    newRow.CustomerID = "WINGT";
+    newRow.CompanyName = "Wingtop Toys";
+    newRow.ContactName = "Somebody";
+    northwindDataSet1.Customers.Rows.Add(newRow);   // state is Added
+    newRow.AcceptChanges();                         // state is now unchanged
     
     // The row state can be :
     //      Unchanged (no changes since AcceptChanges() or Fill() calls)
@@ -4450,19 +4450,19 @@ _DataAdapter_ objects are provider-specific and contain connection information a
     //      Modified (updated since last AcceptChanges())
     //      Deleted (deleted since last AcceptChanges())
     //      Detached (not yet been added to a DataTable.Rows collection)
-    </span><span style="color:#2b91af;">DataRowState </span>state = newRow.RowState;           <span style="color:green;">// state is Unchanged
-    </span>newRow.Delete();                                <span style="color:green;">// state is now deleted
-    </span>newRow.AcceptChanges(); <span style="color:green;">// also available on DataTable and DataSet
+    DataRowState state = newRow.RowState;           // state is Unchanged
+    newRow.Delete();                                // state is now deleted
+    newRow.AcceptChanges(); // also available on DataTable and DataSet
                                                     // state is now detached
     //newRow.RejectChanges();
     
     // Check and access row errors
-    </span><span style="color:blue;">if </span>(northwindDataSet1.Customers.HasErrors)
+    if (northwindDataSet1.Customers.HasErrors)
     {
-        <span style="color:#2b91af;">DataRow</span>[] erroredRows = northwindDataSet1.Customers.GetErrors();
-        <span style="color:#2b91af;">Console</span>.WriteLine(erroredRows[0].RowError);
-        erroredRows[0].RowError = <span style="color:#a31515;">""</span>; <span style="color:green;">// Set error to 'processed'
-    </span>}
+        DataRow[] erroredRows = northwindDataSet1.Customers.GetErrors();
+        Console.WriteLine(erroredRows[0].RowError);
+        erroredRows[0].RowError = ""; // Set error to 'processed'
+    }
 
 
 [](http://11011.net/software/vspaste)
@@ -4637,10 +4637,10 @@ The following code would bind the textbox _Text_ property to the _ordersBindingS
 
 
     
-    <span style="color:#2b91af;">TextBox </span>textbox = <span style="color:blue;">new </span><span style="color:#2b91af;">TextBox</span>();
-    <span style="color:blue;">this</span>.Controls.Add(textbox);
-    textbox.TextChanged += <span style="color:blue;">delegate</span>(<span style="color:blue;">object </span>s, <span style="color:#2b91af;">EventArgs </span>a) { <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"Textbox changed to {0}"</span>, textbox.Text)); };
-    textbox.DataBindings.Add(<span style="color:#a31515;">"Text"</span>, ordersBindingSource, <span style="color:#a31515;">"CustomerID"</span>);
+    TextBox textbox = new TextBox();
+    this.Controls.Add(textbox);
+    textbox.TextChanged += delegate(object s, EventArgs a) { Debug.WriteLine(String.Format("Textbox changed to {0}", textbox.Text)); };
+    textbox.DataBindings.Add("Text", ordersBindingSource, "CustomerID");
 
 
 [](http://11011.net/software/vspaste)
@@ -4665,18 +4665,18 @@ Complex binding binds more than one element of data to more than one property of
 
 
     
-    <span style="color:#2b91af;">BindingNavigator </span>nav = <span style="color:blue;">new </span><span style="color:#2b91af;">BindingNavigator</span>(customersBindingSource);
-    <span style="color:blue;">this</span>.Controls.Add(nav);
-    nav.Dock = <span style="color:#2b91af;">DockStyle</span>.Top;
+    BindingNavigator nav = new BindingNavigator(customersBindingSource);
+    this.Controls.Add(nav);
+    nav.Dock = DockStyle.Top;
     
-    <span style="color:#2b91af;">DataGrid </span>datagrid = <span style="color:blue;">new </span><span style="color:#2b91af;">DataGrid</span>();
-    <span style="color:blue;">this</span>.Controls.Add(datagrid);
-    datagrid.Dock = <span style="color:#2b91af;">DockStyle</span>.Fill;
+    DataGrid datagrid = new DataGrid();
+    this.Controls.Add(datagrid);
+    datagrid.Dock = DockStyle.Fill;
     datagrid.DataSource = customersBindingSource;
     
-    <span style="color:green;">// Or without the BindingNavigator you can use the data set...
+    // Or without the BindingNavigator you can use the data set...
     //datagrid.DataSource = northwindDataSet1;
-    //datagrid.DataMember = "Customers";</span>
+    //datagrid.DataMember = "Customers";
 
 
 [](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)
@@ -4695,9 +4695,9 @@ The _BindingSource_ class provides a level of indirection such that the source o
 
 
     
-    <span style="color:#2b91af;">BindingSource </span>customersBinding = <span style="color:blue;">new </span><span style="color:#2b91af;">BindingSource</span>();
+    BindingSource customersBinding = new BindingSource();
     customersBindingSource.DataSource = northwindDataSet1;
-    customersBindingSource.DataMember = <span style="color:#a31515;">"Customers"</span>;
+    customersBindingSource.DataMember = "Customers";
 
 
 [](http://11011.net/software/vspaste)
@@ -4832,118 +4832,118 @@ Provides rapid, noncached, forward-only access to XML documents. The _XmlReader_
 
 
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">XmlReaderWriterExamples
-    </span>{
-        <span style="color:blue;">public void </span>XmlReaderExample()
+    class XmlReaderWriterExamples
+    {
+        public void XmlReaderExample()
         {
-            <span style="color:green;">// A schema set provides a memory cache of schemas for performance benefits
-            </span><span style="color:#2b91af;">XmlSchemaSet </span>xmlschemaset = <span style="color:blue;">new </span><span style="color:#2b91af;">XmlSchemaSet</span>();
-            xmlschemaset.Add(<span style="color:#a31515;">"urn:my-schema"</span>, <span style="color:#a31515;">"myschema.xsd"</span>);
+            // A schema set provides a memory cache of schemas for performance benefits
+            XmlSchemaSet xmlschemaset = new XmlSchemaSet();
+            xmlschemaset.Add("urn:my-schema", "myschema.xsd");
     
-            <span style="color:#2b91af;">XmlReaderSettings </span>settings = <span style="color:blue;">new </span><span style="color:#2b91af;">XmlReaderSettings</span>();
-            settings.Schemas.Add(<span style="color:#a31515;">"urn:my-schema"</span>, <span style="color:#a31515;">"myschema.xsd"</span>);   <span style="color:green;">// targetNameSpace, schemaUri
-            </span>settings.Schemas = xmlschemaset;    <span style="color:green;">// the alternative if using a schema set
-            </span>settings.ValidationType = <span style="color:#2b91af;">ValidationType</span>.Schema; <span style="color:green;">// or Auto, None, DTD, XDR
-            </span>settings.ConformanceLevel = <span style="color:#2b91af;">ConformanceLevel</span>.Auto; <span style="color:green;">// or Document, Fragment
-            </span>settings.IgnoreWhitespace = <span style="color:blue;">true</span>;
-            settings.IgnoreComments = <span style="color:blue;">true</span>;
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.Schemas.Add("urn:my-schema", "myschema.xsd");   // targetNameSpace, schemaUri
+            settings.Schemas = xmlschemaset;    // the alternative if using a schema set
+            settings.ValidationType = ValidationType.Schema; // or Auto, None, DTD, XDR
+            settings.ConformanceLevel = ConformanceLevel.Auto; // or Document, Fragment
+            settings.IgnoreWhitespace = true;
+            settings.IgnoreComments = true;
     
-            <span style="color:green;">// If you're validating against a DTD then Schemas isn't set but...
-            </span>settings.ProhibitDtd = <span style="color:blue;">false</span>;   <span style="color:green;">// it needs to be enabled first
-            </span>settings.ValidationType = <span style="color:#2b91af;">ValidationType</span>.DTD;
+            // If you're validating against a DTD then Schemas isn't set but...
+            settings.ProhibitDtd = false;   // it needs to be enabled first
+            settings.ValidationType = ValidationType.DTD;
     
-            <span style="color:green;">// If there's a schema defined in-line in the XML then set the flag..
-            </span>settings.ValidationFlags |= <span style="color:#2b91af;">XmlSchemaValidationFlags</span>.ProcessInlineSchema;
+            // If there's a schema defined in-line in the XML then set the flag..
+            settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
     
-            <span style="color:green;">// Hook up the validation event handling
-            </span>settings.ValidationFlags |= <span style="color:#2b91af;">XmlSchemaValidationFlags</span>.ReportValidationWarnings;
-            settings.ValidationEventHandler += <span style="color:blue;">new </span><span style="color:#2b91af;">ValidationEventHandler</span>(settings_ValidationEventHandler);
+            // Hook up the validation event handling
+            settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+            settings.ValidationEventHandler += new ValidationEventHandler(settings_ValidationEventHandler);
     
-            <span style="color:green;">// Call the static factory method Create() which accepts a Stream, TextReader, XmlReader or Uri
-            </span><span style="color:blue;">using </span>(<span style="color:#2b91af;">XmlReader </span>xmlreader = <span style="color:#2b91af;">XmlReader</span>.Create(<span style="color:#a31515;">"books.xml"</span>, settings))
+            // Call the static factory method Create() which accepts a Stream, TextReader, XmlReader or Uri
+            using (XmlReader xmlreader = XmlReader.Create("books.xml", settings))
             {
-                <span style="color:green;">// Call methods in a prescribed manner
-                </span>xmlreader.Read();
-                xmlreader.ReadStartElement(<span style="color:#a31515;">"book"</span>);
-                xmlreader.ReadStartElement(<span style="color:#a31515;">"title"</span>);
-                <span style="color:#2b91af;">Console</span>.Write(<span style="color:#a31515;">"The content of the title element:  "</span>);
-                <span style="color:#2b91af;">Console</span>.WriteLine(xmlreader.ReadString());
+                // Call methods in a prescribed manner
+                xmlreader.Read();
+                xmlreader.ReadStartElement("book");
+                xmlreader.ReadStartElement("title");
+                Console.Write("The content of the title element:  ");
+                Console.WriteLine(xmlreader.ReadString());
                 xmlreader.ReadEndElement();
-                xmlreader.ReadStartElement(<span style="color:#a31515;">"price"</span>);
-                <span style="color:#2b91af;">Console</span>.Write(<span style="color:#a31515;">"The content of the price element:  "</span>);
-                <span style="color:#2b91af;">Console</span>.WriteLine(xmlreader.ReadString());
+                xmlreader.ReadStartElement("price");
+                Console.Write("The content of the price element:  ");
+                Console.WriteLine(xmlreader.ReadString());
                 xmlreader.ReadEndElement();
                 xmlreader.ReadEndElement();
     
-                <span style="color:green;">// or, read items and determine the contents on the fly
-                </span><span style="color:blue;">while </span>(xmlreader.Read() && !xmlreader.EOF) <span style="color:green;">//don't strictly need EOF check but just for example
-                </span>{
-                    <span style="color:blue;">if </span>(xmlreader.IsStartElement())
+                // or, read items and determine the contents on the fly
+                while (xmlreader.Read() && !xmlreader.EOF) //don't strictly need EOF check but just for example
+                {
+                    if (xmlreader.IsStartElement())
                     {
-                        <span style="color:blue;">if </span>(xmlreader.IsEmptyElement)
-                            <span style="color:#2b91af;">Console</span>.WriteLine(<span style="color:#a31515;">"<{0}/>"</span>, xmlreader.Name);
-                        <span style="color:blue;">else
-                        </span>{
-                            <span style="color:#2b91af;">Console</span>.Write(<span style="color:#a31515;">"<{0}> "</span>, xmlreader.Name);
-                            xmlreader.Read(); <span style="color:green;">// Read the start tag.
-                            </span><span style="color:blue;">if </span>(xmlreader.IsStartElement())  <span style="color:green;">// Handle nested elements.
-                                </span><span style="color:#2b91af;">Console</span>.Write(<span style="color:#a31515;">"\r\n<{0}>"</span>, xmlreader.Name);
-                            <span style="color:#2b91af;">Console</span>.WriteLine(xmlreader.ReadString());  <span style="color:green;">//Read the text content of the element.
-                        </span>}
+                        if (xmlreader.IsEmptyElement)
+                            Console.WriteLine("<{0}/>", xmlreader.Name);
+                        else
+                        {
+                            Console.Write("<{0}> ", xmlreader.Name);
+                            xmlreader.Read(); // Read the start tag.
+                            if (xmlreader.IsStartElement())  // Handle nested elements.
+                                Console.Write("\r\n<{0}>", xmlreader.Name);
+                            Console.WriteLine(xmlreader.ReadString());  //Read the text content of the element.
+                        }
                     }
                 }
     
-                <span style="color:green;">// Skips to the next content node or end-of-file if not already a content node
+                // Skips to the next content node or end-of-file if not already a content node
                 // Content is : CDATA, Element, EndElement, EntityReference, EndEntity or nonwhite space text
-                </span><span style="color:#2b91af;">XmlNodeType </span>contentNode = xmlreader.MoveToContent(); 
+                XmlNodeType contentNode = xmlreader.MoveToContent(); 
     
-                xmlreader.Skip(); <span style="color:green;">// Skips children of current node
+                xmlreader.Skip(); // Skips children of current node
      
                 // Attributes can also be read and when they are, the .Name, .Value properties etc.
                 // reflect the attribute instead of the element until repositioned
-                </span><span style="color:blue;">if </span>(xmlreader.HasAttributes)
+                if (xmlreader.HasAttributes)
                 {
-                    <span style="color:#2b91af;">Console</span>.WriteLine(<span style="color:#a31515;">"Attributes of <" </span>+ xmlreader.Name + <span style="color:#a31515;">">"</span>);
-                    xmlreader.MoveToFirstAttribute(); <span style="color:green;">// not needed here but an example of the method
-                    </span><span style="color:blue;">while </span>(xmlreader.MoveToNextAttribute())
+                    Console.WriteLine("Attributes of <" + xmlreader.Name + ">");
+                    xmlreader.MoveToFirstAttribute(); // not needed here but an example of the method
+                    while (xmlreader.MoveToNextAttribute())
                     {
-                        <span style="color:blue;">if </span>(xmlreader.HasValue)
+                        if (xmlreader.HasValue)
                         {
-                            <span style="color:#2b91af;">Console</span>.WriteLine(<span style="color:#a31515;">" {0}={1}"</span>, xmlreader.Name, xmlreader.Value);
+                            Console.WriteLine(" {0}={1}", xmlreader.Name, xmlreader.Value);
                         }
                     }
-                    <span style="color:green;">// Move the reader back to the element node.
-                    </span>xmlreader.MoveToElement();
+                    // Move the reader back to the element node.
+                    xmlreader.MoveToElement();
                 }
     
-                <span style="color:blue;">if </span>(xmlreader.AttributeCount > 0)
+                if (xmlreader.AttributeCount > 0)
                 {
-                    <span style="color:#2b91af;">Console</span>.WriteLine(<span style="color:#a31515;">"The first attribute value : {0}"</span>, xmlreader.GetAttribute(0));
-                    <span style="color:#2b91af;">Console</span>.WriteLine(<span style="color:#a31515;">"A named attribute value : {0}"</span>, xmlreader.GetAttribute(<span style="color:#a31515;">"aName"</span>));
+                    Console.WriteLine("The first attribute value : {0}", xmlreader.GetAttribute(0));
+                    Console.WriteLine("A named attribute value : {0}", xmlreader.GetAttribute("aName"));
                 }
     
-                <span style="color:blue;">if </span>(xmlreader.NodeType == <span style="color:#2b91af;">XmlNodeType</span>.Element)
+                if (xmlreader.NodeType == XmlNodeType.Element)
                 {
-                    <span style="color:green;">// concatenates all text, significant white space and CDATA until the next markup
-                    </span>xmlreader.ReadString();
+                    // concatenates all text, significant white space and CDATA until the next markup
+                    xmlreader.ReadString();
     
-                    <span style="color:green;">// returns all content of the current node including markup (but not the node itself)
-                    </span>xmlreader.ReadInnerXml();
+                    // returns all content of the current node including markup (but not the node itself)
+                    xmlreader.ReadInnerXml();
     
-                    <span style="color:green;">// As Inner but includes the current node
-                    </span>xmlreader.ReadOuterXml();
+                    // As Inner but includes the current node
+                    xmlreader.ReadOuterXml();
     
-                    <span style="color:green;">// The following (for other types too) allow typed data to be retrieved
-                    </span>xmlreader.ReadContentAsBoolean();
+                    // The following (for other types too) allow typed data to be retrieved
+                    xmlreader.ReadContentAsBoolean();
                     xmlreader.ReadElementContentAsBoolean();
                 }
     
             }
         }
     
-        <span style="color:blue;">void </span>settings_ValidationEventHandler(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">ValidationEventArgs </span>e)
+        void settings_ValidationEventHandler(object sender, ValidationEventArgs e)
         {
-            <span style="color:#2b91af;">Console</span>.WriteLine(<span style="color:#a31515;">"Validation Error : {0} of severity {1}"</span>, e.Message, e.Severity);
+            Console.WriteLine("Validation Error : {0} of severity {1}", e.Message, e.Severity);
         }
     }
 
@@ -4984,13 +4984,13 @@ The _XmlNodeReader _is an implementation of _XmlReader_ that can be used to read
 
 
     
-    <span style="color:#2b91af;">XmlDocument </span>doc = <span style="color:blue;">new </span><span style="color:#2b91af;">XmlDocument</span>();
-    doc.Load(<span style="color:#a31515;">"MyXml.xml"</span>);
-    <span style="color:#2b91af;">XmlNodeReader </span>nodereader = <span style="color:blue;">new </span><span style="color:#2b91af;">XmlNodeReader</span>(doc);
-    <span style="color:blue;">while </span>(nodereader.Read())
+    XmlDocument doc = new XmlDocument();
+    doc.Load("MyXml.xml");
+    XmlNodeReader nodereader = new XmlNodeReader(doc);
+    while (nodereader.Read())
     {
-        <span style="color:green;">// Read the XmlDocument as a stream of XML.
-    </span>}
+        // Read the XmlDocument as a stream of XML.
+    }
 
 
 
@@ -5024,52 +5024,52 @@ The _XmlValidatingReader_ is obsolete. It wraps an existing _XmlReader_ via a co
 
 
     
-    <span style="color:blue;">using </span>System;
-    <span style="color:blue;">using </span>System.Xml;
-    <span style="color:blue;">using </span>System.IO;
-    <span style="color:blue;">using </span>System.Xml.Schema;
-    <span style="color:blue;">using </span>System.Text;
+    using System;
+    using System.Xml;
+    using System.IO;
+    using System.Xml.Schema;
+    using System.Text;
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">XmlReaderWriterExamples
-    </span>{
-        <span style="color:blue;">public void </span>XmlWriterExample()
+    class XmlReaderWriterExamples
+    {
+        public void XmlWriterExample()
         {
-            <span style="color:#2b91af;">XmlReader </span>xmlreader;
+            XmlReader xmlreader;
     
-            <span style="color:#2b91af;">XmlWriterSettings </span>settings = <span style="color:blue;">new </span><span style="color:#2b91af;">XmlWriterSettings</span>();
-            settings.CheckCharacters = <span style="color:blue;">true</span>;    <span style="color:green;">// Raises XmlException if any character is an invalid XML character
-            </span>settings.ConformanceLevel = <span style="color:#2b91af;">ConformanceLevel</span>.Auto; <span style="color:green;">// or Document, Fragment
-            </span>settings.Encoding = <span style="color:#2b91af;">Encoding</span>.UTF8;
-            settings.Indent = <span style="color:blue;">true</span>;
-            settings.IndentChars = (<span style="color:#a31515;">"    "</span>);
-            settings.NewLineChars = <span style="color:#a31515;">"\r\n"</span>;
-            settings.NewLineOnAttributes = <span style="color:blue;">false</span>;
-            settings.OmitXmlDeclaration = <span style="color:blue;">false</span>;
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.CheckCharacters = true;    // Raises XmlException if any character is an invalid XML character
+            settings.ConformanceLevel = ConformanceLevel.Auto; // or Document, Fragment
+            settings.Encoding = Encoding.UTF8;
+            settings.Indent = true;
+            settings.IndentChars = ("    ");
+            settings.NewLineChars = "\r\n";
+            settings.NewLineOnAttributes = false;
+            settings.OmitXmlDeclaration = false;
     
-            <span style="color:blue;">using </span>(<span style="color:#2b91af;">XmlWriter </span>xmlwriter = <span style="color:#2b91af;">XmlWriter</span>.Create(<span style="color:#a31515;">"books.xml"</span>, settings))
+            using (XmlWriter xmlwriter = XmlWriter.Create("books.xml", settings))
             {
-                xmlwriter.WriteComment(<span style="color:#a31515;">"This is just a comment for our test file"</span>);
+                xmlwriter.WriteComment("This is just a comment for our test file");
     
-                <span style="color:green;">// Write XML data.
-                </span>xmlwriter.WriteStartElement(<span style="color:#a31515;">"book"</span>);
+                // Write XML data.
+                xmlwriter.WriteStartElement("book");
     
-                <span style="color:green;">// write namespace manually. Subsequent children will have a x: prefix
-                </span>xmlwriter.WriteAttributeString(<span style="color:#a31515;">"xmlns"</span>, <span style="color:#a31515;">"x"</span>, <span style="color:blue;">null</span>, <span style="color:#a31515;">"urn:1"</span>);   <span style="color:green;">// writes xmlns:x="urn:1" to the <Book> element
+                // write namespace manually. Subsequent children will have a x: prefix
+                xmlwriter.WriteAttributeString("xmlns", "x", null, "urn:1");   // writes xmlns:x="urn:1" to the <Book> element
     
                 // An alternative method for writing attributes which makes use of WriteValue() that
                 // offers several typed methods for CLR types which are converted using XmlConvert
-                </span>xmlwriter.WriteStartAttribute(<span style="color:#a31515;">"available"</span>);
-                xmlwriter.WriteValue(<span style="color:blue;">true</span>);
+                xmlwriter.WriteStartAttribute("available");
+                xmlwriter.WriteValue(true);
                 xmlwriter.WriteEndAttribute();
     
-                <span style="color:green;">// Two methods that copy all attributes and elements from an XmlReader
-                </span>xmlwriter.WriteAttributes(xmlreader, <span style="color:blue;">true</span>);
-                xmlwriter.WriteNode(xmlreader, <span style="color:blue;">true</span>);
+                // Two methods that copy all attributes and elements from an XmlReader
+                xmlwriter.WriteAttributes(xmlreader, true);
+                xmlwriter.WriteNode(xmlreader, true);
     
-                xmlwriter.WriteElementString(<span style="color:#a31515;">"price"</span>, <span style="color:#a31515;">"19.95"</span>);                <span style="color:green;">// writes <x:price>19.95</price>
+                xmlwriter.WriteElementString("price", "19.95");                // writes <x:price>19.95</price>
     
-                </span>xmlwriter.WriteEndElement();                                   <span style="color:green;">// writes </Book> use WriteFullEndElement() 
-                </span>xmlwriter.Flush();
+                xmlwriter.WriteEndElement();                                   // writes </Book> use WriteFullEndElement() 
+                xmlwriter.Flush();
             }
         }
     }
@@ -5108,77 +5108,77 @@ The following diagram highlights the Xml DOM object model with the equivalent W3
 
 
     
-    <span style="color:blue;">using </span>System;
-    <span style="color:blue;">using </span>System.Xml;
-    <span style="color:blue;">using </span>System.IO;
-    <span style="color:blue;">using </span>System.Xml.Schema;
-    <span style="color:blue;">using </span>System.Text;
+    using System;
+    using System.Xml;
+    using System.IO;
+    using System.Xml.Schema;
+    using System.Text;
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">XmlDocumentExamples
-    </span>{
+    class XmlDocumentExamples
+    {
     
-        <span style="color:blue;">public void </span>XmlDocumentExample()
+        public void XmlDocumentExample()
         {
-            <span style="color:#2b91af;">XmlReaderSettings </span>xmlreadersettings = <span style="color:blue;">new </span><span style="color:#2b91af;">XmlReaderSettings</span>();
-            xmlreadersettings.ValidationEventHandler += <span style="color:blue;">new </span><span style="color:#2b91af;">ValidationEventHandler</span>(xmlreadersettings_ValidationEventHandler);
+            XmlReaderSettings xmlreadersettings = new XmlReaderSettings();
+            xmlreadersettings.ValidationEventHandler += new ValidationEventHandler(xmlreadersettings_ValidationEventHandler);
     
-            <span style="color:#2b91af;">XmlReader </span>xmlreader = <span style="color:#2b91af;">XmlReader</span>.Create(<span style="color:#a31515;">"myinputuri"</span>, xmlreadersettings);
+            XmlReader xmlreader = XmlReader.Create("myinputuri", xmlreadersettings);
     
-            <span style="color:#2b91af;">XmlDocument </span>xmldocument = <span style="color:blue;">new </span><span style="color:#2b91af;">XmlDocument</span>();
-            xmldocument.PreserveWhitespace = <span style="color:blue;">true</span>;
-            xmldocument.LoadXml(<span style="color:#a31515;">"<?xml version='1.0'?><books></books>"</span>);
-            <span style="color:green;">// Alternatively load the data from a Stream, filename, TextReader 
+            XmlDocument xmldocument = new XmlDocument();
+            xmldocument.PreserveWhitespace = true;
+            xmldocument.LoadXml("<?xml version='1.0'?><books></books>");
+            // Alternatively load the data from a Stream, filename, TextReader 
             // or derivative of XmlReader. To validate XML against a schema 
             // during loading a XmlReader must be used in conjunction with 
             // a XmlReaderSettings.
-            </span>xmldocument.Load(xmlreader);
+            xmldocument.Load(xmlreader);
     
-            <span style="color:green;">// To validate any changes made to the DOM call Validate() and handle
+            // To validate any changes made to the DOM call Validate() and handle
             // and event callbacks. Can also optionally base the node to validate
             // rather than the whole document. 
-            </span>xmldocument.Schemas = xmlreadersettings.Schemas;
+            xmldocument.Schemas = xmlreadersettings.Schemas;
             xmldocument.Validate(xmlreadersettings_ValidationEventHandler);
     
-            <span style="color:green;">// Accessing the root element and creating attributes
-            </span><span style="color:#2b91af;">XmlElement </span>root = xmldocument.DocumentElement;
-            root.SetAttribute(<span style="color:#a31515;">"modified"</span>, <span style="color:#2b91af;">DateTime</span>.Now.ToString());
+            // Accessing the root element and creating attributes
+            XmlElement root = xmldocument.DocumentElement;
+            root.SetAttribute("modified", DateTime.Now.ToString());
     
-            <span style="color:green;">// Creating a new element. Also CreateComment, CreateCDataSection, CreateDocumentFragment
+            // Creating a new element. Also CreateComment, CreateCDataSection, CreateDocumentFragment
             // CreateDocumentType, CreateElement, CreateProcessinInstruction, CreateTextNode,
             // CreateXmlDeclaration, CreateWhitespace, CreateSignificantWhitespace.
-            </span><span style="color:#2b91af;">XmlNode </span>newnode1 = xmldocument.CreateElement(<span style="color:#a31515;">"book"</span>);
+            XmlNode newnode1 = xmldocument.CreateElement("book");
             root.AppendChild(newnode1);
     
-            <span style="color:green;">// Creating a comment and inserting before
-            </span><span style="color:#2b91af;">XmlComment </span>newcomment = xmldocument.CreateComment(<span style="color:#a31515;">"The first book"</span>);
-            root.InsertBefore(newcomment, newnode1); <span style="color:green;">// Insert newnode2 before newnode1
+            // Creating a comment and inserting before
+            XmlComment newcomment = xmldocument.CreateComment("The first book");
+            root.InsertBefore(newcomment, newnode1); // Insert newnode2 before newnode1
     
             // Cloning a node, adding an attribute and prepending
-            </span><span style="color:#2b91af;">XmlElement </span>newnode3 = (<span style="color:#2b91af;">XmlElement</span>)newnode1.Clone();
-            newnode3.SetAttribute(<span style="color:#a31515;">"title"</span>, <span style="color:#a31515;">"My First Book"</span>);
-            root.PrependChild(newnode3); <span style="color:green;">// Insert at the beginning of the child list
+            XmlElement newnode3 = (XmlElement)newnode1.Clone();
+            newnode3.SetAttribute("title", "My First Book");
+            root.PrependChild(newnode3); // Insert at the beginning of the child list
     
             // Removal examples for attributes and elements
-            </span>root.RemoveAttributeNode(<span style="color:#a31515;">"modified"</span>, <span style="color:#a31515;">""</span>);
+            root.RemoveAttributeNode("modified", "");
             root.RemoveAllAttributes();
             root.Attributes.RemoveAll();
             root.RemoveAll();
             root.RemoveChild(newnode1);
     
-            <span style="color:green;">// For any node inheriting from XmlCharacterData, text can be replaced
-            </span>newcomment.ReplaceData(4, 5, <span style="color:#a31515;">"1st"</span>);
+            // For any node inheriting from XmlCharacterData, text can be replaced
+            newcomment.ReplaceData(4, 5, "1st");
     
-            <span style="color:green;">// Searching
-            </span><span style="color:#2b91af;">XmlNodeList </span>nodelist = xmldocument.DocumentElement.FirstChild.SelectNodes(<span style="color:#a31515;">@"//book"</span>);
-            <span style="color:#2b91af;">XmlNode </span>node = xmldocument.DocumentElement.SelectSingleNode(<span style="color:#a31515;">"@//book[0]"</span>);
+            // Searching
+            XmlNodeList nodelist = xmldocument.DocumentElement.FirstChild.SelectNodes(@"//book");
+            XmlNode node = xmldocument.DocumentElement.SelectSingleNode("@//book[0]");
     
-            <span style="color:green;">// Saving
-            </span>xmldocument.Save(<span style="color:#a31515;">@"c:\temp\example.xml"</span>); <span style="color:green;">//or a Stream, TextWriter or XmlWriter
-        </span>}
+            // Saving
+            xmldocument.Save(@"c:\temp\example.xml"); //or a Stream, TextWriter or XmlWriter
+        }
     
-        <span style="color:blue;">void </span>xmlreadersettings_ValidationEventHandler(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">ValidationEventArgs </span>e)
+        void xmlreadersettings_ValidationEventHandler(object sender, ValidationEventArgs e)
         {
-            <span style="color:blue;">throw new </span><span style="color:#2b91af;">NotImplementedException</span>();
+            throw new NotImplementedException();
         }
     }
 
@@ -5589,62 +5589,62 @@ When _PrintDocument.Print()_ is called _PrintPage_ events are raised which must 
 
 
     
-    <span style="color:blue;">using </span>System;
-    <span style="color:blue;">using </span>System.Collections.Generic;
-    <span style="color:blue;">using </span>System.ComponentModel;
-    <span style="color:blue;">using </span>System.Data;
-    <span style="color:blue;">using </span>System.Drawing;
-    <span style="color:blue;">using </span>System.Linq;
-    <span style="color:blue;">using </span>System.Text;
-    <span style="color:blue;">using </span>System.Windows.Forms;
-    <span style="color:blue;">using </span>System.Diagnostics;
-    <span style="color:blue;">using </span>System.Drawing.Drawing2D;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Windows.Forms;
+    using System.Diagnostics;
+    using System.Drawing.Drawing2D;
     
-    <span style="color:blue;">namespace </span>WindowsBasedClientDevelopment
+    namespace WindowsBasedClientDevelopment
     {
-        <span style="color:blue;">public partial class </span><span style="color:#2b91af;">Form1 </span>: <span style="color:#2b91af;">Form
-        </span>{
-            <span style="color:blue;">public </span>Form1()
+        public partial class Form1 : Form
+        {
+            public Form1()
             {
                 InitializeComponent();
             }
     
-            <span style="color:blue;">private void </span>Form1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+            private void Form1_Load(object sender, EventArgs e)
             {
-                printDocument1.PrintPage += <span style="color:blue;">new </span>System.Drawing.Printing.<span style="color:#2b91af;">PrintPageEventHandler</span>(printDocument1_PrintPage);
-                printDocument1.EndPrint += <span style="color:blue;">new </span>System.Drawing.Printing.<span style="color:#2b91af;">PrintEventHandler</span>(printDocument1_EndPrint);
+                printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocument1_PrintPage);
+                printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(printDocument1_EndPrint);
             }
     
-            <span style="color:blue;">void </span>printDocument1_EndPrint(<span style="color:blue;">object </span>sender, System.Drawing.Printing.<span style="color:#2b91af;">PrintEventArgs </span>e)
+            void printDocument1_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
             {
-                <span style="color:#2b91af;">MessageBox</span>.Show(<span style="color:#a31515;">"Printing has finished"</span>);
+                MessageBox.Show("Printing has finished");
             }
     
-            <span style="color:blue;">private void </span>btnPrint_Click(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+            private void btnPrint_Click(object sender, EventArgs e)
             {
                 printDocument1.Print();
             }
     
-            <span style="color:blue;">private void </span>btnPreview_Click(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+            private void btnPreview_Click(object sender, EventArgs e)
             {
                 printPreviewDialog1.Document = printDocument1;
                 printPreviewDialog1.ShowDialog();
             }
     
-            <span style="color:blue;">void </span>printDocument1_PrintPage(<span style="color:blue;">object </span>sender, System.Drawing.Printing.<span style="color:#2b91af;">PrintPageEventArgs </span>e)
+            void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
             {
-                e.Graphics.DrawEllipse(<span style="color:#2b91af;">Pens</span>.Black, e.MarginBounds);
+                e.Graphics.DrawEllipse(Pens.Black, e.MarginBounds);
     
-                <span style="color:#2b91af;">GraphicsPath </span>path = <span style="color:blue;">new </span><span style="color:#2b91af;">GraphicsPath</span>();
-                path.AddPolygon(<span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>[] { <span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>(1, 1), <span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>(12, 55), <span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>(34, 8) });
-                path.AddRectangle(<span style="color:blue;">new </span><span style="color:#2b91af;">Rectangle</span>(33, 43, 20, 20));
-                e.Graphics.DrawPath(<span style="color:#2b91af;">Pens</span>.Red, path);
+                GraphicsPath path = new GraphicsPath();
+                path.AddPolygon(new Point[] { new Point(1, 1), new Point(12, 55), new Point(34, 8) });
+                path.AddRectangle(new Rectangle(33, 43, 20, 20));
+                e.Graphics.DrawPath(Pens.Red, path);
     
-                <span style="color:#2b91af;">Font </span>font = <span style="color:blue;">new </span><span style="color:#2b91af;">Font</span>(<span style="color:#a31515;">"Tahoma"</span>, 12, <span style="color:#2b91af;">FontStyle</span>.Regular, <span style="color:#2b91af;">GraphicsUnit</span>.Pixel);
-                <span style="color:blue;">float </span>fontHeight = font.GetHeight(e.Graphics);
-                e.Graphics.DrawString(<span style="color:#a31515;">"Hello world!"</span>, font, <span style="color:#2b91af;">Brushes</span>.Firebrick, 200, 200);
+                Font font = new Font("Tahoma", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+                float fontHeight = font.GetHeight(e.Graphics);
+                e.Graphics.DrawString("Hello world!", font, Brushes.Firebrick, 200, 200);
     
-                e.HasMorePages = <span style="color:blue;">false</span>;
+                e.HasMorePages = false;
             }
         }
     }
@@ -5836,67 +5836,67 @@ Usual operation :
 
 
     
-    <span style="color:blue;">using </span>System;
-    <span style="color:blue;">using </span>System.Collections.Generic;
-    <span style="color:blue;">using </span>System.ComponentModel;
-    <span style="color:blue;">using </span>System.Data;
-    <span style="color:blue;">using </span>System.Drawing;
-    <span style="color:blue;">using </span>System.Linq;
-    <span style="color:blue;">using </span>System.Text;
-    <span style="color:blue;">using </span>System.Windows.Forms;
-    <span style="color:blue;">using </span>System.Diagnostics;
-    <span style="color:blue;">using </span>System.Drawing.Drawing2D;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Windows.Forms;
+    using System.Diagnostics;
+    using System.Drawing.Drawing2D;
     
-    <span style="color:blue;">namespace </span>WindowsBasedClientDevelopment
+    namespace WindowsBasedClientDevelopment
     {
-        <span style="color:blue;">public partial class </span><span style="color:#2b91af;">Form1 </span>: <span style="color:#2b91af;">Form
-        </span>{
-            <span style="color:blue;">public </span>Form1()
+        public partial class Form1 : Form
+        {
+            public Form1()
             {
                 InitializeComponent();
             }
     
-            <span style="color:blue;">private void </span>Form1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+            private void Form1_Load(object sender, EventArgs e)
             {
-                <span style="color:#2b91af;">Button </span>source = <span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>();
-                source.Text = <span style="color:#a31515;">"Source"</span>;
-                source.Location = <span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>(10, 10);
-                source.MouseDown += <span style="color:blue;">new </span><span style="color:#2b91af;">MouseEventHandler</span>(source_MouseDown);
+                Button source = new Button();
+                source.Text = "Source";
+                source.Location = new Point(10, 10);
+                source.MouseDown += new MouseEventHandler(source_MouseDown);
     
-                <span style="color:#2b91af;">Button </span>target = <span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>();
-                target.Text = <span style="color:#a31515;">"Target"</span>;
-                target.Location = <span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>(50, 50);
-                target.AllowDrop = <span style="color:blue;">true</span>;
-                target.DragEnter += <span style="color:blue;">new </span><span style="color:#2b91af;">DragEventHandler</span>(target_DragEnter);
-                target.DragDrop += <span style="color:blue;">new </span><span style="color:#2b91af;">DragEventHandler</span>(target_DragDrop);
+                Button target = new Button();
+                target.Text = "Target";
+                target.Location = new Point(50, 50);
+                target.AllowDrop = true;
+                target.DragEnter += new DragEventHandler(target_DragEnter);
+                target.DragDrop += new DragEventHandler(target_DragDrop);
     
-                <span style="color:blue;">this</span>.Controls.Add(source);
-                <span style="color:blue;">this</span>.Controls.Add(target);
+                this.Controls.Add(source);
+                this.Controls.Add(target);
             }
     
-            <span style="color:blue;">void </span>target_DragDrop(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">DragEventArgs </span>e)
+            void target_DragDrop(object sender, DragEventArgs e)
             {
-                <span style="color:#2b91af;">IDataObject </span>data = e.Data;
-                <span style="color:#2b91af;">MessageBox</span>.Show(<span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"Accepted data '{0}'"</span>, data.GetData(<span style="color:#2b91af;">DataFormats</span>.StringFormat)));
+                IDataObject data = e.Data;
+                MessageBox.Show(String.Format("Accepted data '{0}'", data.GetData(DataFormats.StringFormat)));
             }
     
-            <span style="color:blue;">void </span>target_DragEnter(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">DragEventArgs </span>e)
+            void target_DragEnter(object sender, DragEventArgs e)
             {
-                <span style="color:green;">// Check the data is in the format we accept and that the allowed effects
+                // Check the data is in the format we accept and that the allowed effects
                 // contains the effect we accept
-                </span><span style="color:blue;">if </span>(e.Data.GetDataPresent(<span style="color:#2b91af;">DataFormats</span>.StringFormat) && (e.AllowedEffect & <span style="color:#2b91af;">DragDropEffects</span>.Copy) > 0)
+                if (e.Data.GetDataPresent(DataFormats.StringFormat) && (e.AllowedEffect & DragDropEffects.Copy) > 0)
                 {
-                    e.Effect = <span style="color:#2b91af;">DragDropEffects</span>.Copy;
+                    e.Effect = DragDropEffects.Copy;
                 }
             }
     
-            <span style="color:blue;">void </span>source_MouseDown(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">MouseEventArgs </span>e)
+            void source_MouseDown(object sender, MouseEventArgs e)
             {
-                <span style="color:blue;">object </span>objectdata = <span style="color:#a31515;">"Just some text"</span>;
-                <span style="color:#2b91af;">Button </span>source = (<span style="color:#2b91af;">Button</span>)sender;
+                object objectdata = "Just some text";
+                Button source = (Button)sender;
     
-                <span style="color:green;">// Set the data and allowed effects
-                </span>source.DoDragDrop(objectdata, <span style="color:#2b91af;">DragDropEffects</span>.Copy | <span style="color:#2b91af;">DragDropEffects</span>.Move);
+                // Set the data and allowed effects
+                source.DoDragDrop(objectdata, DragDropEffects.Copy | DragDropEffects.Move);
             }
         }
     }
@@ -5984,12 +5984,12 @@ To change the current culture :
 
 
     
-    <span style="color:green;">// Change the culture used for formatting data
-    </span><span style="color:#2b91af;">Thread</span>.CurrentThread.CurrentCulture = <span style="color:blue;">new </span>System.Globalization.<span style="color:#2b91af;">CultureInfo</span>(<span style="color:#a31515;">"fr-CA"</span>);
-    <span style="color:#2b91af;">Console</span>.WriteLine((500).ToString(<span style="color:#a31515;">"C"</span>)); <span style="color:green;">// Formatted currency using the current culture
+    // Change the culture used for formatting data
+    Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("fr-CA");
+    Console.WriteLine((500).ToString("C")); // Formatted currency using the current culture
     
     // Change the culture used for displaying user interfaces
-    </span><span style="color:#2b91af;">Thread</span>.CurrentThread.CurrentUICulture = <span style="color:blue;">new </span>System.Globalization.<span style="color:#2b91af;">CultureInfo</span>(<span style="color:#a31515;">"fr-CA"</span>);
+    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-CA");
 
 
 [](http://11011.net/software/vspaste)
@@ -6086,16 +6086,16 @@ The following code illustrates creating a parent, child and a menu that automati
 
 
     
-    <span style="color:#2b91af;">MenuStrip </span>menu = <span style="color:blue;">new </span><span style="color:#2b91af;">MenuStrip</span>();
-    <span style="color:#2b91af;">ToolStripMenuItem </span>toolstrip = <span style="color:blue;">new </span><span style="color:#2b91af;">ToolStripMenuItem</span>(<span style="color:#a31515;">"Windows"</span>);
+    MenuStrip menu = new MenuStrip();
+    ToolStripMenuItem toolstrip = new ToolStripMenuItem("Windows");
     menu.Items.Add(toolstrip);
     menu.MdiWindowListItem = toolstrip;
     
-    <span style="color:blue;">this</span>.IsMdiContainer = <span style="color:blue;">true</span>;
-    <span style="color:blue;">this</span>.Controls.Add(menu);
+    this.IsMdiContainer = true;
+    this.Controls.Add(menu);
     
-    <span style="color:#2b91af;">Form2 </span>form2 = <span style="color:blue;">new </span><span style="color:#2b91af;">Form2</span>();
-    form2.MdiParent = <span style="color:blue;">this</span>;
+    Form2 form2 = new Form2();
+    form2.MdiParent = this;
     form2.Show();
 
 
@@ -6274,20 +6274,20 @@ Methods :
 
 
     
-    <span style="color:#2b91af;">StatusStrip </span>status = <span style="color:blue;">new </span><span style="color:#2b91af;">StatusStrip</span>();
-    status.Dock = <span style="color:#2b91af;">DockStyle</span>.Bottom;
+    StatusStrip status = new StatusStrip();
+    status.Dock = DockStyle.Bottom;
     
-    <span style="color:#2b91af;">ToolStripStatusLabel </span>label = <span style="color:blue;">new </span><span style="color:#2b91af;">ToolStripStatusLabel</span>(<span style="color:#a31515;">"Some status text"</span>);
+    ToolStripStatusLabel label = new ToolStripStatusLabel("Some status text");
     status.Items.Add(label);
     
-    <span style="color:#2b91af;">ToolStripProgressBar </span>progress = <span style="color:blue;">new </span><span style="color:#2b91af;">ToolStripProgressBar</span>(<span style="color:#a31515;">"progress"</span>);
+    ToolStripProgressBar progress = new ToolStripProgressBar("progress");
     progress.Minimum = 0;
     progress.Maximum = 100;
     progress.Step = 10;
     progress.Value = 40;
     status.Items.Add(progress);
     
-    <span style="color:blue;">this</span>.Controls.Add(status);
+    this.Controls.Add(status);
 
 
 
@@ -6415,54 +6415,54 @@ Automatic display of tool tips require :
 
 
     
-    <span style="color:blue;">public partial class </span><span style="color:#2b91af;">Form1 </span>: <span style="color:#2b91af;">Form
-    </span>{
-        <span style="color:#2b91af;">DataTable </span>_dataTable;
+    public partial class Form1 : Form
+    {
+        DataTable _dataTable;
     
-        <span style="color:#2b91af;">ErrorProvider </span>_errorProvider = <span style="color:blue;">new </span><span style="color:#2b91af;">ErrorProvider</span>();
+        ErrorProvider _errorProvider = new ErrorProvider();
     
-        <span style="color:blue;">public </span>Form1()
+        public Form1()
         {
             InitializeComponent();
         }
     
-        <span style="color:blue;">private void </span>Form1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            _errorProvider.ContainerControl = <span style="color:blue;">this</span>;
+            _errorProvider.ContainerControl = this;
     
-            <span style="color:#2b91af;">TextBox </span>text = <span style="color:blue;">new </span><span style="color:#2b91af;">TextBox</span>();
-            <span style="color:blue;">this</span>.Controls.Add(text);
+            TextBox text = new TextBox();
+            this.Controls.Add(text);
     
-            <span style="color:green;">// Diplays a flashing exclamation beside the 
+            // Diplays a flashing exclamation beside the 
             // control with the text as a tooltip
-            </span>_errorProvider.SetError(text, <span style="color:#a31515;">"There's an error here!!"</span>);
+            _errorProvider.SetError(text, "There's an error here!!");
     
-            <span style="color:green;">// Clear the error
-            </span>_errorProvider.SetError(text, <span style="color:#a31515;">""</span>);
+            // Clear the error
+            _errorProvider.SetError(text, "");
     
-            <span style="color:green;">// Controls provide a CausesValidation event that can be used
+            // Controls provide a CausesValidation event that can be used
             // to check the data and indicate errors with the ErrorProvider
-            </span><span style="color:#2b91af;">TextBox </span>toValidate = <span style="color:blue;">new </span><span style="color:#2b91af;">TextBox</span>();
-            toValidate.CausesValidation = <span style="color:blue;">true</span>;
-            toValidate.Validating += <span style="color:blue;">new </span><span style="color:#2b91af;">CancelEventHandler</span>(toValidate_Validating);
-            <span style="color:blue;">this</span>.Controls.Add(toValidate);
+            TextBox toValidate = new TextBox();
+            toValidate.CausesValidation = true;
+            toValidate.Validating += new CancelEventHandler(toValidate_Validating);
+            this.Controls.Add(toValidate);
     
-            <span style="color:green;">// The ErrorProvider can also be bound to a DataSet to such that
+            // The ErrorProvider can also be bound to a DataSet to such that
             // errors are indicate on any controls that are also bound
-            </span>_errorProvider.DataSource = dataSet1;
-            _errorProvider.DataMember = <span style="color:#a31515;">"Customers"</span>;
-            _dataTable.Rows[4].SetColumnError(<span style="color:#a31515;">"Name"</span>, <span style="color:#a31515;">"The name must be something else!!"</span>);
-            <span style="color:blue;">this</span>.BindingContext[_dataTable].Position = 4; <span style="color:green;">// advance to the error
-        </span>}
+            _errorProvider.DataSource = dataSet1;
+            _errorProvider.DataMember = "Customers";
+            _dataTable.Rows[4].SetColumnError("Name", "The name must be something else!!");
+            this.BindingContext[_dataTable].Position = 4; // advance to the error
+        }
     
-        <span style="color:blue;">void </span>toValidate_Validating(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">CancelEventArgs </span>e)
+        void toValidate_Validating(object sender, CancelEventArgs e)
         {
-            <span style="color:#2b91af;">TextBox </span>toCheck = sender <span style="color:blue;">as </span><span style="color:#2b91af;">TextBox</span>;
-            <span style="color:blue;">if </span>(toCheck != <span style="color:blue;">null</span>)
+            TextBox toCheck = sender as TextBox;
+            if (toCheck != null)
             {
-                <span style="color:blue;">if </span>(toCheck.Text.Trim().Length == 0)
+                if (toCheck.Text.Trim().Length == 0)
                 {
-                    _errorProvider.SetError(toCheck, <span style="color:#a31515;">"The value cannot be blank"</span>);
+                    _errorProvider.SetError(toCheck, "The value cannot be blank");
                 }
             }
         }
@@ -6506,18 +6506,18 @@ The _HelpProvider_ is usually setup at design time by specifying a HTML Help1.x 
 
 
     
-    <span style="color:#2b91af;">HelpProvider </span>help = <span style="color:blue;">new </span><span style="color:#2b91af;">HelpProvider</span>();
-    help.HelpNamespace = <span style="color:#a31515;">@"c:\temp\help.chm"</span>;
+    HelpProvider help = new HelpProvider();
+    help.HelpNamespace = @"c:\temp\help.chm";
     
-    <span style="color:#2b91af;">TextBox </span>text = <span style="color:blue;">new </span><span style="color:#2b91af;">TextBox</span>();
-    <span style="color:blue;">this</span>.Controls.Add(text);
-    help.SetShowHelp(text, <span style="color:blue;">true</span>);
-    help.SetHelpKeyword(text, <span style="color:#a31515;">"textcontrol"</span>);
-    help.SetHelpNavigator(text, <span style="color:#2b91af;">HelpNavigator</span>.KeywordIndex);
+    TextBox text = new TextBox();
+    this.Controls.Add(text);
+    help.SetShowHelp(text, true);
+    help.SetHelpKeyword(text, "textcontrol");
+    help.SetHelpNavigator(text, HelpNavigator.KeywordIndex);
     
-    <span style="color:#2b91af;">Button </span>button = <span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>();
-    <span style="color:blue;">this</span>.Controls.Add(button);
-    help.SetHelpString(button, <span style="color:#a31515;">"This is the button help"</span>);
+    Button button = new Button();
+    this.Controls.Add(button);
+    help.SetHelpString(button, "This is the button help");
 
 
 [](http://11011.net/software/vspaste)
@@ -6568,15 +6568,15 @@ The possible values for the _HelpNavigator_ enumeration :
 
 
     
-    <span style="color:#2b91af;">SoundPlayer </span>sound = <span style="color:blue;">new </span><span style="color:#2b91af;">SoundPlayer</span>();
-    sound.SoundLocation = <span style="color:#a31515;">@"C:\Windows\Media\notify.wav"</span>;
+    SoundPlayer sound = new SoundPlayer();
+    sound.SoundLocation = @"C:\Windows\Media\notify.wav";
     sound.Play();
     
-    <span style="color:#2b91af;">SystemSounds</span>.Asterisk.Play();
-    <span style="color:#2b91af;">SystemSounds</span>.Beep.Play();
-    <span style="color:#2b91af;">SystemSounds</span>.Exclamation.Play();
-    <span style="color:#2b91af;">SystemSounds</span>.Hand.Play();
-    <span style="color:#2b91af;">SystemSounds</span>.Question.Play();
+    SystemSounds.Asterisk.Play();
+    SystemSounds.Beep.Play();
+    SystemSounds.Exclamation.Play();
+    SystemSounds.Hand.Play();
+    SystemSounds.Question.Play();
 
 
 [](http://11011.net/software/vspaste)
@@ -6593,21 +6593,21 @@ The possible values for the _HelpNavigator_ enumeration :
 
 
     
-    <span style="color:blue;">private void </span>Form1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+    private void Form1_Load(object sender, EventArgs e)
     {
-        System.Windows.Forms.<span style="color:#2b91af;">Timer </span>timer = <span style="color:blue;">new </span>System.Windows.Forms.<span style="color:#2b91af;">Timer</span>();
-        timer.Tick += <span style="color:blue;">new </span><span style="color:#2b91af;">EventHandler</span>(timer_Tick);
-        timer.Interval = 2000; <span style="color:green;">// milliseconds
-        </span>timer.Enabled = <span style="color:blue;">true</span>;
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+        timer.Tick += new EventHandler(timer_Tick);
+        timer.Interval = 2000; // milliseconds
+        timer.Enabled = true;
     
-        <span style="color:green;">// Or...
-        </span>timer.Stop();
+        // Or...
+        timer.Stop();
         timer.Start();
     }
     
-    <span style="color:blue;">void </span>timer_Tick(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+    void timer_Tick(object sender, EventArgs e)
     {
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#a31515;">"Timer ticked"</span>);
+        Debug.WriteLine("Timer ticked");
     }
 
 
@@ -6621,22 +6621,22 @@ The possible values for the _HelpNavigator_ enumeration :
 
 
     
-    <span style="color:blue;">private void </span>Form1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+    private void Form1_Load(object sender, EventArgs e)
     {
-        <span style="color:#2b91af;">HScrollBar </span>hscrollbar = <span style="color:blue;">new </span><span style="color:#2b91af;">HScrollBar</span>();
-        hscrollbar.Dock = <span style="color:#2b91af;">DockStyle</span>.Bottom;
+        HScrollBar hscrollbar = new HScrollBar();
+        hscrollbar.Dock = DockStyle.Bottom;
         hscrollbar.Minimum = 0;
         hscrollbar.Maximum = 100;
         hscrollbar.LargeChange = 20;
         hscrollbar.SmallChange = 1;
-        hscrollbar.Scroll += <span style="color:blue;">new </span><span style="color:#2b91af;">ScrollEventHandler</span>(hscrollbar_Scroll);
+        hscrollbar.Scroll += new ScrollEventHandler(hscrollbar_Scroll);
     
-        <span style="color:blue;">this</span>.Controls.Add(hscrollbar);
+        this.Controls.Add(hscrollbar);
     }
     
-    <span style="color:blue;">void </span>hscrollbar_Scroll(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">ScrollEventArgs </span>e)
+    void hscrollbar_Scroll(object sender, ScrollEventArgs e)
     {
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"Old value : {0} and new value : {1}"</span>, e.OldValue, e.NewValue));
+        Debug.WriteLine(String.Format("Old value : {0} and new value : {1}", e.OldValue, e.NewValue));
     }
 
 
@@ -6674,38 +6674,38 @@ To access the settings programmatically :
 
 
     
-    <span style="color:blue;">private void </span>Form1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+    private void Form1_Load(object sender, EventArgs e)
     {
-        Properties.<span style="color:#2b91af;">Settings</span>.Default.buttonColour = <span style="color:#2b91af;">Color</span>.Red;
-        Properties.<span style="color:#2b91af;">Settings</span>.Default.PropertyChanged += <span style="color:blue;">new </span><span style="color:#2b91af;">PropertyChangedEventHandler</span>(Default_PropertyChanged);
-        Properties.<span style="color:#2b91af;">Settings</span>.Default.SettingChanging += <span style="color:blue;">new </span>System.Configuration.<span style="color:#2b91af;">SettingChangingEventHandler</span>(Default_SettingChanging);
-        Properties.<span style="color:#2b91af;">Settings</span>.Default.SettingsLoaded += <span style="color:blue;">new </span>System.Configuration.<span style="color:#2b91af;">SettingsLoadedEventHandler</span>(Default_SettingsLoaded);
-        Properties.<span style="color:#2b91af;">Settings</span>.Default.SettingsSaving += <span style="color:blue;">new </span>System.Configuration.<span style="color:#2b91af;">SettingsSavingEventHandler</span>(Default_SettingsSaving);
-        Properties.<span style="color:#2b91af;">Settings</span>.Default.Reload(); <span style="color:green;">// Reloaded from persisted store
-        </span>Properties.<span style="color:#2b91af;">Settings</span>.Default.Reset(); <span style="color:green;">// Reset the persisted store to defaults
-        </span>Properties.<span style="color:#2b91af;">Settings</span>.Default.Upgrade(); <span style="color:green;">// Upgrade the persisted store to reflect a newer software version
-        </span>Properties.<span style="color:#2b91af;">Settings</span>.Default.Save();
+        Properties.Settings.Default.buttonColour = Color.Red;
+        Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(Default_PropertyChanged);
+        Properties.Settings.Default.SettingChanging += new System.Configuration.SettingChangingEventHandler(Default_SettingChanging);
+        Properties.Settings.Default.SettingsLoaded += new System.Configuration.SettingsLoadedEventHandler(Default_SettingsLoaded);
+        Properties.Settings.Default.SettingsSaving += new System.Configuration.SettingsSavingEventHandler(Default_SettingsSaving);
+        Properties.Settings.Default.Reload(); // Reloaded from persisted store
+        Properties.Settings.Default.Reset(); // Reset the persisted store to defaults
+        Properties.Settings.Default.Upgrade(); // Upgrade the persisted store to reflect a newer software version
+        Properties.Settings.Default.Save();
     }
     
-    <span style="color:blue;">void </span>Default_SettingsSaving(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">CancelEventArgs </span>e)
+    void Default_SettingsSaving(object sender, CancelEventArgs e)
     {
-        e.Cancel = <span style="color:blue;">true</span>;
+        e.Cancel = true;
     }
     
-    <span style="color:blue;">void </span>Default_SettingsLoaded(<span style="color:blue;">object </span>sender, System.Configuration.<span style="color:#2b91af;">SettingsLoadedEventArgs </span>e)
+    void Default_SettingsLoaded(object sender, System.Configuration.SettingsLoadedEventArgs e)
     {
-        System.Configuration.<span style="color:#2b91af;">SettingsProvider </span>= e.Provider;
+        System.Configuration.SettingsProvider = e.Provider;
     }
     
-    <span style="color:blue;">void </span>Default_SettingChanging(<span style="color:blue;">object </span>sender, System.Configuration.<span style="color:#2b91af;">SettingChangingEventArgs </span>e)
+    void Default_SettingChanging(object sender, System.Configuration.SettingChangingEventArgs e)
     {
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"The new value {0} is changing."</span>, e.NewValue));
-        e.Cancel = <span style="color:blue;">true</span>;
+        Debug.WriteLine(String.Format("The new value {0} is changing.", e.NewValue));
+        e.Cancel = true;
     }
     
-    <span style="color:blue;">void </span>Default_PropertyChanged(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">PropertyChangedEventArgs </span>e)
+    void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"The property {0} has changed."</span>, e.PropertyName));
+        Debug.WriteLine(String.Format("The property {0} has changed.", e.PropertyName));
     }
 
 
@@ -6733,54 +6733,54 @@ To access the settings programmatically :
 
 
     
-    <span style="color:#2b91af;">BackgroundWorker </span>_async = <span style="color:blue;">new </span><span style="color:#2b91af;">BackgroundWorker</span>();
+    BackgroundWorker _async = new BackgroundWorker();
     
-    <span style="color:blue;">private void </span>Form1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+    private void Form1_Load(object sender, EventArgs e)
     {
-        _async.WorkerReportsProgress = <span style="color:blue;">true</span>;
-        _async.ProgressChanged += <span style="color:blue;">new </span><span style="color:#2b91af;">ProgressChangedEventHandler</span>(_async_ProgressChanged);
-        _async.RunWorkerCompleted += <span style="color:blue;">new </span><span style="color:#2b91af;">RunWorkerCompletedEventHandler</span>(_async_RunWorkerCompleted);
-        _async.DoWork += <span style="color:blue;">new </span><span style="color:#2b91af;">DoWorkEventHandler</span>(_async_DoWork);
-        _async.RunWorkerAsync(<span style="color:#a31515;">"An optional object parameter"</span>);
+        _async.WorkerReportsProgress = true;
+        _async.ProgressChanged += new ProgressChangedEventHandler(_async_ProgressChanged);
+        _async.RunWorkerCompleted += new RunWorkerCompletedEventHandler(_async_RunWorkerCompleted);
+        _async.DoWork += new DoWorkEventHandler(_async_DoWork);
+        _async.RunWorkerAsync("An optional object parameter");
     
-        <span style="color:blue;">if </span>(_async.IsBusy)
-            <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#a31515;">"The async processing is busy"</span>);
+        if (_async.IsBusy)
+            Debug.WriteLine("The async processing is busy");
     
-        _async.WorkerSupportsCancellation = <span style="color:blue;">true</span>;
+        _async.WorkerSupportsCancellation = true;
         _async.CancelAsync();
     
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#a31515;">"Form_Load completed"</span>);
+        Debug.WriteLine("Form_Load completed");
     }
     
-    <span style="color:blue;">void </span>_async_RunWorkerCompleted(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">RunWorkerCompletedEventArgs </span>e)
+    void _async_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
-        <span style="color:blue;">if </span>(e.Cancelled)
-            <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#a31515;">"The async job was cancelled"</span>);
-        <span style="color:blue;">else
-            </span><span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"The result is '{0}'"</span>, e.Result));
+        if (e.Cancelled)
+            Debug.WriteLine("The async job was cancelled");
+        else
+            Debug.WriteLine(String.Format("The result is '{0}'", e.Result));
     }
     
-    <span style="color:blue;">void </span>_async_ProgressChanged(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">ProgressChangedEventArgs </span>e)
+    void _async_ProgressChanged(object sender, ProgressChangedEventArgs e)
     {
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"Current progress stands at {0}% with optional state of '{1}'"</span>, 
+        Debug.WriteLine(String.Format("Current progress stands at {0}% with optional state of '{1}'", 
             e.ProgressPercentage, e.UserState));
     }
     
-    <span style="color:blue;">void </span>_async_DoWork(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">DoWorkEventArgs </span>e)
+    void _async_DoWork(object sender, DoWorkEventArgs e)
     {
-        <span style="color:#2b91af;">Debug</span>.Print(<span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"The parameter is '{0}'"</span>, e.Argument));
-        <span style="color:blue;">for </span>(<span style="color:blue;">int </span>percentComplete = 0; percentComplete <= 100; percentComplete += 10)
+        Debug.Print(String.Format("The parameter is '{0}'", e.Argument));
+        for (int percentComplete = 0; percentComplete <= 100; percentComplete += 10)
         {
-            _async.ReportProgress(percentComplete, <span style="color:#a31515;">"optional user state object"</span>);
-            <span style="color:#2b91af;">Thread</span>.Sleep(1000);
-            <span style="color:blue;">if </span>(_async.CancellationPending && percentComplete > 50)
+            _async.ReportProgress(percentComplete, "optional user state object");
+            Thread.Sleep(1000);
+            if (_async.CancellationPending && percentComplete > 50)
             {
-                <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#a31515;">"The async process was canceled"</span>);
-                <span style="color:blue;">break</span>;
+                Debug.WriteLine("The async process was canceled");
+                break;
             }
         }
-        e.Result = <span style="color:#a31515;">"An optional result object"</span>;
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#a31515;">"Completed a long running process"</span>);
+        e.Result = "An optional result object";
+        Debug.WriteLine("Completed a long running process");
     }
 
 
@@ -6800,37 +6800,37 @@ To access the settings programmatically :
 
 
     
-    <span style="color:blue;">delegate string </span><span style="color:#2b91af;">MyDelegate</span>(<span style="color:blue;">object </span>aParameter);
+    delegate string MyDelegate(object aParameter);
     
-    <span style="color:blue;">string </span>MyMethod(<span style="color:blue;">object </span>aParameter)
+    string MyMethod(object aParameter)
     {
-        <span style="color:#2b91af;">Thread</span>.Sleep(5000);
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"The parameter is '{0}'"</span>, aParameter.ToString()));
-        <span style="color:blue;">return </span><span style="color:#a31515;">"aReturnString"</span>;
+        Thread.Sleep(5000);
+        Debug.WriteLine(String.Format("The parameter is '{0}'", aParameter.ToString()));
+        return "aReturnString";
     }
     
-    <span style="color:blue;">private void </span>Form1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+    private void Form1_Load(object sender, EventArgs e)
     {
-        <span style="color:#2b91af;">MyDelegate </span>mydelegate = <span style="color:blue;">new </span><span style="color:#2b91af;">MyDelegate</span>(MyMethod);
+        MyDelegate mydelegate = new MyDelegate(MyMethod);
         
-        <span style="color:green;">// Synchronously
-        </span><span style="color:blue;">string </span>returnValue = mydelegate(<span style="color:#a31515;">"a test string"</span>);
+        // Synchronously
+        string returnValue = mydelegate("a test string");
     
-        <span style="color:green;">// Asynchronously waiting on EndInvoke
-        </span><span style="color:#2b91af;">IAsyncResult </span>asyncResult = mydelegate.BeginInvoke(<span style="color:#a31515;">"another test string"</span>, <span style="color:blue;">null</span>, <span style="color:blue;">null</span>);
-        <span style="color:blue;">if </span>(asyncResult.IsCompleted) <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#a31515;">"We've completed"</span>);
+        // Asynchronously waiting on EndInvoke
+        IAsyncResult asyncResult = mydelegate.BeginInvoke("another test string", null, null);
+        if (asyncResult.IsCompleted) Debug.WriteLine("We've completed");
         returnValue = mydelegate.EndInvoke(asyncResult);
     
-        <span style="color:green;">// Asynchronously waiting on delegate callback
-        </span>asyncResult = mydelegate.BeginInvoke(<span style="color:#a31515;">"a third test string"</span>, Callback, mydelegate);
+        // Asynchronously waiting on delegate callback
+        asyncResult = mydelegate.BeginInvoke("a third test string", Callback, mydelegate);
     
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#a31515;">"Finished"</span>);
+        Debug.WriteLine("Finished");
     }
     
-    <span style="color:blue;">private void </span>Callback(<span style="color:#2b91af;">IAsyncResult </span>result)
+    private void Callback(IAsyncResult result)
     {
-        <span style="color:#2b91af;">Debug</span>.WriteLine(<span style="color:#a31515;">"The callback has been fired"</span>);
-        <span style="color:#2b91af;">MyDelegate </span>mydelegate = (<span style="color:#2b91af;">MyDelegate</span>)result.AsyncState;
+        Debug.WriteLine("The callback has been fired");
+        MyDelegate mydelegate = (MyDelegate)result.AsyncState;
         mydelegate.EndInvoke(result);
     }
 
@@ -6844,19 +6844,19 @@ To access the settings programmatically :
 
 
     
-    <span style="color:blue;">public delegate void </span><span style="color:#2b91af;">SetTextDelegate</span>(<span style="color:blue;">string </span>t);
-    <span style="color:blue;">public void </span>SetText(<span style="color:blue;">string </span>t)
+    public delegate void SetTextDelegate(string t);
+    public void SetText(string t)
     {
-        <span style="color:green;">// Check to see whether it's safe to set the property directly
-        </span><span style="color:blue;">if </span>(_textBox1.InvokeRequired)
+        // Check to see whether it's safe to set the property directly
+        if (_textBox1.InvokeRequired)
         {
-            <span style="color:green;">// It's not so we create a delegate to ourself and
+            // It's not so we create a delegate to ourself and
             // call Invoke on the form
-            </span><span style="color:#2b91af;">SetTextDelegate </span>del = <span style="color:blue;">new </span><span style="color:#2b91af;">SetTextDelegate</span>(SetText);
-            <span style="color:blue;">this</span>.Invoke(del, <span style="color:blue;">new object</span>[] { t });
+            SetTextDelegate del = new SetTextDelegate(SetText);
+            this.Invoke(del, new object[] { t });
         }
-        <span style="color:blue;">else
-        </span>{
+        else
+        {
             _textBox1.Text = t;
         }
     }
@@ -6899,55 +6899,55 @@ There are three types of controls :
 
 
     
-    <span style="color:green;">// An icon can be specified with an absolute filename, or by specifying a type 
+    // An icon can be specified with an absolute filename, or by specifying a type 
     // (for example a system type with a pre-defined icon) or your own type and the
     // name of an embedded resource.
-    </span>[<span style="color:#2b91af;">ToolboxBitmap</span>(<span style="color:blue;">typeof</span>(<span style="color:#2b91af;">UserControl1</span>), <span style="color:#a31515;">"ToolbarIcon.bmp"</span>)]
-    <span style="color:blue;">public partial class </span><span style="color:#2b91af;">UserControl1 </span>: <span style="color:#2b91af;">UserControl
-    </span>{
-        <span style="color:blue;">public </span>UserControl1()
+    [ToolboxBitmap(typeof(UserControl1), "ToolbarIcon.bmp")]
+    public partial class UserControl1 : UserControl
+    {
+        public UserControl1()
         {
             InitializeComponent();
         }
     
-        <span style="color:#2b91af;">TextBox </span>_txtFirstName;
-        <span style="color:#2b91af;">TextBox </span>_txtLastName;
-        <span style="color:#2b91af;">Button </span>_btnAction;
+        TextBox _txtFirstName;
+        TextBox _txtLastName;
+        Button _btnAction;
     
-        <span style="color:blue;">public delegate void </span><span style="color:#2b91af;">ActionClick</span>(<span style="color:blue;">string </span>firstname, <span style="color:blue;">string </span>lastname);
-        <span style="color:blue;">public event </span><span style="color:#2b91af;">ActionClick </span>Action_Click;
+        public delegate void ActionClick(string firstname, string lastname);
+        public event ActionClick Action_Click;
     
-        <span style="color:blue;">public string </span>FirstName
+        public string FirstName
         {
-            <span style="color:blue;">get </span>{ <span style="color:blue;">return </span>_txtFirstName.Text; }
+            get { return _txtFirstName.Text; }
         }
     
-        <span style="color:blue;">public string </span>LastName
+        public string LastName
         {
-            <span style="color:blue;">get </span>{ <span style="color:blue;">return </span>_txtLastName.Text; }
+            get { return _txtLastName.Text; }
         }
     
-        <span style="color:blue;">private void </span>UserControl1_Load(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+        private void UserControl1_Load(object sender, EventArgs e)
         {
-            _txtFirstName = <span style="color:blue;">new </span><span style="color:#2b91af;">TextBox</span>();
-            _txtFirstName.Location = <span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>(10, 20);
-            <span style="color:blue;">this</span>.Controls.Add(_txtFirstName);
+            _txtFirstName = new TextBox();
+            _txtFirstName.Location = new Point(10, 20);
+            this.Controls.Add(_txtFirstName);
     
-            _txtLastName = <span style="color:blue;">new </span><span style="color:#2b91af;">TextBox</span>();
-            _txtLastName.Location = <span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>(10, 60);
-            <span style="color:blue;">this</span>.Controls.Add(_txtLastName);
+            _txtLastName = new TextBox();
+            _txtLastName.Location = new Point(10, 60);
+            this.Controls.Add(_txtLastName);
     
-            _btnAction = <span style="color:blue;">new </span><span style="color:#2b91af;">Button</span>();
-            _btnAction.Text = <span style="color:#a31515;">"Click for Action!!"</span>;
-            _btnAction.Location = <span style="color:blue;">new </span><span style="color:#2b91af;">Point</span>(10, 100);
-            _btnAction.Click += <span style="color:blue;">new </span><span style="color:#2b91af;">EventHandler</span>(_btnAction_Click);
-            <span style="color:blue;">this</span>.Controls.Add(_btnAction);
+            _btnAction = new Button();
+            _btnAction.Text = "Click for Action!!";
+            _btnAction.Location = new Point(10, 100);
+            _btnAction.Click += new EventHandler(_btnAction_Click);
+            this.Controls.Add(_btnAction);
         }
     
-        <span style="color:blue;">void </span>_btnAction_Click(<span style="color:blue;">object </span>sender, <span style="color:#2b91af;">EventArgs </span>e)
+        void _btnAction_Click(object sender, EventArgs e)
         {
-            <span style="color:#2b91af;">ActionClick </span>temp = Action_Click;
-            <span style="color:blue;">if </span>(temp != <span style="color:blue;">null</span>)
+            ActionClick temp = Action_Click;
+            if (temp != null)
             {
                 temp(FirstName, LastName);
             }
@@ -7157,24 +7157,24 @@ _Dispose()_ must always be called on _Pen, Brush_ and _Graphics_ objects.
 
 
     
-    <span style="color:blue;">public partial class </span><span style="color:#2b91af;">CustomControl1 </span>: <span style="color:#2b91af;">Control
-    </span>{
-        <span style="color:blue;">public </span>CustomControl1()
+    public partial class CustomControl1 : Control
+    {
+        public CustomControl1()
         {
             InitializeComponent();
         }
     
-        <span style="color:blue;">protected override void </span>OnPaint(<span style="color:#2b91af;">PaintEventArgs </span>pe)
+        protected override void OnPaint(PaintEventArgs pe)
         {
-            <span style="color:blue;">base</span>.OnPaint(pe);
+            base.OnPaint(pe);
     
-            <span style="color:green;">// The region that needs to be redrawn
-            </span><span style="color:#2b91af;">Rectangle </span>clipRectangle = pe.ClipRectangle;
+            // The region that needs to be redrawn
+            Rectangle clipRectangle = pe.ClipRectangle;
     
-            <span style="color:green;">// The graphics object represents the entire control
-            </span><span style="color:blue;">using </span>(<span style="color:#2b91af;">Graphics </span>graphics = pe.Graphics)
+            // The graphics object represents the entire control
+            using (Graphics graphics = pe.Graphics)
             {
-                graphics.DrawEllipse(<span style="color:#2b91af;">SystemPens</span>.ControlText, clipRectangle);
+                graphics.DrawEllipse(SystemPens.ControlText, clipRectangle);
             }
         }
     }
@@ -7201,21 +7201,21 @@ To create and show a modal dialog box :
 
 
     
-    <span style="color:#2b91af;">Form2 </span>myDialog = <span style="color:blue;">new </span><span style="color:#2b91af;">Form2</span>();
+    Form2 myDialog = new Form2();
     
-    <span style="color:green;">// Pass this as the parent of the dialog
-    </span><span style="color:#2b91af;">DialogResult </span>dialogResult = myDialog.ShowDialog(<span style="color:blue;">this</span>);
+    // Pass this as the parent of the dialog
+    DialogResult dialogResult = myDialog.ShowDialog(this);
     
-    <span style="color:blue;">switch </span>(dialogResult)
+    switch (dialogResult)
     {
-        <span style="color:blue;">case </span><span style="color:#2b91af;">DialogResult</span>.Yes:
-        <span style="color:blue;">case </span><span style="color:#2b91af;">DialogResult</span>.No:
-        <span style="color:blue;">case </span><span style="color:#2b91af;">DialogResult</span>.OK:
-        <span style="color:blue;">case </span><span style="color:#2b91af;">DialogResult</span>.Cancel:
-        <span style="color:blue;">case </span><span style="color:#2b91af;">DialogResult</span>.Ignore:
-        <span style="color:blue;">case </span><span style="color:#2b91af;">DialogResult</span>.Abort:
-        <span style="color:blue;">case </span><span style="color:#2b91af;">DialogResult</span>.Retry:
-        <span style="color:blue;">case </span><span style="color:#2b91af;">DialogResult</span>.None:
+        case DialogResult.Yes:
+        case DialogResult.No:
+        case DialogResult.OK:
+        case DialogResult.Cancel:
+        case DialogResult.Ignore:
+        case DialogResult.Abort:
+        case DialogResult.Retry:
+        case DialogResult.None:
     }
 
 
@@ -7228,7 +7228,7 @@ To create and show a modal dialog box :
 
 
     
-    <span style="color:#2b91af;">Form2 </span>parentForm = (<span style="color:#2b91af;">Form2</span>)<span style="color:blue;">this</span>.ParentForm;
+    Form2 parentForm = (Form2)this.ParentForm;
 
 
 [](http://11011.net/software/vspaste)
@@ -7241,16 +7241,16 @@ To create and show a modal dialog box :
 
 
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">ExtendedButton </span>: <span style="color:#2b91af;">Button
-    </span>{
-        <span style="color:green;">// New properties can be added to the extended control
-        </span><span style="color:blue;">public int </span>MyProperty { <span style="color:blue;">get</span>; <span style="color:blue;">set</span>; }
+    class ExtendedButton : Button
+    {
+        // New properties can be added to the extended control
+        public int MyProperty { get; set; }
     
-        <span style="color:green;">// Base properties and events can also be overridden
-        </span><span style="color:blue;">protected override void </span>OnPaint(<span style="color:#2b91af;">PaintEventArgs </span>pevent)
+        // Base properties and events can also be overridden
+        protected override void OnPaint(PaintEventArgs pevent)
         {
-            <span style="color:blue;">base</span>.OnPaint(pevent);
-            pevent.Graphics.FillEllipse(<span style="color:#2b91af;">Brushes</span>.Red, pevent.ClipRectangle);
+            base.OnPaint(pevent);
+            pevent.Graphics.FillEllipse(Brushes.Red, pevent.ClipRectangle);
         }
     }
 
@@ -7444,37 +7444,37 @@ A custom action must first be implemented in a class derived from _Installer_ co
 
 
     
-    <span style="color:green;">// An Installer component can be added by selecting it from
+    // An Installer component can be added by selecting it from
     // the 'Add New Item' menu
     
-    </span>[<span style="color:#2b91af;">RunInstaller</span>(<span style="color:blue;">true</span>)]
-    <span style="color:blue;">public partial class </span><span style="color:#2b91af;">Installer1 </span>: <span style="color:#2b91af;">Installer
-    </span>{
-        <span style="color:blue;">public </span>Installer1()
+    [RunInstaller(true)]
+    public partial class Installer1 : Installer
+    {
+        public Installer1()
         {
             InitializeComponent();
         }
     
-        <span style="color:green;">// There are four operations that can be overridden
+        // There are four operations that can be overridden
     
-        </span><span style="color:blue;">public override void </span>Install(<span style="color:#2b91af;">IDictionary </span>stateSaver)
+        public override void Install(IDictionary stateSaver)
         {
-            <span style="color:blue;">base</span>.Install(stateSaver);
+            base.Install(stateSaver);
         }
     
-        <span style="color:blue;">public override void </span>Commit(<span style="color:#2b91af;">IDictionary </span>savedState)
+        public override void Commit(IDictionary savedState)
         {
-            <span style="color:blue;">base</span>.Commit(savedState);
+            base.Commit(savedState);
         }
     
-        <span style="color:blue;">public override void </span>Rollback(<span style="color:#2b91af;">IDictionary </span>savedState)
+        public override void Rollback(IDictionary savedState)
         {
-            <span style="color:blue;">base</span>.Rollback(savedState);
+            base.Rollback(savedState);
         }
     
-        <span style="color:blue;">public override void </span>Uninstall(<span style="color:#2b91af;">IDictionary </span>savedState)
+        public override void Uninstall(IDictionary savedState)
         {
-            <span style="color:blue;">base</span>.Uninstall(savedState);
+            base.Uninstall(savedState);
         }
     }
 

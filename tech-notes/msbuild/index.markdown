@@ -70,62 +70,62 @@ The **Project** element is the root element in any MSBuild project file. **Initi
 
  
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Project
-        </span><span style="color:red;">DefaultTargets</span><span style="color:blue;">=</span>"<span style="color:blue;">Compile</span>"
-        <span style="color:red;">InitialTargets</span><span style="color:blue;">=</span>"<span style="color:blue;">Clean;Compile</span>"
-        <span style="color:red;">xmlns</span><span style="color:blue;">=</span>"<span style="color:blue;">http://schemas.microsoft.com/developer/msbuild/2003</span>"<span style="color:blue;">>
+    <Project
+        DefaultTargets="Compile"
+        InitialTargets="Clean;Compile"
+        xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     
-        <!-- </span><span style="color:green;">Import the contents of another project file </span><span style="color:blue;">-->
-        <</span><span style="color:#a31515;">Import </span><span style="color:red;">Project</span><span style="color:blue;">=</span>"<span style="color:blue;">...</span>" <span style="color:blue;">/>
+        <!-- Import the contents of another project file -->
+        <Import Project="..." />
     
-        <!-- </span><span style="color:green;">ProjectExtensions data is ignored by MSBuild </span><span style="color:blue;">-->
-        <</span><span style="color:#a31515;">ProjectExtensions</span><span style="color:blue;">></span>...<span style="color:blue;"></</span><span style="color:#a31515;">ProjectExtensions</span><span style="color:blue;">>
+        <!-- ProjectExtensions data is ignored by MSBuild -->
+        <ProjectExtensions>...</ProjectExtensions>
     
-        <</span><span style="color:#a31515;">PropertyGroup</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">PropertyName</span><span style="color:blue;">></span>PropertyValue<span style="color:blue;"></</span><span style="color:#a31515;">PropertyName</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">PropertyGroup</span><span style="color:blue;">>
+        <PropertyGroup>
+            <PropertyName>PropertyValue</PropertyName>
+        </PropertyGroup>
     
-        <</span><span style="color:#a31515;">ItemGroup</span><span style="color:blue;">>
+        <ItemGroup>
     
-        </</span><span style="color:#a31515;">ItemGroup</span><span style="color:blue;">>
+        </ItemGroup>
     
-        <!-- </span><span style="color:green;">PropertyGroup and ItemGroup elements can be nested 
+        <!-- PropertyGroup and ItemGroup elements can be nested 
         inside a Choose element to provide different sets 
-        of data based on certain conditions. </span><span style="color:blue;">-->
-        <</span><span style="color:#a31515;">Choose</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">When </span><span style="color:red;">Condition</span><span style="color:blue;">=</span>"<span style="color:blue;">...</span>"<span style="color:blue;">></</span><span style="color:#a31515;">When</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">Otherwise</span><span style="color:blue;">></</span><span style="color:#a31515;">Otherwise</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">Choose</span><span style="color:blue;">>
+        of data based on certain conditions. -->
+        <Choose>
+            <When Condition="..."></When>
+            <Otherwise></Otherwise>
+        </Choose>
     
-        <</span><span style="color:#a31515;">Target </span><span style="color:red;">Name</span><span style="color:blue;">=</span>"<span style="color:blue;">...</span>"
-            <span style="color:red;">DependsOnTargets</span><span style="color:blue;">=</span>"<span style="color:blue;">...;...;...</span>"
-            <span style="color:red;">Inputs</span><span style="color:blue;">=</span>"<span style="color:blue;">...</span>"
-            <span style="color:red;">Outputs</span><span style="color:blue;">=</span>"<span style="color:blue;">...</span>" <span style="color:blue;">>
+        <Target Name="..."
+            DependsOnTargets="...;...;..."
+            Inputs="..."
+            Outputs="..." >
     
-            <!-- </span><span style="color:green;">Tasks must appear as a child of a Target </span><span style="color:blue;">-->
-            <</span><span style="color:#a31515;">aTaskName </span><span style="color:red;">Parameter</span><span style="color:blue;">=</span>"<span style="color:blue;">...</span>"<span style="color:blue;">>
+            <!-- Tasks must appear as a child of a Target -->
+            <aTaskName Parameter="...">
     
-                <!-- </span><span style="color:green;">Retrieve the output of a Task using the 
+                <!-- Retrieve the output of a Task using the 
              Output element. Specify either PropertyName 
-             or ItemName </span><span style="color:blue;">-->
-                <</span><span style="color:#a31515;">Output </span><span style="color:red;">TaskParameter</span><span style="color:blue;">=</span>"<span style="color:blue;">Name of the Task output parameter</span>"
-                    <span style="color:red;">PropertyName</span><span style="color:blue;">=</span>"<span style="color:blue;">Name of property to store output in</span>"
-                    <span style="color:red;">Condition</span><span style="color:blue;">=</span>"<span style="color:blue;">...</span>"  <span style="color:blue;">/>
-            </</span><span style="color:#a31515;">aTaskName</span><span style="color:blue;">>
+             or ItemName -->
+                <Output TaskParameter="Name of the Task output parameter"
+                    PropertyName="Name of property to store output in"
+                    Condition="..."  />
+            </aTaskName>
     
-            <!-- </span><span style="color:green;">If ContinueOnError is false for a failed task, the OnError 
+            <!-- If ContinueOnError is false for a failed task, the OnError 
           tasks are executed. There can be zero or more OnError elements
-          and must be the last elements in the Target. </span><span style="color:blue;">-->
-            <</span><span style="color:#a31515;">OnError</span><span style="color:blue;">/>
+          and must be the last elements in the Target. -->
+            <OnError/>
     
-        </</span><span style="color:#a31515;">Target</span><span style="color:blue;">>
+        </Target>
     
-        <!-- </span><span style="color:green;">Maps the task referenced in a Task element to the assembly 
+        <!-- Maps the task referenced in a Task element to the assembly 
         containing the implementation. Can specify AssemblyFile instead 
-        of AssemblyName </span><span style="color:blue;">-->
-        <</span><span style="color:#a31515;">UsingTask </span><span style="color:red;">TaskName</span><span style="color:blue;">=</span>"<span style="color:blue;">...</span>" <span style="color:red;">AssemblyName</span><span style="color:blue;">=</span>"<span style="color:blue;">...</span>" <span style="color:blue;">/>
+        of AssemblyName -->
+        <UsingTask TaskName="..." AssemblyName="..." />
     
-    </</span><span style="color:#a31515;">Project</span><span style="color:blue;">></span>
+    </Project>
 
 
 [](http://11011.net/software/vspaste)
@@ -148,7 +148,7 @@ Define a user-named collection of items by placing them in an **ItemGroup** then
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Exec </span><span style="color:red;">Command</span><span style="color:blue;">=</span>"<span style="color:blue;">findstr /i /c:@(Phrase, ' /c:') phrases.txt</span>"<span style="color:blue;">/></span>
+    <Exec Command="findstr /i /c:@(Phrase, ' /c:') phrases.txt"/>
 
 
 
@@ -166,7 +166,7 @@ Items can contain metadata and accessed using the _%(ItemMetadata)_ syntax. [Wel
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Exec </span><span style="color:red;">Command</span><span style="color:blue;">=</span>"<span style="color:blue;">demo.exe /name:%(filename) @(filesToProcess)</span>"<span style="color:blue;">/></span>
+    <Exec Command="demo.exe /name:%(filename) @(filesToProcess)"/>
 
 
 [](http://11011.net/software/vspaste)
@@ -247,10 +247,10 @@ Properties are added to **PropertyGroup** then referenced with _$(PropertyName).
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">PropertyGroup</span><span style="color:blue;">>
-      <</span><span style="color:#a31515;">BuildDir</span><span style="color:blue;">></span>Build<span style="color:blue;"></</span><span style="color:#a31515;">BuildDir</span><span style="color:blue;">>
-    </</span><span style="color:#a31515;">PropertyGroup</span><span style="color:blue;">>
-    </span>
+    <PropertyGroup>
+      <BuildDir>Build</BuildDir>
+    </PropertyGroup>
+    
 
 
 
@@ -272,7 +272,7 @@ Environment variables can be referenced by simply using the name of a variable u
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">ToolsPath </span><span style="color:red;">Condition</span><span style="color:blue;">=</span>"<span style="color:blue;">'$(TOOLSPATH)' == ''</span>"<span style="color:blue;">></span>c:\tools<span style="color:blue;"></</span><span style="color:#a31515;">ToolsPath</span><span style="color:blue;">></span>
+    <ToolsPath Condition="'$(TOOLSPATH)' == ''">c:\tools</ToolsPath>
 
 
 
@@ -308,9 +308,9 @@ Targets can also be used to perform incremental builds such that a target will o
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Target </span><span style="color:red;">Name</span><span style="color:blue;">=</span>"<span style="color:blue;">Build</span>" <span style="color:red;">Inputs</span><span style="color:blue;">=</span>"<span style="color:blue;">@(InputFiles)</span>" <span style="color:red;">Outputs</span><span style="color:blue;">=</span>"<span style="color:blue;">app.exe</span>"<span style="color:blue;">>
-        <</span><span style="color:#a31515;">Csc </span><span style="color:red;">Sources</span><span style="color:blue;">=</span>"<span style="color:blue;">@(InputFiles)</span>" <span style="color:red;">OutputAssembly</span><span style="color:blue;">=</span>"<span style="color:blue;">app.exe</span>" <span style="color:blue;">/>
-    </</span><span style="color:#a31515;">Target</span><span style="color:blue;">></span>
+    <Target Name="Build" Inputs="@(InputFiles)" Outputs="app.exe">
+        <Csc Sources="@(InputFiles)" OutputAssembly="app.exe" />
+    </Target>
 
 
 
@@ -322,11 +322,11 @@ Of particular use are the transforms described in the Items and Collections sect
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Target </span><span style="color:red;">Name</span><span style="color:blue;">=</span>"<span style="color:blue;">CopyOutputs</span>" 
-            <span style="color:red;">Inputs</span><span style="color:blue;">=</span>"<span style="color:blue;">@(BuiltAssemblies)</span>" 
-            <span style="color:red;">Outputs</span><span style="color:blue;">=</span>"<span style="color:blue;">@(BuiltAssemblies -> '$(OutputPath)%(Filename)%(Extension)')</span>"<span style="color:blue;">>
-        <</span><span style="color:#a31515;">Copy </span><span style="color:red;">SourceFiles</span><span style="color:blue;">=</span>"<span style="color:blue;">@(BuiltAssemblies)</span>" <span style="color:red;">DestinationFolder</span><span style="color:blue;">=</span>"<span style="color:blue;">$(OutputPath)</span>"<span style="color:blue;">/>
-    </</span><span style="color:#a31515;">Target</span><span style="color:blue;">></span>
+    <Target Name="CopyOutputs" 
+            Inputs="@(BuiltAssemblies)" 
+            Outputs="@(BuiltAssemblies -> '$(OutputPath)%(Filename)%(Extension)')">
+        <Copy SourceFiles="@(BuiltAssemblies)" DestinationFolder="$(OutputPath)"/>
+    </Target>
 
 
 
@@ -344,41 +344,41 @@ Batching can be used in conjunction with the _Inputs_ and _Outputs_ attributes o
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Project
-        </span><span style="color:red;">xmlns</span><span style="color:blue;">=</span>"<span style="color:blue;">http://schemas.microsoft.com/developer/msbuild/2003</span>"<span style="color:blue;">>
+    <Project
+        xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     
-        <</span><span style="color:#a31515;">ItemGroup</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">Res </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Strings.fr.resources</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Culture</span><span style="color:blue;">></span>fr<span style="color:blue;"></</span><span style="color:#a31515;">Culture</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">Res</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">Res </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Strings.jp.resources</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Culture</span><span style="color:blue;">></span>jp<span style="color:blue;"></</span><span style="color:#a31515;">Culture</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">Res</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">Res </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Menus.fr.resources</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Culture</span><span style="color:blue;">></span>fr<span style="color:blue;"></</span><span style="color:#a31515;">Culture</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">Res</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">Res </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Dialogs.fr.resources</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Culture</span><span style="color:blue;">></span>fr<span style="color:blue;"></</span><span style="color:#a31515;">Culture</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">Res</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">Res </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Dialogs.jp.resources</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Culture</span><span style="color:blue;">></span>jp<span style="color:blue;"></</span><span style="color:#a31515;">Culture</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">Res</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">Res </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Menus.jp.resources</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Culture</span><span style="color:blue;">></span>jp<span style="color:blue;"></</span><span style="color:#a31515;">Culture</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">Res</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">ItemGroup</span><span style="color:blue;">>
+        <ItemGroup>
+            <Res Include="Strings.fr.resources">
+                <Culture>fr</Culture>
+            </Res>
+            <Res Include="Strings.jp.resources">
+                <Culture>jp</Culture>
+            </Res>
+            <Res Include="Menus.fr.resources">
+                <Culture>fr</Culture>
+            </Res>
+            <Res Include="Dialogs.fr.resources">
+                <Culture>fr</Culture>
+            </Res>
+            <Res Include="Dialogs.jp.resources">
+                <Culture>jp</Culture>
+            </Res>
+            <Res Include="Menus.jp.resources">
+                <Culture>jp</Culture>
+            </Res>
+        </ItemGroup>
     
-        <</span><span style="color:#a31515;">Target </span><span style="color:red;">Name</span><span style="color:blue;">=</span>"<span style="color:blue;">Build</span>"
-            <span style="color:red;">Inputs</span><span style="color:blue;">=</span>"<span style="color:blue;">@(Res)</span>"
-            <span style="color:red;">Outputs</span><span style="color:blue;">=</span>"<span style="color:blue;">%(Culture)\MyApp.resources.dll</span>"<span style="color:blue;">>
+        <Target Name="Build"
+            Inputs="@(Res)"
+            Outputs="%(Culture)\MyApp.resources.dll">
     
-            <</span><span style="color:#a31515;">AL </span><span style="color:red;">Resources</span><span style="color:blue;">=</span>"<span style="color:blue;">@(Res)</span>"
-                <span style="color:red;">TargetType</span><span style="color:blue;">=</span>"<span style="color:blue;">library</span>"
-                <span style="color:red;">OutputAssembly</span><span style="color:blue;">=</span>"<span style="color:blue;">%(Culture)\MyApp.resources.dll</span>"
+            <AL Resources="@(Res)"
+                TargetType="library"
+                OutputAssembly="%(Culture)\MyApp.resources.dll"
     
-        <span style="color:blue;"></</span><span style="color:#a31515;">Target</span><span style="color:blue;">>
+        </Target>
     
-    </</span><span style="color:#a31515;">Project</span><span style="color:blue;">></span>
+    </Project>
 
 
 [](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)
@@ -397,9 +397,9 @@ Tasks are written in managed code, that implements the **ITask** interface, then
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Target </span><span style="color:red;">Name</span><span style="color:blue;">=</span>"<span style="color:blue;">aTargetName</span>" <span style="color:red;">DependOnTargets</span><span style="color:blue;">=</span>"<span style="color:blue;">TargetName;TargetName</span>"<span style="color:blue;">>
-      <</span><span style="color:#a31515;">TaskName </span><span style="color:red;">Parameter</span><span style="color:blue;">=</span>"<span style="color:blue;">$(PropertyName)</span>" <span style="color:blue;">/>
-    </</span><span style="color:#a31515;">Target</span><span style="color:blue;">></span>
+    <Target Name="aTargetName" DependOnTargets="TargetName;TargetName">
+      <TaskName Parameter="$(PropertyName)" />
+    </Target>
 
 
 
@@ -411,7 +411,7 @@ If you want to ignore any errors that a task may raise then call it with the _Co
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Delete </span><span style="color:red;">Files</span><span style="color:blue;">=</span>"<span style="color:blue;">@(Files)</span>" <span style="color:red;">ContinueOnError</span><span style="color:blue;">=</span>"<span style="color:blue;">true</span>"<span style="color:blue;">/></span>
+    <Delete Files="@(Files)" ContinueOnError="true"/>
 
 
 
@@ -435,34 +435,34 @@ Batching divides an item collection based on item metadata and passes each batch
 
 
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">Project </span><span style="color:red;">xmlns</span><span style="color:blue;">=</span>"<span style="color:blue;">http://schemas.microsoft.com/developer/msbuild/2003</span>"<span style="color:blue;">>
+    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
         
-        <</span><span style="color:#a31515;">ItemGroup</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">ExampColl </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Item1</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Number</span><span style="color:blue;">></span>1<span style="color:blue;"></</span><span style="color:#a31515;">Number</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">ExampColl</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">ExampColl </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Item2</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Number</span><span style="color:blue;">></span>2<span style="color:blue;"></</span><span style="color:#a31515;">Number</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">ExampColl</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">ExampColl </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Item3</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Number</span><span style="color:blue;">></span>3<span style="color:blue;"></</span><span style="color:#a31515;">Number</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">ExampColl</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">ExampColl </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Item4</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Number</span><span style="color:blue;">></span>1<span style="color:blue;"></</span><span style="color:#a31515;">Number</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">ExampColl</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">ExampColl </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Item5</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Number</span><span style="color:blue;">></span>2<span style="color:blue;"></</span><span style="color:#a31515;">Number</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">ExampColl</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">ExampColl </span><span style="color:red;">Include</span><span style="color:blue;">=</span>"<span style="color:blue;">Item6</span>"<span style="color:blue;">>
-                <</span><span style="color:#a31515;">Number</span><span style="color:blue;">></span>3<span style="color:blue;"></</span><span style="color:#a31515;">Number</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">ExampColl</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">ItemGroup</span><span style="color:blue;">>
+        <ItemGroup>
+            <ExampColl Include="Item1">
+                <Number>1</Number>
+            </ExampColl>
+            <ExampColl Include="Item2">
+                <Number>2</Number>
+            </ExampColl>
+            <ExampColl Include="Item3">
+                <Number>3</Number>
+            </ExampColl>
+            <ExampColl Include="Item4">
+                <Number>1</Number>
+            </ExampColl>
+            <ExampColl Include="Item5">
+                <Number>2</Number>
+            </ExampColl>
+            <ExampColl Include="Item6">
+                <Number>3</Number>
+            </ExampColl>
+        </ItemGroup>
     
-        <</span><span style="color:#a31515;">Target </span><span style="color:red;">Name</span><span style="color:blue;">=</span>"<span style="color:blue;">ShowMessage</span>"<span style="color:blue;">>
-            <</span><span style="color:#a31515;">Message </span><span style="color:red;">Text </span><span style="color:blue;">= </span>"<span style="color:blue;">Number: %(ExampColl.Number) -- Items in ExampColl: @(ExampColl)</span>"<span style="color:blue;">/>
-        </</span><span style="color:#a31515;">Target</span><span style="color:blue;">>
+        <Target Name="ShowMessage">
+            <Message Text = "Number: %(ExampColl.Number) -- Items in ExampColl: @(ExampColl)"/>
+        </Target>
     
-    </</span><span style="color:#a31515;">Project</span><span style="color:blue;">></span>
+    </Project>
 
 
 
@@ -556,24 +556,24 @@ An _Execute_ method must be implemented and properties can be created that MSBui
 
   
     
-    <span style="color:blue;">using </span>System;
-    <span style="color:blue;">using </span>Microsoft.Build.Framework;
-    <span style="color:blue;">using </span>Microsoft.Build.Utilities;
+    using System;
+    using Microsoft.Build.Framework;
+    using Microsoft.Build.Utilities;
     
-    <span style="color:blue;">namespace </span>MyTasks
+    namespace MyTasks
     {
-        <span style="color:blue;">public class </span><span style="color:#2b91af;">SimpleTask </span>: Task
+        public class SimpleTask : Task
         {
-            <span style="color:blue;">public override bool </span>Execute()
+            public override bool Execute()
             {
-                <span style="color:blue;">return true</span>;
+                return true;
             }
     
-            <span style="color:blue;">private string </span>myProperty;
-            <span style="color:blue;">public string </span>MyProperty
+            private string myProperty;
+            public string MyProperty
             {
-                <span style="color:blue;">get </span>{ <span style="color:blue;">return </span>myProperty; }
-                <span style="color:blue;">set </span>{ myProperty = <span style="color:blue;">value</span>; }
+                get { return myProperty; }
+                set { myProperty = value; }
             }
         }
     }

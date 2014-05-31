@@ -208,7 +208,7 @@ New objects can be created from the pipeline using the _Select-Object_ cmdlet an
 
  
     
-    <span style="color:#5f9ea0;">Get-WmiObject -Class </span><span style="color:maroon;">Win32_LogicalDisk </span><span style="color:black;">| </span><span style="color:#5f9ea0;">Select-Object -Property </span><span style="color:maroon;">Name</span><span style="color:black;">,</span><span style="color:maroon;">FreeSpace</span>
+    Get-WmiObject -Class Win32_LogicalDisk | Select-Object -Property Name,FreeSpace
 
 
 
@@ -232,7 +232,7 @@ Sorting is simple with the _Sort-Object_ cmdlet :
 
 
     
-    <span style="color:#5f9ea0;">Get-ChildItem </span><span style="color:black;">| </span><span style="color:#5f9ea0;">Sort-Object -Property </span><span style="color:maroon;">LastWriteTime </span><span style="color:#5f9ea0;">-Descending</span>
+    Get-ChildItem | Sort-Object -Property LastWriteTime -Descending
 
 
 [](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)[](http://11011.net/software/vspaste)
@@ -251,7 +251,7 @@ Variables names are defined with a leading $ and can contain alphanumeric charac
 
 
     
-    <span style="color:purple;">$temp</span>
+    $temp
 
 
 
@@ -263,7 +263,7 @@ but can also be initialised at the same time :
 
 
     
-    <span style="color:purple;">$temp </span><span style="color:red;">= </span><span style="color:#5f9ea0;">Get-ChildItem</span>
+    $temp = Get-ChildItem
 
 
 [](http://11011.net/software/vspaste)
@@ -312,7 +312,7 @@ Environment variables defined in Windows are accessible by prefixing the variabl
 
 
     
-    <span style="color:purple;">$env:windir</span>
+    $env:windir
 
 
 [](http://11011.net/software/vspaste)

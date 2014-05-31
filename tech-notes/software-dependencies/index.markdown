@@ -25,21 +25,21 @@ Code must have dependencies - you wouldn't get much done without referencing and
 
 There are a number of different ways to implement this and in particular [Martin Fowlers](http://www.martinfowler.com/articles/injection.html) article on this or [Robert C. Martin's](http://objectmentor.com/resources/articles/dip.pdf). However, the basic premise is to implement to a contract - the contract being an interface definition. The concrete implementation of the interface can be created in a variety of ways and given to the component. For example, the following code uses a _Service Locator:_
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">ServiceLocator
-    </span>{
-        <span style="color:blue;">public static </span>T Find<T>()
+    class ServiceLocator
+    {
+        public static T Find<T>()
         {
-            <span style="color:blue;">return default</span>(T);
+            return default(T);
         }
     }
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">InvoiceService
-    </span>{
-        <span style="color:blue;">private </span><span style="color:#2b91af;">IAuthorizationService </span>authorizationService;
+    class InvoiceService
+    {
+        private IAuthorizationService authorizationService;
     
-        <span style="color:blue;">public </span>InvoiceService()
+        public InvoiceService()
         {
-            <span style="color:blue;">this</span>.authorizationService = <span style="color:#2b91af;">ServiceLocator</span>.Find<<span style="color:#2b91af;">IAuthorizationService</span>>();
+            this.authorizationService = ServiceLocator.Find<IAuthorizationService>();
         }
     }
 
@@ -73,30 +73,30 @@ Instead of (or as well as) using a Service Locator you could create a parameteri
 
 IoC containers provide a central location to manage dependencies - in it's simplest guise just a service locator with a different name. Here is an example of a simple IoC container or _Dependency Resolver_:
     
-    <span style="color:blue;">interface </span><span style="color:#2b91af;">IDependencyResolver
-    </span>{
+    interface IDependencyResolver
+    {
         T Resolve<T>();
     }
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">SimpleDependencyResolver </span>: <span style="color:#2b91af;">IDependencyResolver
-    </span>{
-        <span style="color:blue;">public readonly </span><span style="color:#2b91af;">Dictionary</span><<span style="color:#2b91af;">Type</span>, <span style="color:blue;">object</span>> m_Types =
-            <span style="color:blue;">new </span><span style="color:#2b91af;">Dictionary</span><<span style="color:#2b91af;">Type</span>, <span style="color:blue;">object</span>>();
+    class SimpleDependencyResolver : IDependencyResolver
+    {
+        public readonly Dictionary<Type, object> m_Types =
+            new Dictionary<Type, object>();
     
-        <span style="color:blue;">public </span>T Resolve<T>()
+        public T Resolve<T>()
         {
-            <span style="color:blue;">return </span>(T)m_Types[<span style="color:blue;">typeof</span>(T)];
+            return (T)m_Types[typeof(T)];
         }
     
-        <span style="color:green;">// Register is not defined on the interface because only
+        // Register is not defined on the interface because only
         // the creator need call it
-        </span><span style="color:blue;">public void </span>Register<T>(<span style="color:blue;">object </span>obj)
+        public void Register<T>(object obj)
         {
-            <span style="color:blue;">if </span>(obj <span style="color:blue;">is </span>T == <span style="color:blue;">false</span>)
+            if (obj is T == false)
             {
-                <span style="color:blue;">throw new </span><span style="color:#2b91af;">InvalidOperationException</span>();
+                throw new InvalidOperationException();
             }
-            m_Types.Add(<span style="color:blue;">typeof</span>(T), obj);
+            m_Types.Add(typeof(T), obj);
         }
     }
 
@@ -110,18 +110,18 @@ IoC containers provide a central location to manage dependencies - in it's simpl
 
 Rather than pass the Dependency Resolver to every component it's easier to define a Static Gateway:
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">DependencyResolver
-    </span>{
-        <span style="color:blue;">private static </span><span style="color:#2b91af;">IDependencyResolver </span>s_Inner;
+    class DependencyResolver
+    {
+        private static IDependencyResolver s_Inner;
     
-        <span style="color:blue;">public static void </span>Initialize(<span style="color:#2b91af;">IDependencyResolver </span>resolver)
+        public static void Initialize(IDependencyResolver resolver)
         {
             s_Inner = resolver;
         }
     
-        <span style="color:blue;">public static </span>T Resolve<T>()
+        public static T Resolve<T>()
         {
-            <span style="color:blue;">return </span>s_Inner.Resolve<T>();
+            return s_Inner.Resolve<T>();
         }
     }
 
@@ -130,13 +130,13 @@ Rather than pass the Dependency Resolver to every component it's easier to defin
 
 This leads to the option that each class's default constructor can now create the concrete classes it needs without knowing where they came from:
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">InvoiceService
-    </span>{
-        <span style="color:blue;">private </span><span style="color:#2b91af;">IAuthorizationService </span>authorizationService;
+    class InvoiceService
+    {
+        private IAuthorizationService authorizationService;
     
-        <span style="color:blue;">public </span>InvoiceService()
+        public InvoiceService()
         {
-            <span style="color:blue;">this</span>.authorizationService = <span style="color:#2b91af;">DependencyResolver</span>.Resolve<<span style="color:#2b91af;">IAuthorizationService</span>>();
+            this.authorizationService = DependencyResolver.Resolve<IAuthorizationService>();
         }
     }
 
@@ -145,15 +145,15 @@ This leads to the option that each class's default constructor can now create th
 
 [](http://11011.net/software/vspaste)
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">Program
-    </span>{
-        <span style="color:blue;">static void </span>Main(<span style="color:blue;">string</span>[] args)
+    class Program
+    {
+        static void Main(string[] args)
         {
-            <span style="color:#2b91af;">SimpleDependencyResolver </span>s = <span style="color:blue;">new </span><span style="color:#2b91af;">SimpleDependencyResolver</span>();
-            s.Register<<span style="color:#2b91af;">IAuthorizationService</span>>(<span style="color:blue;">new </span><span style="color:#2b91af;">AuthorizationService</span>());
+            SimpleDependencyResolver s = new SimpleDependencyResolver();
+            s.Register<IAuthorizationService>(new AuthorizationService());
     
-            <span style="color:#2b91af;">DependencyResolver</span>.Initialize(s);
-            <span style="color:#2b91af;">InvoiceService </span>invoiceService = <span style="color:blue;">new </span><span style="color:#2b91af;">InvoiceService</span>();
+            DependencyResolver.Initialize(s);
+            InvoiceService invoiceService = new InvoiceService();
         }
     
     }

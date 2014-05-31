@@ -58,10 +58,10 @@ Hosting relies on the creation of a _ServiceHost_, passing the type that **imple
   * the binding type to use  
   * the address to connect to 
     
-    <span style="color:blue;">using </span>(<span style="color:#2b91af;">ServiceHost </span>host = <span style="color:blue;">new </span><span style="color:#2b91af;">ServiceHost</span>(<span style="color:blue;">typeof</span>(HelloWorld.<span style="color:#2b91af;">HelloWorldService</span>)))
+    using (ServiceHost host = new ServiceHost(typeof(HelloWorld.HelloWorldService)))
     {
-        host.AddServiceEndpoint(<span style="color:blue;">typeof</span>(HelloWorld.<span style="color:#2b91af;">IHelloWorldService</span>),
-                <span style="color:blue;">new </span><span style="color:#2b91af;">NetTcpBinding</span>(), <span style="color:#a31515;">"net.tcp://localhost:9000/HelloIndigo"</span>);
+        host.AddServiceEndpoint(typeof(HelloWorld.IHelloWorldService),
+                new NetTcpBinding(), "net.tcp://localhost:9000/HelloIndigo");
         host.Open();
     }
 
@@ -86,20 +86,20 @@ For the client to consume the service it must:
 
   * Call the service method. 
     
-    [<span style="color:#2b91af;">ServiceContract</span>(Namespace = <span style="color:#a31515;">"http://www.philiphendry.me.uk/samples/HelloWorld/2008/03"</span>)]
-    <span style="color:blue;">public interface </span><span style="color:#2b91af;">IHelloWorldService
-    </span>{
-        [<span style="color:#2b91af;">OperationContract</span>]
-        <span style="color:blue;">string </span>TheMessage(<span style="color:blue;">string </span>message);
+    [ServiceContract(Namespace = "http://www.philiphendry.me.uk/samples/HelloWorld/2008/03")]
+    public interface IHelloWorldService
+    {
+        [OperationContract]
+        string TheMessage(string message);
     }
     
-    <span style="color:blue;">class </span><span style="color:#2b91af;">Program
-    </span>{
-        <span style="color:blue;">static void </span>Main(<span style="color:blue;">string</span>[] args)
+    class Program
+    {
+        static void Main(string[] args)
         {
-            <span style="color:#2b91af;">IHelloWorldService </span>proxy = <span style="color:#2b91af;">ChannelFactory</span><<span style="color:#2b91af;">IHelloWorldService</span>>.CreateChannel(
-                <span style="color:blue;">new </span><span style="color:#2b91af;">NetTcpBinding</span>(), <span style="color:blue;">new </span><span style="color:#2b91af;">EndpointAddress</span>(<span style="color:#a31515;">"net.tcp://localhost:9000/HelloWorld"</span>));
-            <span style="color:#2b91af;">Console</span>.WriteLine(proxy.TheMessage(<span style="color:#a31515;">"Hello world"</span>));
+            IHelloWorldService proxy = ChannelFactory<IHelloWorldService>.CreateChannel(
+                new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:9000/HelloWorld"));
+            Console.WriteLine(proxy.TheMessage("Hello world"));
         }
     }
 
@@ -152,34 +152,34 @@ The WSDL can also be used using _svcutil.exe_ to generate the proxy code on the 
 
 A configuration file can be used to define the WCF endpoints. The following example defines two endpoints. The first is in addition to the programmatic endpoint defined in the code above. These second provides the metadata exchange and defines its address as a relative address which must be combined with a baseAddress to form the full path:
     
-    <span style="color:blue;"><?</span><span style="color:#a31515;">xml </span><span style="color:red;">version</span><span style="color:blue;">=</span>"<span style="color:blue;">1.0</span>" <span style="color:red;">encoding</span><span style="color:blue;">=</span>"<span style="color:blue;">utf-8</span>" <span style="color:blue;">?>
-    <</span><span style="color:#a31515;">configuration</span><span style="color:blue;">>
-      <</span><span style="color:#a31515;">system.serviceModel</span><span style="color:blue;">>
-        <</span><span style="color:#a31515;">services</span><span style="color:blue;">>
-          <</span><span style="color:#a31515;">service </span><span style="color:red;">name</span><span style="color:blue;">=</span>"<span style="color:blue;">HelloWorld.HelloWorldService</span>"
-                   <span style="color:red;">behaviorConfiguration</span><span style="color:blue;">=</span>"<span style="color:blue;">serviceBehaviour</span>"<span style="color:blue;">>
-            <</span><span style="color:#a31515;">endpoint </span><span style="color:red;">binding</span><span style="color:blue;">=</span>"<span style="color:blue;">basicHttpBinding</span>"
-                      <span style="color:red;">contract</span><span style="color:blue;">=</span>"<span style="color:blue;">HelloWorld.IHelloWorldService</span>"
-                      <span style="color:red;">address</span><span style="color:blue;">=</span>"<span style="color:blue;">http://localhost:8000/HelloWorld</span>" <span style="color:blue;">/>
-            <</span><span style="color:#a31515;">endpoint </span><span style="color:red;">binding</span><span style="color:blue;">=</span>"<span style="color:blue;">mexHttpBinding</span>"
-                      <span style="color:red;">contract</span><span style="color:blue;">=</span>"<span style="color:blue;">IMetadataExchange</span>"
-                      <span style="color:red;">address</span><span style="color:blue;">=</span>"<span style="color:blue;">mex</span>" <span style="color:blue;">/>
-            <</span><span style="color:#a31515;">host</span><span style="color:blue;">>
-              <</span><span style="color:#a31515;">baseAddresses</span><span style="color:blue;">>
-                <</span><span style="color:#a31515;">add </span><span style="color:red;">baseAddress</span><span style="color:blue;">=</span>"<span style="color:blue;">http://localhost:8000</span>"<span style="color:blue;">/>
-              </</span><span style="color:#a31515;">baseAddresses</span><span style="color:blue;">>
-            </</span><span style="color:#a31515;">host</span><span style="color:blue;">>
-          </</span><span style="color:#a31515;">service</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">services</span><span style="color:blue;">>
-        <</span><span style="color:#a31515;">behaviors</span><span style="color:blue;">>
-          <</span><span style="color:#a31515;">serviceBehaviors</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">behavior </span><span style="color:red;">name</span><span style="color:blue;">=</span>"<span style="color:blue;">ServiceBehaviour</span>"<span style="color:blue;">>
-              <</span><span style="color:#a31515;">serviceMetadata </span><span style="color:red;">httpGetEnabled</span><span style="color:blue;">=</span>"<span style="color:blue;">true</span>"<span style="color:blue;">/>
-            </</span><span style="color:#a31515;">behavior</span><span style="color:blue;">>
-          </</span><span style="color:#a31515;">serviceBehaviors</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">behaviors</span><span style="color:blue;">>
-      </</span><span style="color:#a31515;">system.serviceModel</span><span style="color:blue;">>
-    </</span><span style="color:#a31515;">configuration</span><span style="color:blue;">></span>
+    <?xml version="1.0" encoding="utf-8" ?>
+    <configuration>
+      <system.serviceModel>
+        <services>
+          <service name="HelloWorld.HelloWorldService"
+                   behaviorConfiguration="serviceBehaviour">
+            <endpoint binding="basicHttpBinding"
+                      contract="HelloWorld.IHelloWorldService"
+                      address="http://localhost:8000/HelloWorld" />
+            <endpoint binding="mexHttpBinding"
+                      contract="IMetadataExchange"
+                      address="mex" />
+            <host>
+              <baseAddresses>
+                <add baseAddress="http://localhost:8000"/>
+              </baseAddresses>
+            </host>
+          </service>
+        </services>
+        <behaviors>
+          <serviceBehaviors>
+            <behavior name="ServiceBehaviour">
+              <serviceMetadata httpGetEnabled="true"/>
+            </behavior>
+          </serviceBehaviors>
+        </behaviors>
+      </system.serviceModel>
+    </configuration>
 
 
 
@@ -211,11 +211,11 @@ There are three types of contracts:
 
 Contracts define the operations and parameter types that are defined on a service. Endpoints can only be associated to a single contract. To define a class and operation must be attributed. It is preferable to attribute an interface then it can be implemented multiple times:
     
-    [<span style="color:#2b91af;">ServiceContract</span>(Namespace=<span style="color:#a31515;">"http://www.philiphendry.me.uk/samples/HelloWorld/2008/03"</span>)]
-    <span style="color:blue;">public interface </span><span style="color:#2b91af;">IHelloWorldService
-    </span>{
-        [<span style="color:#2b91af;">OperationContract</span>]
-        <span style="color:blue;">string </span>TheMessage(<span style="color:blue;">string </span>message);
+    [ServiceContract(Namespace="http://www.philiphendry.me.uk/samples/HelloWorld/2008/03")]
+    public interface IHelloWorldService
+    {
+        [OperationContract]
+        string TheMessage(string message);
     }
 
 
@@ -228,19 +228,19 @@ Contracts define the operations and parameter types that are defined on a servic
 
 It is a good idea to add the _Name_ parameter to the attributes so that the operation or class name can be changed without affecting the contract. The following example demonstrates this including naming operation parameters and return types:
     
-    [<span style="color:#2b91af;">ServiceContract</span>(
-        Name=<span style="color:#a31515;">"HelloWorldService"</span>,
-        Namespace=<span style="color:#a31515;">"http://www.philiphendry.me.uk/samples/HelloWorld/2008/03"</span>)]
-    <span style="color:blue;">public interface </span><span style="color:#2b91af;">IHelloWorldService
-    </span>{
-        [<span style="color:#2b91af;">OperationContract</span>(
-            Name=<span style="color:#a31515;">"TheMessage"</span>,
-            Action = <span style="color:#a31515;">"http://www.philiphendry.me.uk/samples/HelloWorld/2008/03/HelloWorldService/TheMessage"</span>,
-            ReplyAction = <span style="color:#a31515;">"http://www.philiphendry.me.uk/samples/HelloWorld/2008/03/HelloWorldService/TheMessageResponse"</span>)]
-        [<span style="color:blue;">return</span>: <span style="color:#2b91af;">MessageParameter</span>(Name=<span style="color:#a31515;">"ReturnString"</span>)]
-        <span style="color:blue;">string </span>TheMessage(
-            [<span style="color:#2b91af;">MessageParameter</span>(Name=<span style="color:#a31515;">"Message"</span>)]
-            <span style="color:blue;">string </span>message);
+    [ServiceContract(
+        Name="HelloWorldService",
+        Namespace="http://www.philiphendry.me.uk/samples/HelloWorld/2008/03")]
+    public interface IHelloWorldService
+    {
+        [OperationContract(
+            Name="TheMessage",
+            Action = "http://www.philiphendry.me.uk/samples/HelloWorld/2008/03/HelloWorldService/TheMessage",
+            ReplyAction = "http://www.philiphendry.me.uk/samples/HelloWorld/2008/03/HelloWorldService/TheMessageResponse")]
+        [return: MessageParameter(Name="ReturnString")]
+        string TheMessage(
+            [MessageParameter(Name="Message")]
+            string message);
     }
 
 
@@ -276,7 +276,7 @@ _IsOneWay=[true|false]_ can be specified on the operation to make the method mor
 
 _FaultContract(typeof(<typename>)]_ can be specified to abstract clients away from the details of how a service is written since stack traces in errors specify internal details. The client errors specified in the contract can then be thrown with the following code:
     
-    <span style="color:blue;">throw new </span>FaultException<<span style="color:#2b91af;">MyClientException</span>>(<span style="color:blue;">new </span><span style="color:#2b91af;">MyClientException</span>(<span style="color:#a31515;">"Custom error"</span>));
+    throw new FaultException<MyClientException>(new MyClientException("Custom error"));
 
 
 
@@ -338,13 +338,13 @@ If an operation includes a parameters or return value that is of a complex type 
 
 For example, the following _MessageItem_ complex type is decorated with the _DataContract_ and _DataMember_ attributes and creates a _Nested WSDL_ which contains the definition. The name in the contract will default to the name of the decorated field or property but can be defined by adding the _Name_ named parameter to the attribute.
     
-    [<span style="color:#2b91af;">DataContract</span>]
-    <span style="color:blue;">public class </span><span style="color:#2b91af;">MessageItem
-    </span>{
-        [<span style="color:#2b91af;">DataMember</span>]
-        <span style="color:blue;">public string </span>TheMessage { <span style="color:blue;">get</span>; <span style="color:blue;">private set</span>; }
+    [DataContract]
+    public class MessageItem
+    {
+        [DataMember]
+        public string TheMessage { get; private set; }
     
-        <span style="color:blue;">public string </span>Category { <span style="color:blue;">get</span>; <span style="color:blue;">private set</span>; }
+        public string Category { get; private set; }
     }
 
 
@@ -362,25 +362,25 @@ For example, the following _MessageItem_ complex type is decorated with the _Dat
 
 If a complex type being used as a parameter or return value can be one of a number of derived types, then the _KnownTypeAttribute_ can be applied to the base class to define other types that can be used by the client in conversations with the server. This attribute will have the server generate the contract and WSDL with the extra types included:
     
-    [<span style="color:#2b91af;">DataContract</span>(Namespace=<span style="color:#a31515;">"http://www.philiphendry.me.uk/samples/HelloWorld/2008/03"</span>)]
-    [<span style="color:#2b91af;">KnownType</span>(<span style="color:blue;">typeof</span>(<span style="color:#2b91af;">ComplexMessageItem</span>))]
-    [<span style="color:#2b91af;">KnownType</span>(<span style="color:blue;">typeof</span>(<span style="color:#2b91af;">SimpleMessageItem</span>))]
-    <span style="color:blue;">public class </span><span style="color:#2b91af;">MessageItem
-    </span>{
-        [<span style="color:#2b91af;">DataMember</span>]
-        <span style="color:blue;">public string </span>TheMessage { <span style="color:blue;">get</span>; <span style="color:blue;">private set</span>; }
+    [DataContract(Namespace="http://www.philiphendry.me.uk/samples/HelloWorld/2008/03")]
+    [KnownType(typeof(ComplexMessageItem))]
+    [KnownType(typeof(SimpleMessageItem))]
+    public class MessageItem
+    {
+        [DataMember]
+        public string TheMessage { get; private set; }
     
-        <span style="color:blue;">public string </span>Category { <span style="color:blue;">get</span>; <span style="color:blue;">private set</span>; }
+        public string Category { get; private set; }
     }
     
-    [<span style="color:#2b91af;">DataContract</span>(Namespace=<span style="color:#a31515;">"http://www.philiphendry.me.uk/samples/HelloWorld/2008/03"</span>)]
-    <span style="color:blue;">public class </span><span style="color:#2b91af;">ComplexMessageItem </span>: <span style="color:#2b91af;">MessageItem
-    </span>{
+    [DataContract(Namespace="http://www.philiphendry.me.uk/samples/HelloWorld/2008/03")]
+    public class ComplexMessageItem : MessageItem
+    {
     }
     
-    [<span style="color:#2b91af;">DataContract</span>(Namespace=<span style="color:#a31515;">"http://www.philiphendry.me.uk/samples/HelloWorld/2008/03"</span>)]
-    <span style="color:blue;">public class </span><span style="color:#2b91af;">SimpleMessageItem </span>: <span style="color:#2b91af;">MessageItem
-    </span>{
+    [DataContract(Namespace="http://www.philiphendry.me.uk/samples/HelloWorld/2008/03")]
+    public class SimpleMessageItem : MessageItem
+    {
     }
     
 
@@ -399,12 +399,12 @@ If a complex type being used as a parameter or return value can be one of a numb
 
 The _ServiceKnownType_ attribute can be added to the service contract instead of the actual type since adding to the actual type means that every contract would have to allow all the defined types.
     
-    [<span style="color:#2b91af;">ServiceContract</span>(Namespace=<span style="color:#a31515;">"http://www.philiphendry.me.uk/samples/HelloWorld/2008/03"</span>)]
-    [<span style="color:#2b91af;">ServiceKnownType</span>(<span style="color:blue;">typeof</span>(<span style="color:#2b91af;">ComplexMessageItem</span>))]
-    <span style="color:blue;">public interface </span><span style="color:#2b91af;">IHelloWorldService
-    </span>{
-        [<span style="color:#2b91af;">OperationContract</span>]
-        <span style="color:blue;">string </span>TheMessage(<span style="color:#2b91af;">MessageItem </span>message);
+    [ServiceContract(Namespace="http://www.philiphendry.me.uk/samples/HelloWorld/2008/03")]
+    [ServiceKnownType(typeof(ComplexMessageItem))]
+    public interface IHelloWorldService
+    {
+        [OperationContract]
+        string TheMessage(MessageItem message);
     }
     
 
@@ -418,16 +418,16 @@ The _ServiceKnownType_ attribute can be added to the service contract instead of
 
 Types can also be added to the the configuration file which allows for implementation configuration changes. This can also be adapted to offer dynamically changing types at runtime if required.
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">system.runtime.serialization</span><span style="color:blue;">>
-      <</span><span style="color:#a31515;">dataContractSerializer</span><span style="color:blue;">>
-        <</span><span style="color:#a31515;">declaredTypes</span><span style="color:blue;">>
-          <</span><span style="color:#a31515;">add </span><span style="color:red;">type</span><span style="color:blue;">=</span>"<span style="color:blue;">HelloWorld.MessageItem, HelloWorld, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</span>"<span style="color:blue;">>
-            <</span><span style="color:#a31515;">knownType </span><span style="color:red;">type</span><span style="color:blue;">=</span>"<span style="color:blue;">HelloWorld.ComplexMessageItem, HelloWorld, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</span>" <span style="color:blue;">/>
-            <</span><span style="color:#a31515;">knownType </span><span style="color:red;">type</span><span style="color:blue;">=</span>"<span style="color:blue;">HelloWorld.SimpleMessageItem, HelloWorld, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</span>" <span style="color:blue;">/>
-          </</span><span style="color:#a31515;">add</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">declaredTypes</span><span style="color:blue;">>
-      </</span><span style="color:#a31515;">dataContractSerializer</span><span style="color:blue;">>
-    </</span><span style="color:#a31515;">system.runtime.serialization</span><span style="color:blue;">></span>
+    <system.runtime.serialization>
+      <dataContractSerializer>
+        <declaredTypes>
+          <add type="HelloWorld.MessageItem, HelloWorld, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <knownType type="HelloWorld.ComplexMessageItem, HelloWorld, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <knownType type="HelloWorld.SimpleMessageItem, HelloWorld, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          </add>
+        </declaredTypes>
+      </dataContractSerializer>
+    </system.runtime.serialization>
 
 
 
@@ -439,32 +439,32 @@ Types can also be added to the the configuration file which allows for implement
 
 Is the best way to support a given contract from a object that is very different in structure - the mapping can be controlled explicitly.
     
-    [<span style="color:#2b91af;">XmlSchemaProvider</span>(<span style="color:#a31515;">"GetSchema"</span>)]
-    <span style="color:blue;">public class </span><span style="color:#2b91af;">MessageItemSerializer </span>: <span style="color:#2b91af;">IXmlSerializable
-    </span>{
-        <span style="color:blue;">public static </span><span style="color:#2b91af;">XmlQualifiedName </span>GetSchema(<span style="color:#2b91af;">XmlSchemaSet </span>schemaSet)
+    [XmlSchemaProvider("GetSchema")]
+    public class MessageItemSerializer : IXmlSerializable
+    {
+        public static XmlQualifiedName GetSchema(XmlSchemaSet schemaSet)
         {
-            <span style="color:blue;">string </span>schemaString = <span style="color:#2b91af;">String</span>.Format(<span style="color:#a31515;">"<xs:schema xmlns:tns='{0}' xmlns:xs='http://www.w3.org/2001/XMLSchema' ..... </xs:schema>"</span>, ns);
+            string schemaString = String.Format("<xs:schema xmlns:tns='{0}' xmlns:xs='http://www.w3.org/2001/XMLSchema' ..... </xs:schema>", ns);
     
-            <span style="color:#2b91af;">XmlSchema </span>schema = <span style="color:#2b91af;">XmlSchema</span>.Read(<span style="color:blue;">new </span><span style="color:#2b91af;">StringReader</span>(schemaString), <span style="color:blue;">null</span>);
-            schemaSet.XmlResolver = <span style="color:blue;">new </span><span style="color:#2b91af;">XmlUrlResolver</span>();
+            XmlSchema schema = XmlSchema.Read(new StringReader(schemaString), null);
+            schemaSet.XmlResolver = new XmlUrlResolver();
             schemaSet.Add(schema);
     
-            <span style="color:blue;">return new </span><span style="color:#2b91af;">XmlQualifiedName</span>(<span style="color:#a31515;">"MessageItem"</span>, ns);
+            return new XmlQualifiedName("MessageItem", ns);
         }
     
-        <span style="color:blue;">public </span>System.Xml.Schema.<span style="color:#2b91af;">XmlSchema </span>GetSchema()
+        public System.Xml.Schema.XmlSchema GetSchema()
         {
-            <span style="color:blue;">throw new </span><span style="color:#2b91af;">NotImplementedException</span>(<span style="color:#a31515;">"Not implemented - the XMmlSchemaProvider attribute specifies" </span>+
-                <span style="color:#a31515;">"calling the static GetSchema method instead"</span>);
+            throw new NotImplementedException("Not implemented - the XMmlSchemaProvider attribute specifies" +
+                "calling the static GetSchema method instead");
         }
     
-        <span style="color:blue;">public void </span>ReadXml(System.Xml.<span style="color:#2b91af;">XmlReader </span>reader)
+        public void ReadXml(System.Xml.XmlReader reader)
         {
-            MessageItem = <span style="color:blue;">new </span><span style="color:#2b91af;">MessageItem</span>();
-            <span style="color:blue;">while </span>(reader.IsStartElement())
+            MessageItem = new MessageItem();
+            while (reader.IsStartElement())
             {
-                <span style="color:blue;">if </span>(reader.IsStartElement(<span style="color:#a31515;">"TheMessage"</span>))
+                if (reader.IsStartElement("TheMessage"))
                 {
                     reader.MoveToContent();
                     MessageItem.TheMessage = reader.ReadString();
@@ -474,12 +474,12 @@ Is the best way to support a given contract from a object that is very different
             }
         }
     
-        <span style="color:blue;">public void </span>WriteXml(System.Xml.<span style="color:#2b91af;">XmlWriter </span>writer)
+        public void WriteXml(System.Xml.XmlWriter writer)
         {
-            <span style="color:blue;">throw new </span><span style="color:#2b91af;">NotImplementedException</span>();
+            throw new NotImplementedException();
         }
     
-        <span style="color:blue;">public </span><span style="color:#2b91af;">MessageItem </span>MessageItem { <span style="color:blue;">get</span>; <span style="color:blue;">private set</span>; }
+        public MessageItem MessageItem { get; private set; }
     }
     
 
@@ -493,14 +493,14 @@ Is the best way to support a given contract from a object that is very different
 
 Message contracts are particularly useful for adding custom headers or controlling protection level by only encrypting certain sections, for example. The message itself is sent as a SOAP method and therefore the SOAP body carries the payload to be given to the client whilst the rest of the message is used for containing, describing and transporting the body. In particular it may be that the header is used by routers to transfer messages to particular servers (load balancing for example) and therefore data marked with _MessageHeader_ will be contained in the header where it will be visible.
     
-    [<span style="color:#2b91af;">MessageContract</span>]
-    <span style="color:blue;">public class </span><span style="color:#2b91af;">CustomClass
-    </span>{
-        [<span style="color:#2b91af;">MessageHeader</span>]
-        <span style="color:blue;">public string </span>operation;
+    [MessageContract]
+    public class CustomClass
+    {
+        [MessageHeader]
+        public string operation;
     
-        [<span style="color:#2b91af;">MessageBodyMember</span>]
-        <span style="color:blue;">public string </span>data;
+        [MessageBodyMember]
+        public string data;
     }
 
 
@@ -715,30 +715,30 @@ T = Transport Security, S = WS-Security, O = One-Way only
 
 Bindings are specified in the configuration (although code is possible too) and allow changes without having to recompile code. The following example shows how the endpoint is named _Binding1_ and then the binding properties are modified in the _bindings_ section:
     
-    <span style="color:blue;"><?</span><span style="color:#a31515;">xml </span><span style="color:red;">version</span><span style="color:blue;">=</span>"<span style="color:blue;">1.0</span>" <span style="color:red;">encoding</span><span style="color:blue;">=</span>"<span style="color:blue;">utf-8</span>" <span style="color:blue;">?>
-    <</span><span style="color:#a31515;">configuration</span><span style="color:blue;">>
-      <</span><span style="color:#a31515;">system.serviceModel</span><span style="color:blue;">>
-        <</span><span style="color:#a31515;">services</span><span style="color:blue;">>
-          <</span><span style="color:#a31515;">service </span><span style="color:red;">name</span><span style="color:blue;">=</span>"<span style="color:blue;">HelloWorld.HelloWorldService</span>"
-                   <span style="color:red;">behaviorConfiguration</span><span style="color:blue;">=</span>"<span style="color:blue;">serviceBehaviour</span>"<span style="color:blue;">>
-            <</span><span style="color:#a31515;">endpoint </span><span style="color:red;">bindingConfiguration</span><span style="color:blue;">=</span>"<span style="color:blue;">Binding1</span>"
-                      <span style="color:red;">binding</span><span style="color:blue;">=</span>"<span style="color:blue;">basicHttpBinding</span>"
-                      <span style="color:red;">contract</span><span style="color:blue;">=</span>"<span style="color:blue;">HelloWorld.IHelloWorldService</span>"
-                      <span style="color:red;">address</span><span style="color:blue;">=</span>"<span style="color:blue;">http://localhost:8000/HelloWorld</span>" <span style="color:blue;">/>
-    </span><span style="color:blue;">      </</span><span style="color:#a31515;">service</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">services</span><span style="color:blue;">>
-        <</span><span style="color:#a31515;">bindings</span><span style="color:blue;">>
-          <</span><span style="color:#a31515;">basicHttpBinding</span><span style="color:blue;">>
-            <</span><span style="color:#a31515;">binding </span><span style="color:red;">name</span><span style="color:blue;">=</span>"<span style="color:blue;">Binding1</span>" 
-                     <span style="color:red;">hostNameComparisonMode</span><span style="color:blue;">=</span>"<span style="color:blue;">StrongWildcard</span>"
-                     <span style="color:red;">sendTimeout</span><span style="color:blue;">=</span>"<span style="color:blue;">00:10:00</span>"
-                     <span style="color:red;">maxReceivedMessageSize</span><span style="color:blue;">=</span>"<span style="color:blue;">65536</span>"
-                     <span style="color:red;">messageEncoding</span><span style="color:blue;">=</span>"<span style="color:blue;">Text</span>"
-                     <span style="color:red;">textEncoding</span><span style="color:blue;">=</span>"<span style="color:blue;">utf-8</span>" <span style="color:blue;">/>
-          </</span><span style="color:#a31515;">basicHttpBinding</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">bindings</span><span style="color:blue;">>
-    </span><span style="color:blue;">  </</span><span style="color:#a31515;">system.serviceModel</span><span style="color:blue;">>
-    </span><span style="color:blue;"></</span><span style="color:#a31515;">configuration</span><span style="color:blue;">></span>
+    <?xml version="1.0" encoding="utf-8" ?>
+    <configuration>
+      <system.serviceModel>
+        <services>
+          <service name="HelloWorld.HelloWorldService"
+                   behaviorConfiguration="serviceBehaviour">
+            <endpoint bindingConfiguration="Binding1"
+                      binding="basicHttpBinding"
+                      contract="HelloWorld.IHelloWorldService"
+                      address="http://localhost:8000/HelloWorld" />
+          </service>
+        </services>
+        <bindings>
+          <basicHttpBinding>
+            <binding name="Binding1" 
+                     hostNameComparisonMode="StrongWildcard"
+                     sendTimeout="00:10:00"
+                     maxReceivedMessageSize="65536"
+                     messageEncoding="Text"
+                     textEncoding="utf-8" />
+          </basicHttpBinding>
+        </bindings>
+      </system.serviceModel>
+    </configuration>
 
 
 
@@ -798,9 +798,9 @@ There are a number of instancing behaviours that are available :
 
 This can be specified either in code:
     
-    [<span style="color:#2b91af;">ServiceBehavior</span>(InstanceContextMode=<span style="color:#2b91af;">InstanceContextMode</span>.Single)]
-    <span style="color:blue;">public class </span><span style="color:#2b91af;">HelloWorldService </span>: <span style="color:#2b91af;">IHelloWorldService
-    </span>{
+    [ServiceBehavior(InstanceContextMode=InstanceContextMode.Single)]
+    public class HelloWorldService : IHelloWorldService
+    {
     }
 
 
@@ -808,22 +808,22 @@ This can be specified either in code:
 
 Or in config:
     
-    <span style="color:blue;"><</span><span style="color:#a31515;">system.serviceModel</span><span style="color:blue;">>
-      <</span><span style="color:#a31515;">services</span><span style="color:blue;">>
-        <</span><span style="color:#a31515;">service </span><span style="color:red;">name</span><span style="color:blue;">=</span>"<span style="color:blue;">HelloWorld.HelloWorldService</span>"
-                 <span style="color:red;">behaviorConfiguration</span><span style="color:blue;">=</span>"<span style="color:blue;">serviceBehaviour</span>"<span style="color:blue;">>
-            <!-- </span><span style="color:green;">endpoints </span><span style="color:blue;">-->      
-        </</span><span style="color:#a31515;">service</span><span style="color:blue;">>
-      </</span><span style="color:#a31515;">services</span><span style="color:blue;">>
-      <</span><span style="color:#a31515;">behaviors</span><span style="color:blue;">>
-        <</span><span style="color:#a31515;">serviceBehaviors</span><span style="color:blue;">>
-          <</span><span style="color:#a31515;">behavior </span><span style="color:red;">name</span><span style="color:blue;">=</span>"<span style="color:blue;">serviceBehaviour</span>"<span style="color:blue;">>
-            <</span><span style="color:#a31515;">serviceThrottling </span><span style="color:red;">maxConcurrentCalls</span><span style="color:blue;">=</span>"<span style="color:blue;">10</span>"
-                               <span style="color:red;">maxConcurrentInstances</span><span style="color:blue;">=</span>"<span style="color:blue;">10</span>"<span style="color:blue;">/>
-          </</span><span style="color:#a31515;">behavior</span><span style="color:blue;">>
-        </</span><span style="color:#a31515;">serviceBehaviors</span><span style="color:blue;">>
-      </</span><span style="color:#a31515;">behaviors</span><span style="color:blue;">>
-    </</span><span style="color:#a31515;">system.serviceModel</span><span style="color:blue;">></span>
+    <system.serviceModel>
+      <services>
+        <service name="HelloWorld.HelloWorldService"
+                 behaviorConfiguration="serviceBehaviour">
+            <!-- endpoints -->      
+        </service>
+      </services>
+      <behaviors>
+        <serviceBehaviors>
+          <behavior name="serviceBehaviour">
+            <serviceThrottling maxConcurrentCalls="10"
+                               maxConcurrentInstances="10"/>
+          </behavior>
+        </serviceBehaviors>
+      </behaviors>
+    </system.serviceModel>
 
 
 
