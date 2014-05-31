@@ -1,0 +1,8 @@
+<header class="post-header">
+	<h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+	<p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+</header>
+
+<article class="post-content">
+	{{ content }}
+</article>
