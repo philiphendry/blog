@@ -16,28 +16,28 @@ So, in not particular order, here are the techniques:
 There are a number of techniques for passing options to the directive including adding attributes to the HTML element the directive is declared on. However, this particular technique wants to pass a JSON object through to the directive. In this particular case it's passed as the parameter to the directive:
 
 ```
-    <textarea ui-tinymce="theoptions" />
+<textarea ui-tinymce="theoptions" />
 ```
 
 These options can be set in a controller:
 
 ```
-    function aController($scope) {
-        $scope.theoptions = {
-            menubar: false,
-            statusbar: false
-        };
-    }
+function aController($scope) {
+    $scope.theoptions = {
+        menubar: false,
+        statusbar: false
+    };
+}
 ```
 
 and then accessed from within the directive:
 
 ```
-    if (attrs.uiTinymce) {
-        expression = scope.$eval(attrs.uiTinymce);
-    } else {
-        expression = {};
-    }
+if (attrs.uiTinymce) {
+    expression = scope.$eval(attrs.uiTinymce);
+} else {
+    expression = {};
+}
 ```
 
 ### Configuration Option Overrides
@@ -47,21 +47,21 @@ Taking that technique above further, the settings themselves can be defined in m
 * Specify the options on the scope in a controller (see above)
 * Provide some default options within the directive itself:
 ```
-    angular.module('ui.tinymce', [])
-           .value('uiTinymceConfig', {
-                menubar: false,
-                statusbar: false
-           });
+angular.module('ui.tinymce', [])
+       .value('uiTinymceConfig', {
+            menubar: false,
+            statusbar: false
+       });
 ```
 * Fixed options within the directive itself. In the directive this was used to hook in callbacks from TinyMCE itself.
 
 Finally the options are merged and passed to TinyMCE:
 
 ```
-    angular.extend(options, uiTinymceConfig, expression);
-    setTimeout(function() { 
-        tinymce.init(options); 
-    });
+angular.extend(options, uiTinymceConfig, expression);
+setTimeout(function() { 
+    tinymce.init(options); 
+});
 ```
 
 ### Automatically Generating Ids
@@ -69,9 +69,9 @@ Finally the options are merged and passed to TinyMCE:
 This is the first time I'd seen this technique - TinyMCE was used being asked to configure itself against textarea elements with specific IDs. However, if the element with the directive does not have one, one will be generated:
 
 ```
-    if (!attrs.id) {
-        attrs.$set('id', 'uiTinymce' + generatedIds++);
-    }
+if (!attrs.id) {
+    attrs.$set('id', 'uiTinymce' + generatedIds++);
+}
 ```
 
 ### Updating the View from a TinyMCE Callback
@@ -79,12 +79,12 @@ This is the first time I'd seen this technique - TinyMCE was used being asked to
 This technique defines a function that is called from the TinyMCE callbacks:
 
 ```
-    updateView = function() {
-        ngModel.$setViewValue(elm.val());
-        if (!scope.$root.$$phase) {
-            scope.$apply();
-        }
+updateView = function() {
+    ngModel.$setViewValue(elm.val());
+    if (!scope.$root.$$phase) {
+        scope.$apply();
     }
+}
 ```
 
 It's using [\$setViewValue](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.directive:ngModel.NgModelController#$setViewValue) to write the value from TinyMCE back on to the model. It's drummed in to you that calling \$apply() is necessary after updating the model but what I've not seen much of is the call to `scope.\$root.\$\$phase` that checks that we aren't already in the digest loop. Given AngularJS is going to keep processing the digest loop until everything is gone the model update will be picked up.
@@ -94,14 +94,14 @@ It's using [\$setViewValue](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.di
 Given this directive takes over the rendering of content it must hook into the render request from AngularJS. [\$render](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.directive:ngModel.NgModelController#$render) does exactly that and in ui-tinymce it's used to copy the data from the model into the TinyMCE control:
 
 ```
-    ngModel.$render = function() {
-        if (!tinyInstance) {
-            tinyInstance = tinymce.get(attrs.id);
-        }
-            if (tinyInstance) {
-                tinyInstance.setContent(ngModel.$viewValue || '');
-        }
-    };
+ngModel.$render = function() {
+    if (!tinyInstance) {
+        tinyInstance = tinymce.get(attrs.id);
+    }
+        if (tinyInstance) {
+            tinyInstance.setContent(ngModel.$viewValue || '');
+    }
+};
 ```
 
 ### Destroying Content
@@ -109,11 +109,11 @@ Given this directive takes over the rendering of content it must hook into the r
 Finally the normal request to the scopes [\$on](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.$rootScope.Scope\$on) method to respond to the request to \$destroy the control:
 
 ```
-    scope.$on('$destroy', function() {
-        if (!tinyInstance) { tinyInstance = tinymce.get(attrs.id); }
-        if (tinyInstance) {
-            tinyInstance.remove();
-            tinyInstance = null;
-        }
-    });
+scope.$on('$destroy', function() {
+    if (!tinyInstance) { tinyInstance = tinymce.get(attrs.id); }
+    if (tinyInstance) {
+        tinyInstance.remove();
+        tinyInstance = null;
+    }
+});
 ```
