@@ -45,7 +45,9 @@ if (attrs.uiTinymce) {
 Taking that technique above further, the settings themselves can be defined in multiple areas and, using `angular.extend()`, merged together. The options are:
 
 * Specify the options on the scope in a controller (see above)
+* Fixed options within the directive itself. In the directive this was used to hook in callbacks from TinyMCE itself.
 * Provide some default options within the directive itself:
+
 ```
 angular.module('ui.tinymce', [])
        .value('uiTinymceConfig', {
@@ -53,7 +55,7 @@ angular.module('ui.tinymce', [])
             statusbar: false
        });
 ```
-* Fixed options within the directive itself. In the directive this was used to hook in callbacks from TinyMCE itself.
+
 
 Finally the options are merged and passed to TinyMCE:
 
