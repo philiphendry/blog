@@ -9,11 +9,11 @@ tags:
 ---
 I've been looking at a [TinyMCE](https://github.com/angular-ui/ui-tinymce/blob/master/src/tinymce.js) directive that made me realise there are a number of techniques used there that would be useful to document. The directive is a great example of producing clean interfaces between AngularJS and other controls.
 
-So, in not particular order, here are the techniques:
+So, in no particular order, here are the techniques:
 
 ### Configuration Options as a JSON Object
 
-There are a number of techniques for passing options to the directive including adding attributes to the HTML element the directive is declared on. However, this particular technique wants to pass a JSON object through to the directive. In this particular case it's passed as the parameter to the directive:
+There are a number of techniques for passing options to the directive including adding attributes to the HTML element the directive is declared on. However, this particular technique wants to pass a JSON object through to the directive therefore it's passed as the parameter to the directive:
 
 ```
 <textarea ui-tinymce="theoptions" />
@@ -87,11 +87,11 @@ updateView = function() {
 }
 ```
 
-It's using [\$setViewValue](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.directive:ngModel.NgModelController#$setViewValue) to write the value from TinyMCE back on to the model. It's drummed in to you that calling \$apply() is necessary after updating the model but what I've not seen much of is the call to `scope.\$root.\$\$phase` that checks that we aren't already in the digest loop. Given AngularJS is going to keep processing the digest loop until everything is gone the model update will be picked up.
+It's using [&dollar;setViewValue](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.directive:ngModel.NgModelController#$setViewValue) to write the value from TinyMCE back on to the model. It's drummed in to you that calling &dollar;apply() is necessary after updating the model but what I've not seen much of is the call to `scope.&dollar;root.&dollar;&dollar;phase` that checks that we aren't already in the digest loop. Given AngularJS is going to keep processing the digest loop until everything is gone the model update will be picked up.
 
 ### Hooking into the View Update
 
-Given this directive takes over the rendering of content it must hook into the render request from AngularJS. [\$render](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.directive:ngModel.NgModelController#$render) does exactly that and in ui-tinymce it's used to copy the data from the model into the TinyMCE control:
+Given this directive takes over the rendering of content it must hook into the render request from AngularJS. [&dollar;render](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.directive:ngModel.NgModelController#$render) does exactly that and in ui-tinymce it's used to copy the data from the model into the TinyMCE control:
 
 ```
 ngModel.$render = function() {
@@ -106,7 +106,7 @@ ngModel.$render = function() {
 
 ### Destroying Content
 
-Finally the normal request to the scopes [\$on](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.$rootScope.Scope\$on) method to respond to the request to \$destroy the control:
+Finally the normal request to the scopes [&dollar;on](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.$rootScope.Scope\$on) method to respond to the request to &dollar;destroy the control:
 
 ```
 scope.$on('$destroy', function() {
