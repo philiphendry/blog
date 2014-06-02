@@ -257,21 +257,24 @@ p { word-wrap: break-word; }
   border-radius: 15px;
 }
 
-.post pre,
-.post code {
-  background-color: #2f1e2e;
-  font-size: 15px;
-}
-
 .post code {
   padding: 1px 5px;
   overflow-x: auto;
+  background-color: #555;
+  -webkit-box-shadow: 0 3px 10px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 3px 10px rgba(0,0,0,.1);
+  box-shadow: 0 3px 10px rgba(0,0,0,.1);
  }
 
 .post ul,
 .post ol { margin-left: 1.35em; }
 
-.post pre code { border: none; }
+.post pre,
+.post pre code { 
+  border: none; 
+  background-color: #2f1e2e;
+  font-size: 15px;
+}
 
 /* terminal */
 .post pre.terminal {
