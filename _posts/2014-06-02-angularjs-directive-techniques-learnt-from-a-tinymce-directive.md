@@ -89,7 +89,7 @@ updateView = function() {
 }
 ```
 
-It's using [&dollar;setViewValue](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.directive:ngModel.NgModelController#$setViewValue) to write the value from TinyMCE back on to the model. It's drummed in to you that calling &dollar;apply() is necessary after updating the model but what I've not seen much of is the call to `scope.&dollar;root.&dollar;&dollar;phase` that checks that we aren't already in the digest loop. Given AngularJS is going to keep processing the digest loop until everything is gone the model update will be picked up.
+It's using [&dollar;setViewValue](https://code.angularjs.org/1.2.0-rc.3/docs/api/ng.directive:ngModel.NgModelController#$setViewValue) to write the value from TinyMCE back on to the model. It's drummed in to you that calling &dollar;apply() is necessary after updating the model but what I've not seen much of is the call to `scope.$root.$$phase` that checks that we aren't already in the digest loop. Given AngularJS is going to keep processing the digest loop until everything is gone the model update will be picked up.
 
 ### Hooking into the View Update
 
