@@ -10,8 +10,8 @@ layout: default
 {% endif %}
 
 <article>
-  <span class="meta">{{ page.date | date: site.date_format }} • {{ read-time }}</span>
 	<h1>{{ page.title }}</h1>
+  <span class="meta">{{ page.date | date: site.date_format }} • {% if page.categories.size > 0 %} {{ page.categories | category_links }} • {% endif %}{{ read-time }}</span>
 		{{ content }}
   {% if site.display-author-post-page %}
     {% if page.author.name %}
@@ -38,7 +38,7 @@ layout: default
       <a href="{{ page.previous.url | prepend: site.baseurl }}">{{ site.var_previous_post }} ›</a>
     {% else %}
       <span class="disabled">{{ site.var_previous_post }} ›</span>
-    {% endif %}
+    {% endif %}g
   </div>
 </div>
 {% endif %}

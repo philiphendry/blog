@@ -1,0 +1,11 @@
+    <span class="meta">
+      <!-- {% if site.display-author-front-page %}
+        {% if post.author.name %}
+          {{ post.author.name }} •
+        {% else %}
+          {% if site.author.name %}
+            {{ site.author.name }} •
+          {% endif %}
+        {% endif %}
+      {% endif %} -->
+      {{ post.date | date: site.date_format }} • {{ post.categories | category_links }} • {{ read-time }}</span>

@@ -15,18 +15,9 @@ home: true
 {% endif %}
 
   <article>
-    <span class="meta">
-      {% if site.display-author-front-page %}
-        {% if post.author.name %}
-          {{ post.author.name }} •
-        {% else %}
-          {% if site.author.name %}
-            {{ site.author.name }} •
-          {% endif %}
-        {% endif %}
-      {% endif %}
-      {{ post.date | date: site.date_format }} • {{ read-time }}</span>
   	<a href="{{ post.url | prepend: site.baseurl }}"><h1>{{ post.title }}</h1></a>
+        <span class="meta">{{ post.date | date: site.date_format }} • {% if post.categories.size > 0 %} {{ post.categories | category_links }} • {% endif %}{{ read-time }}</span>
+
       <p>
       {% if post.summary %}
         {{ post.summary }}&nbsp;<a class="read-more" href="{{ post.url | prepend: site.baseurl }}">{{ site.var_read }}  →</a>

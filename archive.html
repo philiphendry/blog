@@ -16,5 +16,15 @@ layout: page
       {% endif %}
     {% endunless %}
 
-    <p><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><small> • {{ post.date | date: site.date_format }}</small></p>
+  {% assign minutes = post.content | number_of_words | divided_by: 180 %}
+  {% if minutes == 0 %}
+    {% assign read-time = site.var_less_than_a_minute_read %}
+  {% else %}
+    {% assign read-time = minutes | append: "&nbsp;" | append: site.var_min_read %}
+  {% endif %}
+
+    <p>
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br/>
+      <span class="meta">{{ post.date | date: site.date_format }} • {% if post.categories.size > 0 %} {{ post.categories | category_links }} • {% endif %}{{ read-time }}</span>
+    </p>
   {% endfor %}
