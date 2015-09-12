@@ -1,44 +1,43 @@
 ---
 layout: default
+home: true
 ---
 
-<div class="home">
 
-  <ul class="posts">
-    {% for post in paginator.posts %}
-      <li>
-        <div class="post">
-          {% assign content = post.content %}
-          {% include article.html %}        
-        </div>
-      </li>
-    {% endfor %}
-  </ul>
 
-  <!-- Pagination links -->
-  <div class="pagination">
-    {% if paginator.previous_page %}
-      <a href="/page/{{ paginator.previous_page }}" class="previous">Previous</a>
-    {% else %}
-      <span class="previous">Previous</span>
-    {% endif %}
-    <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-    {% if paginator.next_page %}
-      <a href="/page/{{ paginator.next_page }}" class="next">Next</a>
-    {% else %}
-      <span class="next ">Next</span>
-    {% endif %}
-  </div>
+{% for post in paginator.posts %}
 
-</div>
+{% assign minutes = post.content | number_of_words | divided_by: 180 %}
+{% if minutes == 0 %}
+  {% assign read-time = site.var_less_than_a_minute_read %}
+{% else %}
+  {% assign read-time = minutes | append: "&nbsp;" | append: site.var_min_read %}
+{% endif %}
 
-<!-- {% for post in paginator.posts %}
-  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <p class="author">
-    <span class="date">{{ post.date }}</span>
-  </p>
-  <div class="content">
-    {{ post.content }}
-  </div>
+  <article>
+    <span class="meta">
+      {% if site.display-author-front-page %}
+        {% if post.author.name %}
+          {{ post.author.name }} •
+        {% else %}
+          {% if site.author.name %}
+            {{ site.author.name }} •
+          {% endif %}
+        {% endif %}
+      {% endif %}
+      {{ post.date | date: site.date_format }} • {{ read-time }}</span>
+  	<a href="{{ post.url | prepend: site.baseurl }}"><h1>{{ post.title }}</h1></a>
+      <p>
+      {% if post.summary %}
+        {{ post.summary }}&nbsp;<a class="read-more" href="{{ post.url | prepend: site.baseurl }}">{{ site.var_read }}  →</a>
+      {% else %}
+        {{ post.excerpt | remove: '<p>' | remove: '</p>' }}&nbsp;<a class="read-more" href="{{ post.url | prepend: site.baseurl }}">{{ site.var_read }}  →</a>
+      {% endif %}
+      </p>
+
+  </article>
 {% endfor %}
- -->
+
+{% if paginator.previous_page or paginator.next_page %}
+  {% include pagination.html %}
+{% endif %}
