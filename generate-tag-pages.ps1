@@ -1,1 +1,1 @@
-get-content .\_data\tags.yml | select-string "^[^ \t]" | %{ $a = $_.Line.TrimEnd(':'); "---`nlayout: blog_by_tag`ntag: $a`npermalink: /blog/tag/$a`n---" | Out-File -FilePath ".\blog\tag\$a.markdown" }
+get-content .\_data\tags.yml | select-string "^[^ \t]" | %{ $a = $_.Line.TrimEnd(':'); "---`nlayout: blog_by_tag`ntag: $a`npermalink: /blog/tag/$a/`n---`n`n" | Out-File -FilePath ".\blog\tag\$a.md" -Encoding ascii }
