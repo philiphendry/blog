@@ -6,10 +6,10 @@ layout: post
 slug: encapsulating-methods-of-persistence
 title: Encapsulating methods of persistence
 wordpress_id: 257
-categories:
-- ASP.NET
-- Code
-- Design
+tags:
+- asp-net
+- code
+- design
 ---
 
 Here’s a question. What’s wrong with this code :

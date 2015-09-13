@@ -6,8 +6,8 @@ layout: post
 slug: create-sql-scripts-for-data-in-a-table
 title: Create SQL Scripts for Data in a table
 wordpress_id: 352
-categories:
-- T-SQL
+tags:
+- t-sql
 ---
 
 On occasion I want to get data from a table and into a script – particularly when I want to create a deployment script for standing data that needs to be migrated between servers. Rather than hand-craft it this last time I’ve created the script below which, when given the name of a table, generates a union’d list of select statements that represent the data. With a slight modification this list can then be selected into a temporary table then joined back to the original in an update/insert to create a script that automatically maintains the data.

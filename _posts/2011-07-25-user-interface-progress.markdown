@@ -6,9 +6,8 @@ layout: post
 slug: user-interface-progress
 title: User Interface progress?
 wordpress_id: 368
-categories:
-- Design
-- Rant
+tags:
+- design
 ---
 
 I really feel the need to rant… I’ve just seen the following interface design:

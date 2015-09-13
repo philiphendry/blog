@@ -6,9 +6,9 @@ layout: post
 slug: software-dependencies
 title: Software Dependencies
 wordpress_id: 70
-categories:
-- Dev Tools
-- Object Thinking
+tags:
+- dev-tools
+- design
 ---
 
 ## Tools

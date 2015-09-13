@@ -6,8 +6,8 @@ layout: post
 slug: adding-a-boot-menu-option-for-a-vhd-in-windows-7
 title: Adding a Boot Menu Option for a VHD in Windows 7
 wordpress_id: 231
-categories:
-- Windows 7
+tags:
+- windows-7
 ---
 
 Having already created and installed a a VHD using VirtualPC I now wanted to use the great new feature available in both Windows 7 and Windows Server 2008 which allows you to boot the machine from the VHD instead of the physical partition. In order to achieve this I just had to run a few commands at a command prompt running as admin:

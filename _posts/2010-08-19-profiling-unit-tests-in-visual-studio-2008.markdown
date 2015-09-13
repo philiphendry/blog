@@ -6,10 +6,10 @@ layout: post
 slug: profiling-unit-tests-in-visual-studio-2008
 title: Profiling Unit Tests in Visual Studio 2008
 wordpress_id: 318
-categories:
-- Code
-- Dev Tools
-- Visual Studio
+tags:
+- code
+- dev-tools
+- visual-studio
 ---
 
 I had a particular set of tests that when run with a large test data set seemed to be taking a long time to run and so I wanted to check that it was simply the setup and teardown of the tests was taking the time and not the tests itself.

@@ -6,8 +6,8 @@ layout: post
 slug: ado-net-entity-framework
 title: ADO.NET Entity Framework
 wordpress_id: 244
-categories:
-- Entity Framework
+tags:
+- entity-framework
 ---
 
 ## Random Thoughts

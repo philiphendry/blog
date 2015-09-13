@@ -6,10 +6,10 @@ layout: post
 slug: selecting-a-result-set-from-a-stored-procedure-in-sql-server
 title: Selecting a result set from a stored procedure in SQL Server
 wordpress_id: 282
-categories:
-- SQL Server
-- T-SQL
-- Tip
+tags:
+- sql-server
+- t-sql
+- tip
 ---
 
 Selecting data from a stored procedure in SQL Server is already a documented feature and here’s an example:

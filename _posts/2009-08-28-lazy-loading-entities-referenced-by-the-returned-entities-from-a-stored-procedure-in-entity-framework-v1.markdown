@@ -7,9 +7,9 @@ slug: lazy-loading-entities-referenced-by-the-returned-entities-from-a-stored-pr
 title: Lazy Loading Entities Referenced By The Returned Entities from a Stored Procedure
   in Entity Framework V1
 wordpress_id: 276
-categories:
-- Code
-- Entity Framework
+tags:
+- code
+- entity-framework
 ---
 
 Phew, that’s the title out of the way!!

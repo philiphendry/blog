@@ -6,9 +6,8 @@ layout: post
 slug: microsoft-windows-presentation-foundation
 title: Microsoft Windows Presentation Foundation
 wordpress_id: 233
-categories:
-- .Net
-- WPF
+tags:
+- wpf
 ---
 
 I'm currently reading [Windows Presentation Foundation Unleashed](http://www.amazon.co.uk/Windows-Presentation-Foundation-Unleashed-WPF/dp/0672328917/ref=sr_1_1?ie=UTF8&s=books&qid=1209978265&sr=8-1) and so far I'm finding it an excellent book and would highly recommend it to anyway who wants to dive head first into WPF. This page represents my notes taken as I've read through the book but it's not substitute for the book!

@@ -6,9 +6,9 @@ layout: post
 slug: generating-random-numbers-in-a-sql-update
 title: Generating random numbers in a SQL Update
 wordpress_id: 163
-categories:
-- SQL Server
-- T-SQL
+tags:
+- sql-server
+- t-sql
 ---
 
 I wanted to fill a column in a table with random numbers so off the top of my head wrote the following sql :

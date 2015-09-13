@@ -6,9 +6,9 @@ layout: post
 slug: importing-from-excel-into-sql-server
 title: Importing from Excel into SQL Server
 wordpress_id: 287
-categories:
-- SQL Server
-- T-SQL
+tags:
+- sql-server
+- t-sql
 ---
 
 I was going through a mountain of pain trying to get an import working from an Excel spreadsheet working into SQL Server 2005 but I finally managed it and here’s how…

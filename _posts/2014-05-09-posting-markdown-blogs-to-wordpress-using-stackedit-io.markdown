@@ -6,6 +6,8 @@ layout: post
 slug: posting-markdown-blogs-to-wordpress-using-stackedit-io
 title: Posting Markdown Blogs to WordPress using StackEdit.IO
 wordpress_id: 417
+tags:
+- notes
 ---
 
 I’ve been after a decent way to post markdown files to a blog engine for a while but not really invested much time into finding away.

@@ -6,6 +6,9 @@ layout: post
 slug: designing-and-developing-web-based-applications-exam-70-547
 title: Designing and Developing Web-Based Applications (Exam 70-547)
 wordpress_id: 225
+tags:
+- notes
+- Exam
 ---
 
 # Chapter 1 : Application Requirements and 
@@ -50,7 +53,7 @@ Any application development starts with a _**Vision**_ defined by the project st
 
  
 
-Requirements must be defined from _multiple perspectives_ capturing all the needs across the different types of stakeholders. There are a limited number of categories:
+Requirements must be defined from _multiple perspectives_ capturing all the needs across the different types of stakeholders. There are a limited number of tags:
 
  
 

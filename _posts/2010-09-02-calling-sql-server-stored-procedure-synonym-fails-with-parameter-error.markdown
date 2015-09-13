@@ -6,10 +6,10 @@ layout: post
 slug: calling-sql-server-stored-procedure-synonym-fails-with-parameter-error
 title: Calling SQL Server Stored Procedure Synonym fails with parameter error
 wordpress_id: 321
-categories:
-- Dev Problem
-- SQL Server
-- T-SQL
+tags:
+- problem
+- sql-server
+- t-sql
 ---
 
 I’ve just tried to call a stored procedure in another database via a synonym but received an error ‘Procedure or function ‘LM_Employees_HasNewStoreTempsInStore’ expect parameter [‘@OrganisationLevelValueID’](mailto:‘@OrganisationLevelValueID’), which was not supplied.

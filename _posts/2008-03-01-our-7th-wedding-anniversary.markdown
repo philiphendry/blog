@@ -6,8 +6,8 @@ layout: post
 slug: our-7th-wedding-anniversary
 title: Our 7th Wedding Anniversary
 wordpress_id: 25
-categories:
-- Family
+tags:
+- family
 ---
 
 To celebrate our Anniversary, Ali, Sam and I went to Gunwharf in Portsmouth and after a quick walk around the shops, paid a lunch time visit to Loch Fein for a fish dinner.

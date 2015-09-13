@@ -6,10 +6,9 @@ layout: post
 slug: testing-internals
 title: Testing Internals
 wordpress_id: 270
-categories:
-- .Net
-- Code
-- Testing
+tags:
+- code
+- testing
 ---
 
 There’s a very handy attribute called [InternalsVisibleTo](http://msdn.microsoft.com/en-us/library/system.runtime.compilerservices.internalsvisibletoattribute.aspx) that can be used in a class to make internally declared members accessible to a specific assembly. This probably isn’t wise for most situations but it’s very handy for testing internals from a separate test assembly. It’s also handy to provide a parameterised constructor that can accept different dependencies whilst the default constructor is hard-wired to the standard dependencies – this seems like an easy way to add DI for the purposes of testing to existing applications without disturbing the app structure too much or introducing a confusing DI factory. 

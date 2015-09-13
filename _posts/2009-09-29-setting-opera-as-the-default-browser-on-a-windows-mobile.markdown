@@ -6,8 +6,8 @@ layout: post
 slug: setting-opera-as-the-default-browser-on-a-windows-mobile
 title: Setting Opera as the default browser on a Windows Mobile
 wordpress_id: 294
-categories:
-- Windows Mobile
+tags:
+- mobile
 ---
 
 I own an HTC Touch HD as was getting a bit annoyed at Internet Explorer being the default browser when selecting links from emails. However, Opera Mobile has a ‘hidden’ configuration screen and can be used to set it as the default :

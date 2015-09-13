@@ -6,9 +6,9 @@ layout: post
 slug: dynamic-order-by-in-t-sql
 title: Dynamic Order By in T-SQL
 wordpress_id: 296
-categories:
-- SQL Server
-- T-SQL
+tags:
+- sql-server
+- t-sql
 ---
 
 I’ve been looking at some code that looked like this:

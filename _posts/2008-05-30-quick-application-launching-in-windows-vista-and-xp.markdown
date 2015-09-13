@@ -6,11 +6,9 @@ layout: post
 slug: quick-application-launching-in-windows-vista-and-xp
 title: Quick Application Launching in Windows (Vista and XP)
 wordpress_id: 80
-categories:
-- Microsoft
-- Tip
-- Vista
-- Windows
+tags:
+- tip
+- windows-vista
 ---
 
 Here's a quick tip for launching applications with a simple keypress rather than having to hunt it down in the program files menus (although I really like the search facility in the Vista start menu!)

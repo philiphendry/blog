@@ -6,9 +6,8 @@ layout: post
 slug: water-babies
 title: Water Babies
 wordpress_id: 38
-categories:
-- Family
-- Sam
+tags:
+- family
 ---
 
 Today was Sam's firs visit to Water Babies - a class for teaching babies to enjoy water and possibly even swim!! At times he even looked like he was enjoying himself!!! I've included a few photos of his exploits below but before that you can enjoy the [video](http://cid-c9d5f19fee5fae3c.skydrive.live.com/self.aspx/PublicVideos/SamsFirstDunk.wmv) of him getting dunked!!!

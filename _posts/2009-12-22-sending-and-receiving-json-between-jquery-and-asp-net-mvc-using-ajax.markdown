@@ -6,9 +6,9 @@ layout: post
 slug: sending-and-receiving-json-between-jquery-and-asp-net-mvc-using-ajax
 title: Sending and Receiving JSON between jQuery and ASP.NET MVC using Ajax.
 wordpress_id: 300
-categories:
-- ASP.NET MVC
-- jQuery
+tags:
+- asp-net-mvc
+- jquery
 ---
 
 It’s taken me a while to get this working without any problems so it’s worth jotting down how it all works. I don’t think I was trying to do anything particularly difficult – just receive Json from an ASP.NET MVC application using jQuery then submitted but the APIs had to be coerced into just the correct way to get it functional.

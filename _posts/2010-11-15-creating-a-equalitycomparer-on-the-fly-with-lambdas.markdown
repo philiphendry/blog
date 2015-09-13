@@ -6,9 +6,9 @@ layout: post
 slug: creating-a-equalitycomparer-on-the-fly-with-lambdas
 title: Creating a EqualityComparer on the fly with Lambdas
 wordpress_id: 341
-categories:
-- .Net
-- Testing
+tags:
+- dot-net
+- testing
 ---
 
 When I’m writing unit tests I need the code to be a succinct as possible and one of the issues I’ve had is comparing objects sets/graphs to confirm expectations. Here’s a couple of the unit tests that test my solution and hopefully demonstrate what I’m after : 

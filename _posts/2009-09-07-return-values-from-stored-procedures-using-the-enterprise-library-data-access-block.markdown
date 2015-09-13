@@ -7,9 +7,9 @@ slug: return-values-from-stored-procedures-using-the-enterprise-library-data-acc
 title: Return values from stored procedures using the Enterprise Library Data Access
   block
 wordpress_id: 284
-categories:
-- Code
-- Enterprise Library
+tags:
+- code
+- enterprise-library
 ---
 
 I’m not sure why I had so much trouble trying to do this… but because it did I think it’s worth a blog. Basically I was trying to return an int value from a stored procedure but couldn’t quite work out the syntax and was initially distracted by trying to use _AddOutParameter_() . However, the key was to use _AddParameter_() specifying the direction as _ReturnValue_ :

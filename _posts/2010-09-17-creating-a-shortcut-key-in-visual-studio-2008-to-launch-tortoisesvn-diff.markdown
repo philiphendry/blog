@@ -6,8 +6,8 @@ layout: post
 slug: creating-a-shortcut-key-in-visual-studio-2008-to-launch-tortoisesvn-diff
 title: Creating a shortcut key in Visual Studio 2008 to launch TortoiseSvn Diff
 wordpress_id: 328
-categories:
-- Visual Studio
+tags:
+- visual-studio
 ---
 
 I wanted a quick and easy way to launch the TortoiseSvn configured diff tool showing me the differences between my saved working copy and the head version in source control. This article shows how.

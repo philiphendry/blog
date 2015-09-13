@@ -6,8 +6,8 @@ layout: post
 slug: holiday-booking
 title: Holiday Booking
 wordpress_id: 62
-categories:
-- Family
+tags:
+- family
 ---
 
 I am seriously excited about our holiday - it's nothing special, I suppose, but I'm just really excited about the opportunity for a weeks break in Cornwall especially given the location of the apartment. It's right on the waters edge and just a few minutes walk from the centre of Falmouth. Here's a close up...

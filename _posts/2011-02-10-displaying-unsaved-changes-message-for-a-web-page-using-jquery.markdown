@@ -6,10 +6,10 @@ layout: post
 slug: displaying-unsaved-changes-message-for-a-web-page-using-jquery
 title: Displaying ‘Unsaved Changes’ message for a web page using jQuery
 wordpress_id: 345
-categories:
-- ASP.NET
-- jQuery
-- Web
+tags:
+- asp-net
+- jquery
+- web
 ---
 
 I had a need to allow a user to cancel navigation to another page if changes to a form had not yet been saved – especially if they attempted to navigate to another page from the ever present menu. The code I used has a slight ‘hack’ which involves using the propertychange DOM event in IE rather than the change event which I would have usually expected. 

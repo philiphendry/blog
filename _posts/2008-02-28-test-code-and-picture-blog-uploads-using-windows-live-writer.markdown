@@ -6,8 +6,8 @@ layout: post
 slug: test-code-and-picture-blog-uploads-using-windows-live-writer
 title: Test code and picture blog uploads using Windows Live Writer
 wordpress_id: 9
-categories:
-- Dev Tools
+tags:
+- dev-tools
 ---
 
 Here's some code...

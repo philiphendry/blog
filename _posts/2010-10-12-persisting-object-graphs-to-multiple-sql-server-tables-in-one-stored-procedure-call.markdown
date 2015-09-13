@@ -7,9 +7,9 @@ slug: persisting-object-graphs-to-multiple-sql-server-tables-in-one-stored-proce
 title: Persisting Object Graphs/Collections to one or more SQL Server Tables in one
   Stored Procedure Call
 wordpress_id: 337
-categories:
-- SQL Server
-- T-SQL
+tags:
+- sql-server
+- t-sql
 ---
 
 One of the methods I’ve used on a number of occasions to solve performance issues in an application is to reduce a number of calls to the database into one call. Using the classic order header and order detail example, rather than looping through each order and call the database for each item, I would prefer to pass the entire set of order detail to the database and persist it to the database with one T-Sql call. Taking it a step further, and possibly unnecessarily in this example, it would also be possible to pass the order header in the same call.

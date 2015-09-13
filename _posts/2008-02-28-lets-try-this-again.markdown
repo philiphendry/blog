@@ -6,8 +6,8 @@ layout: post
 slug: lets-try-this-again
 title: Let's try this again
 wordpress_id: 6
-categories:
-- Dev Tools
+tags:
+- dev-tools
 ---
 
 I'm using Microsoft Live Writer to publish to the WordPress blog but the first one didn't seem to work - second time lucky?

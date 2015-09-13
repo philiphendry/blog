@@ -6,11 +6,10 @@ layout: post
 slug: debugging-net-on-production-servers
 title: Debugging .Net on Production Servers
 wordpress_id: 68
-categories:
-- .Net
-- Dev Tools
-- Microsoft
-- Visual Studio
+tags:
+- dot-net
+- dev-tools
+- visual-studio
 ---
 
 I've been meaning to look at debugging .Net apps on production servers for a while now since each time I've tried with DevEnv.exe I've found I can attach to the process, load up C# source, set breakpoints and step through the code but I can't see the contents of any of the variables.

@@ -6,10 +6,8 @@ layout: post
 slug: cannot-delete-a-sync-partnership-in-vistas-sync-center
 title: Cannot delete a sync partnership in Vista's Sync Center
 wordpress_id: 75
-categories:
-- Microsoft
-- Rant
-- Vista
+tags:
+- windows-vista
 ---
 
 This has really been bugging me recently. Once in a while the relationship with my Windows Mobile (a HTC TyTn) seems to break down between my work PC and the device and I'm left with a greyed out device in Sync Center which, even though the menu option is enabled and selectable, cannot be deleted. Without much help from searching the internet (everything seemed to suggest deleting system files which seemed a bit dodgy to me) I finally stumbled across the solution...

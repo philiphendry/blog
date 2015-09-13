@@ -6,9 +6,9 @@ layout: post
 slug: problems-compiling-android-project-after-importing-into-a-new-workspace
 title: Problems Compiling Android Project After Importing Into A New Workspace
 wordpress_id: 360
-categories:
-- Android
-- Eclipse
+tags:
+- android
+- eclipse
 ---
 
 A couple of times now I’ve had compilation problems trying to compile an Android project after having just imported it into a new Workspace – and usually it seems to concern references to system packages. The solution seems to be:

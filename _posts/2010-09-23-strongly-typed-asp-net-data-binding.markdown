@@ -6,8 +6,8 @@ layout: post
 slug: strongly-typed-asp-net-data-binding
 title: Strongly-typed ASP.NET Data-Binding
 wordpress_id: 333
-categories:
-- ASP.NET
+tags:
+- asp-net
 ---
 
 **Update :** Just thought I'd better highlight something before I get shot down! I could, of course, early-bind to data by saying DataField="<%#((Employee)Container.DataItem).Name%>" but below I was exploring ways to leverage code generation I had to make the syntax better - not sure I've done that of course, but the journey was fun!!

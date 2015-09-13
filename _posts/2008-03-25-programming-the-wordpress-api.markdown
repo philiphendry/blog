@@ -6,8 +6,8 @@ layout: post
 slug: programming-the-wordpress-api
 title: Programming the WordPress API
 wordpress_id: 58
-categories:
-- Dev Tools
+tags:
+- dev-tools
 ---
 
 I've started taking a quick look at the API to get access to my own blog stored in WordPress so that I can cache all the pages locally as a backup and an offline repository. So far here's all I've needed to get something working in .Net :

@@ -7,8 +7,8 @@ slug: submitting-dynamic-json-to-asp-net-webapi
 title: Submitting dynamic JSON to ASP.NET WebAPI
 wordpress_id: 419
 tags:
-- ASP.NET
-- WebAPI
+- asp-net
+- webapi
 ---
 
 

@@ -6,9 +6,8 @@ layout: post
 slug: sams-hand-foot-printing
 title: Sam's Hand & Foot Printing
 wordpress_id: 22
-categories:
-- Family
-- Sam
+tags:
+- family
 ---
 
 It was a hard days work on Thursday having been woken up with a support call at 3am. However, before I was home early in the afternoon for a catch-up on lost sleep, Ali and I took Sam to 'The Crockery' to have Sam's hands and feet immortalised in both clay and paint.

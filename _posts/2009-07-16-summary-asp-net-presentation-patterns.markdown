@@ -6,10 +6,9 @@ layout: post
 slug: summary-asp-net-presentation-patterns
 title: 'Summary : ASP.NET Presentation Patterns'
 wordpress_id: 237
-categories:
-- .Net
-- MSDN Article Summary
-- Patterns
+tags:
+- notes
+- design
 ---
 
 This is a summary of the MSDN Magazine article [ASP.NET Presentation Patterns](http://msdn.microsoft.com/en-us/magazine/dd252940.aspx) made for my own reference but posted on my blog for others to benefit from.

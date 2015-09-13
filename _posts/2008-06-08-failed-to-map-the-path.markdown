@@ -6,10 +6,9 @@ layout: post
 slug: failed-to-map-the-path
 title: Failed to map the path '/'.
 wordpress_id: 81
-categories:
-- .Net
-- Dev Problem
-- Visual Studio
+tags:
+- dot-net
+- visual-studio
 ---
 
  

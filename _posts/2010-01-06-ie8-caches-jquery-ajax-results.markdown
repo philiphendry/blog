@@ -6,9 +6,9 @@ layout: post
 slug: ie8-caches-jquery-ajax-results
 title: IE8 Caches jQuery Ajax results
 wordpress_id: 306
-categories:
-- ASP.NET MVC
-- jQuery
+tags:
+- asp-net-mvc
+- jquery
 ---
 
 In my client code I have a small chunk of javascript that fetches the data for my form asynchronously using Ajax :

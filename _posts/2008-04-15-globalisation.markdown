@@ -6,10 +6,8 @@ layout: post
 slug: globalisation
 title: Globalisation
 wordpress_id: 66
-categories:
-- Dev Tools
-- Interesting
-- Microsoft
+tags:
+- dev-tools
 ---
 
 I really need to spend some time to read [Microsofts Globalization Step-by-Step](http://www.microsoft.com/globaldev/getwr/steps/WRG_lclmdl.mspx) article as a quick refresher!!

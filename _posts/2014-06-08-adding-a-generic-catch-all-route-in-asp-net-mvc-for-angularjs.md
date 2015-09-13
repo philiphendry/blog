@@ -6,7 +6,7 @@ comments: true
 layout: post
 tags:
 - angularjs
-- asp.net mvc
+- asp-net-mvc
 ---
 I'm using ASP.NET MVC to host my AngularJS and inside the ASP.NET MVC site I'm also hosting WebAPI controllers to server JSON to the AngularJS code. This means I have three routing tables! However, the routing table for ASP.NET MVC just needs to forward everything to the browser and let the Angular routing table kick in (so pressing F5 in my Angular app can actually mean *refresh this page*.)
 

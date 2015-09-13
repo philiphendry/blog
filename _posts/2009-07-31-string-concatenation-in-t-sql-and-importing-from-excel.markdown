@@ -6,9 +6,9 @@ layout: post
 slug: string-concatenation-in-t-sql-and-importing-from-excel
 title: String Concatenation in T-SQL and Importing from Excel
 wordpress_id: 241
-categories:
-- SQL Server
-- T-SQL
+tags:
+- sql-server
+- t-sql
 ---
 
 I keep forgetting how simple this little trick is so it’s time to blog it.

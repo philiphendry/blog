@@ -7,8 +7,8 @@ slug: create-a-contents-page-with-page-numbers-from-html-input-using-websupergoo
 title: Create a contents page with page numbers from html input using Websupergoo
   Abcpdf
 wordpress_id: 370
-categories:
-- ASP.NET
+tags:
+- asp-net
 ---
 
 I’ve created a report pdf from an html page output from our ASP.NET based product but I needed to change a contents list that was rendered as a hyperlink list on the page into a list of section headings and page number since the pdf was primarily for printing. The solution wasn’t immediately obvious but I’ve come up with the following which I was running in a unit test for simple quick prototyping. The key is using the HtmlOptions.AddTags property in ABCpdf which allows areas of the HTML to be retrieve during pdf rendering and modified.

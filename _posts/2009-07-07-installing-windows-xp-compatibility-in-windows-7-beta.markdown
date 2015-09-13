@@ -6,8 +6,8 @@ layout: post
 slug: installing-windows-xp-compatibility-in-windows-7-beta
 title: Installing Windows XP Compatibility in Windows 7 Beta
 wordpress_id: 230
-categories:
-- Windows 7
+tags:
+- windows-7
 ---
 
 There’s a specific [Microsoft page](http://www.microsoft.com/windows/virtual-pc/download.aspx) where you can download the beta of Virtual PC and Windows XP Mode which will provide you a full virtualised Windows XP environment in Windows 7 providing the best compatibility ever!

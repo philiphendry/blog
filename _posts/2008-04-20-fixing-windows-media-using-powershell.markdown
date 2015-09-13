@@ -6,10 +6,9 @@ layout: post
 slug: fixing-windows-media-using-powershell
 title: Fixing Windows Media Using PowerShell
 wordpress_id: 67
-categories:
-- Microsoft
-- PowerShell
-- Scripting
+tags:
+- powershell
+- scripting
 ---
 
 I made a blunder a while back... I sync'd my laptop with my backup external hard drive but accidentally sync'd with a folder of music that contained compressed versions of the same music!! 

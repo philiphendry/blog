@@ -6,8 +6,8 @@ layout: post
 slug: grouping-multiple-consecutive-days-using-t-sql
 title: Grouping Multiple Consecutive Days using T-sql
 wordpress_id: 346
-categories:
-- T-SQL
+tags:
+- t-sql
 ---
 
 I have a timesheet table that contains one entry per day per employee and against each entry is a reason flag which indicates whether the entry is for a holiday or sickness etc. I’ve written a SQL Server report that generates a list of the holidays that drills-down several levels to the actual holidays but I don’t want to list individual days but rather the holiday periods as a date from/to and numbers of days. With some inspirational thinking from [Rob Farley](http://stackoverflow.com/questions/1176011/sql-to-determine-minimum-sequential-days-of-access/1176255#1176255) I’ve created must the same query as his to merge the consecutive days and provide a total. Here’s the initial version :

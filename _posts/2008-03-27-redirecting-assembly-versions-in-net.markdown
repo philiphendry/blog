@@ -6,11 +6,10 @@ layout: post
 slug: redirecting-assembly-versions-in-net
 title: Redirecting Assembly Versions in .Net
 wordpress_id: 63
-categories:
-- .Net
-- Dev Problem
-- Microsoft
-- Visual Studio
+tags:
+- dot-net
+- problem
+- visual-studio
 ---
 
 We were having a problem with deserialization on one of our projects and although the cause seemed obvious the solution wasn't!

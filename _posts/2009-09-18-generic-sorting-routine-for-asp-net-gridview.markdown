@@ -6,9 +6,9 @@ layout: post
 slug: generic-sorting-routine-for-asp-net-gridview
 title: Generic Sorting Routine for ASP.NET GridView
 wordpress_id: 288
-categories:
-- ASP.NET
-- Dev Problem
+tags:
+- asp-net
+- problem
 - LINQ
 ---
 

@@ -6,10 +6,10 @@ layout: post
 slug: highlighting-selected-text-automatically-in-visual-studio
 title: Highlighting Selected Text automatically in Visual Studio
 wordpress_id: 361
-categories:
-- Dev Tools
-- Tip
-- Visual Studio
+tags:
+- dev-tools
+- tip
+- visual-studio
 ---
 
 I’ve used Eclipse and always loved the way that any selected text is automatically discovered elsewhere in the current file and highlighted – this is also available in Notepad++.

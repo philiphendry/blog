@@ -6,10 +6,8 @@ layout: post
 slug: sql-server-replication-lesson-1
 title: 'SQL Server Replication : Lesson 1'
 wordpress_id: 33
-categories:
-- Lesson
-- Replication
-- SQL Server
+tags:
+- sql-server
 ---
 
 I've decided to chronicle things I learn about replication (above and beyond the normal things to learn in the documentation) after a very hard lesson yesterday during an upgrade which lasted a lot longer than necessary.

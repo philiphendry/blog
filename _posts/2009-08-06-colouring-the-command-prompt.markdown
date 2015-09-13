@@ -6,10 +6,9 @@ layout: post
 slug: colouring-the-command-prompt
 title: Colouring the Command Prompt
 wordpress_id: 247
-categories:
-- .Net
-- Code
-- Scripting
+tags:
+- code
+- scripting
 ---
 
 A long time ago I wrote some really basic code to colour the output displayed in the Windows cmd.exe. I’ve just come across it hidden in one of my folders and thought I’d resurrect it since it’s something I’d like to look at in PowerShell when I have the opportunity (although changing the colour in PowerShell is easy with Out-Host.) The tool was originally knocked together because I’d wrapped grep.exe in a batch file but wasn’t happy with the output – I wanted matching strings that I was searching for to be highlighted in different colours.

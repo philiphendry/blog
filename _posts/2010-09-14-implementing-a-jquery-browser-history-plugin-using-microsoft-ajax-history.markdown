@@ -6,9 +6,9 @@ layout: post
 slug: implementing-a-jquery-browser-history-plugin-using-microsoft-ajax-history
 title: Implementing a jQuery Browser history Plugin using microsoft Ajax History
 wordpress_id: 322
-categories:
-- ASP.NET
-- jQuery
+tags:
+- asp-net
+- jquery
 ---
 
 This article is a summary of the steps I took to produce a jQuery plugin that would create history points in the browsers history programmatically. In particular I wanted to create as simple an interface in the implementing page as possible and primarily needed to integrate with ASP.NET.

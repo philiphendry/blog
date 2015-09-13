@@ -9,9 +9,9 @@ layout: post
 slug: blogging-with-markdown-3
 title: Blogging with Markdown
 wordpress_id: 402
-categories:
-- Code
-- Interesting
+tags:
+- code
+- interesting
 ---
 
 I've been meaning to blog more recently but going back to my old favourite blogging editor [LiveWriter](http://windows.microsoft.com/en-gb/windows-live/essentials-other#essentials=writerother) seemed like a step in the wrong direction seeing as I've been keen on [Markdown](http://daringfireball.net/projects/markdown/syntax#link) and the best editor I've used [Sublime Text](http://www.sublimetext.com/).

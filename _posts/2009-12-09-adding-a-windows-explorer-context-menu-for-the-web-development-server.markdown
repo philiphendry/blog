@@ -6,10 +6,10 @@ layout: post
 slug: adding-a-windows-explorer-context-menu-for-the-web-development-server
 title: Adding a Windows Explorer Context Menu for the Web Development Server
 wordpress_id: 299
-categories:
-- Tip
-- Windows
-- Windows 7
+tags:
+- tip
+- windows
+- windows-7
 ---
 
 I wanted to be able to launch a single folder – the results of an ASP.NET WebForms build - in a Web Development Server without having to run up Visual Studio. The result looks like this :

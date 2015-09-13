@@ -6,10 +6,10 @@ layout: post
 slug: conditional-aggregate-totals-in-sql
 title: Conditional Aggregate Totals in SQL
 wordpress_id: 286
-categories:
-- SQL Server
-- T-SQL
-- Tip
+tags:
+- sql-server
+- t-sql
+- tip
 ---
 
 I’ve been working on a SQL Server Reporting Services report which had to display several counts on each row. Each row represented a project and each project could have several tasks that were either ordinary tasks or milestones and could also be escalated. The report need to show something like this :

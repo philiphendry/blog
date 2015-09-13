@@ -6,9 +6,8 @@ layout: post
 slug: adonet-entity-framework-overview-and-first-look
 title: ADO.NET Entity Framework Overview and First Look
 wordpress_id: 43
-categories:
-- Dev Tools
-- LINQ
+tags:
+- dev-tools
 ---
 
 I haven't really taken a serious look at the Entity Framework yet so here are just a few notes I've jotted down to get myself started - nothing ground-breaking I'm afraid! I think my goal here will be to establish terms and a baseline view of what's provided.

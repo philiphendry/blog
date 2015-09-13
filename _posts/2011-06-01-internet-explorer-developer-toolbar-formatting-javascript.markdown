@@ -6,10 +6,10 @@ layout: post
 slug: internet-explorer-developer-toolbar-formatting-javascript
 title: Internet Explorer Developer Toolbar Formatting Javascript
 wordpress_id: 359
-categories:
-- Dev Tools
-- Tip
-- Web
+tags:
+- dev-tools
+- tip
+- web
 ---
 
 I’ve seen screens like this all the time:

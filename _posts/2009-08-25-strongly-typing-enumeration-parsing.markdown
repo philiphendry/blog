@@ -6,9 +6,8 @@ layout: post
 slug: strongly-typing-enumeration-parsing
 title: Strongly Typing Enumeration Parsing
 wordpress_id: 267
-categories:
-- .Net
-- Code
+tags:
+- code
 ---
 
 Given this enum :

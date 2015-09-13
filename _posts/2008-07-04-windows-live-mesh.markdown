@@ -6,9 +6,8 @@ layout: post
 slug: windows-live-mesh
 title: Windows Live Mesh
 wordpress_id: 82
-categories:
-- Microsoft
-- Rant
+tags:
+- microsoft-windows
 ---
 
 I was just copying over some work from my laptop to my work PC and thought I’d give Windows Live Mesh desktop access a go. At first looks it seems pretty cool – I can even connect to the laptop from anywhere through the ‘Live Desktop’ that exists in ‘The Cloud’ (gotta love these terms!!) 

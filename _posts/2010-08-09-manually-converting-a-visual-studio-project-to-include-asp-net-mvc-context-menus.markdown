@@ -7,9 +7,9 @@ slug: manually-converting-a-visual-studio-project-to-include-asp-net-mvc-context
 title: Manually converting a Visual studio project to include asp.net mvc Context
   menus
 wordpress_id: 311
-categories:
-- ASP.NET MVC
-- Visual Studio
+tags:
+- asp-net-mvc
+- visual-studio
 ---
 
 I’ve got a Visual Studio project that includes ASP.NET MVC controllers, models and view utilities but because it was not a Web Application I wasn’t getting any of the context menus for adding MVC elements. For example, ‘Controller’ was missing from the Add menu :

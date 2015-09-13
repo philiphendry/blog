@@ -6,9 +6,9 @@ layout: post
 slug: configuring-event-log-permission-for-asp-net-applications
 title: Configuring Event Log Permission for Asp.net applications
 wordpress_id: 350
-categories:
-- ASP.NET
-- Security
+tags:
+- asp-net
+- security
 ---
 
 I’ve been having some problems with writing to a custom event log as well as the standard ‘Application’ event log where it failed with the following error :

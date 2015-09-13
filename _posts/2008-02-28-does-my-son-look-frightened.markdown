@@ -6,8 +6,8 @@ layout: post
 slug: does-my-son-look-frightened
 title: Does my son look frightened?
 wordpress_id: 13
-categories:
-- Family
+tags:
+- family
 ---
 
 [![](/assets/2008/02/img-7446.jpg)](/assets/2008/02/img-7446-8x6.jpg)

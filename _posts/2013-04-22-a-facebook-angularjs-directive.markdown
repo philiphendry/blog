@@ -6,8 +6,8 @@ layout: post
 slug: a-facebook-angularjs-directive
 title: A Facebook AngularJS Directive
 wordpress_id: 373
-categories:
-- AngularJS
+tags:
+- angularjs
 ---
 
 I’ve been developing a dashboard for the application I’m working on and one of the things it needed to include were Social Media controls such as Twitter, LinkedIN, Google +1 and Facebook. Integrating them into ASP.NET WebForms and MVC was mostly a painless experience but that was because of the predominant PostBack mechanism. I’ve recently chosen to look at [AngularJS](http://angularjs.org/) since it’s two-way binding is spectacular and looked instantly better than [KnockoutJS](http://knockoutjs.com/) which seemed to require to much boilerplate code.

@@ -6,8 +6,8 @@ layout: post
 slug: add-gps-information-to-image-exif
 title: Add GPS Information to Image EXIF
 wordpress_id: 26
-categories:
-- Photography
+tags:
+- photography
 ---
 
 I've had a thought in the past that it wouldn't be a difficult task to carry a GPS device whilst you're out-and-about and taking photos then, back at home, load up the GPS data into a utility and have it scan through your photos adding GPS EXIF information to photos where dates and times matched (or were closed enough.) Of course, someone has usually written it before you so a quick search has highlighted a few already.

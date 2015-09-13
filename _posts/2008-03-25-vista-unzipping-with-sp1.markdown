@@ -6,10 +6,8 @@ layout: post
 slug: vista-unzipping-with-sp1
 title: Vista Unzipping with SP1
 wordpress_id: 57
-categories:
-- Microsoft
-- Rant
-- Vista
+tags:
+- windows-vista
 ---
 
 I've downloaded and installed SP1 for Vista now but am still surprised by how long unzipping small files can take! I've been staring at this dialog for about a minute now...
