@@ -1,6 +1,9 @@
 net:
   slug: dot-net
   name: .Net
+aurelia:
+  slug: aurelia
+  name: Aurelia
 android:
   slug: android
   name: Android
@@ -46,6 +49,9 @@ hobbies:
 interesting:
   slug: interesting
   name: Interesting
+javascript:
+  slug: javascript
+  name: JavaScript  
 jquery:
   slug: jquery
   name: jQuery
