@@ -7,20 +7,7 @@ permalink: /archive/
 
   {% for post in site.posts %}
 
-
-    {% if post.tags.size > 0 %}
-        {% capture tags_content %}Posted with {% if post.tags.size == 1 %}<i class="fa fa-tag"></i>{% else %}<i class="fa fa-tags"></i>{% endif %}: {% endcapture %}
-        {% for post_tag in post.tags %}
-          {% assign tag = site.data.tags[post_tag] %}
-            {% if tag %}
-                {% capture tags_content_temp %}{{ tags_content }}<a href="/blog/tag/{{ tag.slug }}/">{{ tag.name }}</a>{% if forloop.last == false %}, {% endif %}{% endcapture %}
-                {% assign tags_content = tags_content_temp %}
-            {% endif %}
-        {% endfor %}
-    {% else %}
-        {% assign tags_content = '' %}
-    {% endif %}
-
+    {% include capture_tags.html %} 
 
     {% unless post.next %}
       <h3>{{ post.date | date: '%Y' }}</h3>
@@ -41,6 +28,6 @@ permalink: /archive/
 
     <p>
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br/>
-      <span class="meta">{{ post.date | date: site.date_format }} • {{ tags_content }} • {{ read-time }}</span>
+      {% include article_subtext.html %}
     </p>
   {% endfor %}
