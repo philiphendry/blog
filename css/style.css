@@ -151,38 +151,22 @@ tfoot {
   border-top: 2px solid rgba({{ site.theme-color }}, .4);
 }
 blockquote {
-  padding: 0 20px;
-  font-style: italic;
-}
-blockquote::before,
-blockquote::after {
-  font-weight: 400;
-  font-size: 80px;
-  color: rgba({{ site.theme-color }}, .4);
-  display: block;
-  text-align: center;
-  vertical-align: bottom;
-  height: 40px;
-  font-style: normal;
-}
-blockquote::before {
-  content: "“";
-  margin-top: 30px;
-}
-blockquote::after {
-  content: "”";
-  margin-bottom: 30px;
+  margin: 0;
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+  background-color: #f9f9f9;
 }
 code {
   font-family: "Source Code Pro", monospace;
 }
-p code {
+ul code, p code {
   font-size: .7em;
   display: inline-block;
   border-radius: 2px;
   background-color: rgba({{ site.text-color }},.05);
   border: 1px solid rgba({{ site.text-color }},.1);
-  padding: 0 3px;
+  padding: 3px;
 }
 pre {
   display: block;
@@ -450,7 +434,6 @@ nav a.current {
   }
   blockquote {
     padding: 0 30px;
-    font-size: 1.3em;
   }
   hr {
     margin: 90px auto;
