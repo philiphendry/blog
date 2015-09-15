@@ -7,9 +7,11 @@ layout: post
 tags:
 - aurelia
 ---
-I've been using [Aurelia](http://aurelia.io/) for a few weeks now and I'm certainly appreciating it this far and feel like I'm having a lot less trouble understanding it than we I was learning [AngularJS 1.x](https://angularjs.org/).
+I've been using [Aurelia](http://aurelia.io/) for a few weeks now and I'm certainly appreciating it this far and feel like I'm having a lot less trouble understanding it than when I was learning [AngularJS 1.x](https://angularjs.org/).
 
-This post will attempt to document some of the methods I've discovered (but don't necessarily use in the production code I'm writing) to handle data. So far I've only been concerned with creating a dashboard hence the focus of this post. The dashboard looks a little like this:
+This post describes the steps I've taken to build a dashboard which I currently already have working in production using AngularJS but wanted to re-write in Aurelia as an experiment to see how well it works.
+
+The dashboard looks a little like this:
 
 	+-------------------------------+
 	| +---------------------------+ |
@@ -45,7 +47,7 @@ So in this example I have a `dashboard.html` and at the top of this template the
       template="./carousel-item.html"/>
     </carousel>
 
-I'll create another post regarding the `<carousel>` but for now the important point here is that the `items` attribute is bound to `items` on the view model `dashboard.js`:
+I'll create [another post](http://blog.philiphendry.me.uk/2015/09/13/creating-a-carousel-in-aurelia/) regarding the `<carousel>` but for now the important point here is that the `items` attribute is bound to `items` on the view model `dashboard.js`:
 
     export class DashboardViewModel {
        items = [];

@@ -9,9 +9,9 @@ tags:
 ---
 I'm hosting this blog on [GitHub](https://github.com/) using [Jekyll](https://jekyllrb.com/) which is a fantastic free combination. But with anything that's free there are some drawbacks. Primarily it's the inability to use custom Jekyll plugins in GitHub.
 
-I want to keep this combination so I've been following an article that describes [how to generate tag pages] without having a custom plug-in.
+I want to keep this combination so I've been following an article that describes [how to generate tag pages](http://www.minddust.com/post/tags-and-categories-on-github-pages/) without having a custom plug-in.
 
-All is well-and-good, but for every tag that's been made a static page must be created which lists all posts with that tag. This seemed like a pain to keep up-to-date and a perfect opportunity to test my PowerShell skills!
+All is well-and-good, but for every tag that's been made, a static page must be created which lists all posts with that tag. This seemed like a pain to keep up-to-date and a perfect opportunity to test my PowerShell skills!
 
 The first step is to iterate over the lines in the `.\_data\tags.yml` file which is in this format:
 
