@@ -1,7 +1,7 @@
 ---
 author: Philip Hendry
 title: Creating a HighCharts Component in Aurelia
-date: 2015-09-13 18:02
+date: 2015-09-15 09:00
 comments: true
 layout: post
 tags:
