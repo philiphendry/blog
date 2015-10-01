@@ -13,7 +13,7 @@ This post hopes to describe how to create a basic carousel component from scratc
 Run the following commands to create the initial configuration. I like to keep [jspm](http://jspm.io/) installed locally in the project and then use `.\node_modules\.bin\jspm` to access it:
 
     npm init
-    npm init jspm --save-dev
+    npm install jspm --save-dev
     .\node_modules\.bin\jspm init
 
 This project will need a number of dependencies and thankfully they're all in the [JSPM Registry](http://kasperlewau.github.io/registry/#/) already so we can use their shortnames:
@@ -121,7 +121,7 @@ Add the following to `carousel.css`:
 		z-index: 1; /* Just enough to edge this above the content */
 		position: absolute;
 		top: 1.5em;
-		overflow: hidden; /* Don't show the <li> that we're pushing down
+		overflow: hidden; /* Don't show the <li> that we're pushing down */
 	}
 
 	.carousel .carousel-nav .fa {
