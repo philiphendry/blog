@@ -247,6 +247,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "_posts/2015-10-18-bundling-with-jspm-and-aurelia.md",
+			"settings":
+			{
+				"buffer_size": 15436,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "_posts/2014-06-02-angularjs-directive-techniques-learnt-from-a-tinymce-directive.md",
+			"settings":
+			{
+				"buffer_size": 4136,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -255,10 +271,26 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 55.0,
-		"last_filter": "",
+		"height": 343.0,
+		"last_filter": "markmon",
 		"selected_items":
 		[
+			[
+				"markmon",
+				"Markmon launch"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
 			[
 				"word",
 				"Word Wrap: Toggle"
@@ -284,10 +316,6 @@
 				"Indentation: Convert to Spaces"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"inden",
 				"Indentation: Convert to Spaces"
 			],
@@ -296,16 +324,8 @@
 				"View: Toggle Tabs"
 			],
 			[
-				"list",
-				"Package Control: List Packages"
-			],
-			[
 				"remove",
 				"Package Control: Remove Package"
-			],
-			[
-				"instal",
-				"Package Control: Install Package"
 			],
 			[
 				"ind",
@@ -368,11 +388,11 @@
 				"Package Control: Disable Package"
 			]
 		],
-		"width": 602.0
+		"width": 746.0
 	},
 	"console":
 	{
-		"height": 186.0,
+		"height": 503.0,
 		"history":
 		[
 			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
@@ -389,10 +409,13 @@
 	},
 	"expanded_folders":
 	[
-		"/C/github/blog"
+		"/C/github/blog",
+		"/C/github/blog/_posts"
 	],
 	"file_history":
 	[
+		"/C/Users/Philip/AppData/Roaming/Sublime Text 3/Packages/sublime-text-markmon/Default (Windows).sublime-keymap",
+		"/C/github/blog/_data/tags.yml",
 		"/C/src/mi-voice mini/FeatureBranches/201510Nominations/Sources/GUI/MiVoice.Atlas.AdminSite/spa/dist/main.js",
 		"/C/src/mi-voice mini/FeatureBranches/201510Nominations/Sources/GUI/MiVoice.Atlas.AdminSite/spa/index.html",
 		"/C/src/mi-voice mini/FeatureBranches/201510Nominations/Sources/GUI/MiVoice.Atlas.AdminSite/spa/package.json",
@@ -518,13 +541,11 @@
 		"/C/github/aurelia-mivoice-experiment/single-page-index.html",
 		"/C/Users/Philip/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/C/github/aurelia-mivoice-experiment/single-page.js",
-		"/C/github/aurelia-mivoice-experiment/src/experiments/single-page.html",
-		"/C/github/aurelia-mivoice-experiment/dist/main.js",
-		"/C/github/skeleton-navigation/build/tasks/bundle.js"
+		"/C/github/aurelia-mivoice-experiment/src/experiments/single-page.html"
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 55.0
 	},
 	"find_in_files":
 	{
@@ -696,8 +717,69 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "_posts/2015-10-18-bundling-with-jspm-and-aurelia.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15436,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14899,
+								14899
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 12472.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "_posts/2014-06-02-angularjs-directive-techniques-learnt-from-a-tinymce-directive.md",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4136,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -757,6 +839,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"tag",
+				"_data\\tags.yml"
+			],
 			[
 				"pack",
 				"package.json"
@@ -1264,10 +1350,6 @@
 			[
 				"aurel",
 				"jspm_packages\\github\\aurelia\\framework@0.15.0\\aurelia-framework.js"
-			],
-			[
-				"aurelia",
-				"jspm_packages\\github\\aurelia\\loader@0.8.7\\aurelia-loader.js"
 			]
 		],
 		"width": 0.0
@@ -1280,7 +1362,7 @@
 		[
 			[
 				"",
-				"C:\\github\\aurelia-form-builder\\aurelia-form-builder.sublime-project"
+				"C:\\github\\bundling-with-jspm-and-aurelia\\bundling-with-jspm-and-aurelia.sublime-project"
 			]
 		],
 		"width": 570.0
