@@ -193,7 +193,7 @@ Visual Studio 2015 now includes the _Task Runner Explorer_ which used to be an e
 
 At this point I can right-click any of the tasks and run them with output displayed in the runner. However, even more useful is the ability to bind the tasks to events in Visual Studio:
 
-![Task Runner Explorer Task Binding](/assets/2015/visual-studio-2015-task-runner-explorer-binding-options.png "Visual Studio 2015 Task Runner Explorer Task Binding Options")
+![Task Runner Explorer Task Binding](/assets/2015/visual-studio-2015-task-runner-explorer-binding-options.PNG "Visual Studio 2015 Task Runner Explorer Task Binding Options")
 
 But I'm stuck between choosing the obvious and more convenient! The obvious would be to bind the `build` task to the `After Build` event. But the more convenient would be to launch a `watch` on `Project Open` so I have browser-sync keeping my browser up-to-date.
 
@@ -264,7 +264,7 @@ Now the spa build and bundle can be run at the command-line:
 
 These parameters can then be plugged into the TFS Build Definition as arguments to the MSBuild:
 
-![TFS Build Definition MSBuild arguments for SPA build and bundle](/assets/2015/tfs-build-definition-msbuild-arguments-for-spa-build-and-bundle.png "TFS Build Definition MSBuild arguments for SPA build and bundle")
+![TFS Build Definition MSBuild arguments for SPA build and bundle](/assets/2015/tfs-build-definition-msbuild-arguments-for-spa-build-and-bundle.PNG "TFS Build Definition MSBuild arguments for SPA build and bundle")
 
 ### Bundling into Deployment with Octopus
 
