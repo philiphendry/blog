@@ -20,6 +20,11 @@ The one obvious difference is pulling HighCharts into the project. Given that Hi
 
 Don't forget, if you're going to use HighCharts for commercial purposes then [go and get a license](http://shop.highsoft.com/highcharts.html).
 
+##Update 29/10/2015
+There's a better way to install Highcharts without using the github repository which adds extra bloat (and causes folder depth problems on Windows.) Try running the following instead of the above:
+
+    jspm install highcharts=npm:highcharts-release -o "{ main: 'highcharts' }"
+
 ## Component API
 The first thing to ponder is the API that the host view will use to declare the chart component. This is a fairly simple decision since Custom Elements are the de-facto standard. So this is what my page view will declare:
 
