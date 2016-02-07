@@ -247,22 +247,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "_posts/2015-10-18-bundling-with-jspm-and-aurelia.md",
-			"settings":
-			{
-				"buffer_size": 15436,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "_posts/2014-06-02-angularjs-directive-techniques-learnt-from-a-tinymce-directive.md",
-			"settings":
-			{
-				"buffer_size": 4136,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -271,8 +255,8 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 343.0,
-		"last_filter": "markmon",
+		"height": 562.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -410,12 +394,20 @@
 	"expanded_folders":
 	[
 		"/C/github/blog",
-		"/C/github/blog/_posts"
+		"/C/github/blog/assets",
+		"/C/github/blog/assets/2015"
 	],
 	"file_history":
 	[
-		"/C/Users/Philip/AppData/Roaming/Sublime Text 3/Packages/sublime-text-markmon/Default (Windows).sublime-keymap",
 		"/C/github/blog/_data/tags.yml",
+		"/C/github/blog/_posts/2015-10-18-bundling-with-jspm-and-aurelia.md",
+		"/C/github/blog/_posts/2014-06-02-angularjs-directive-techniques-learnt-from-a-tinymce-directive.md",
+		"/C/github/blog/_posts/2015-10-19-integrating-jspm-and-aurelia-in-visual-studio.md",
+		"/C/Users/Philip/Desktop/Office License Keys.txt",
+		"/C/src/mi-voice mini/FeatureBranches/201510Nominations/Sources/GUI/MiVoice.Atlas.AdminSite/package.json",
+		"/C/src/mi-voice mini/FeatureBranches/201510Nominations/Sources/GUI/MiVoice.Atlas.AdminSite/MiVoice.Atlas.AdminSite.csproj",
+		"/X/Admin/ITSupport/licence keys.txt",
+		"/C/Users/Philip/AppData/Roaming/Sublime Text 3/Packages/sublime-text-markmon/Default (Windows).sublime-keymap",
 		"/C/src/mi-voice mini/FeatureBranches/201510Nominations/Sources/GUI/MiVoice.Atlas.AdminSite/spa/dist/main.js",
 		"/C/src/mi-voice mini/FeatureBranches/201510Nominations/Sources/GUI/MiVoice.Atlas.AdminSite/spa/index.html",
 		"/C/src/mi-voice mini/FeatureBranches/201510Nominations/Sources/GUI/MiVoice.Atlas.AdminSite/spa/package.json",
@@ -534,18 +526,11 @@
 		"/C/github/aurelia-mivoice-experiment/src/dashboard/widget-voting-statistics.html",
 		"/C/github/aurelia-mivoice-experiment/dist/dashboard/widget-button.html",
 		"/C/github/aurelia-mivoice-experiment/src/dashboard/widget-button.js",
-		"/C/github/aurelia-mivoice-experiment/dist/dashboard/dashboard.html",
-		"/C/github/aurelia-mivoice-experiment/dist/dashboard/carousel.html",
-		"/C/github/aurelia-mivoice-experiment/src/dashboard/carousel.js",
-		"/C/github/aurelia-mivoice-experiment/src/app.js",
-		"/C/github/aurelia-mivoice-experiment/single-page-index.html",
-		"/C/Users/Philip/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/C/github/aurelia-mivoice-experiment/single-page.js",
-		"/C/github/aurelia-mivoice-experiment/src/experiments/single-page.html"
+		"/C/github/aurelia-mivoice-experiment/dist/dashboard/dashboard.html"
 	],
 	"find":
 	{
-		"height": 55.0
+		"height": 54.0
 	},
 	"find_in_files":
 	{
@@ -571,6 +556,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".png",
+			".PNG",
+			".png",
+			".PNG",
+			".png",
+			".PNG",
+			".png",
+			".PNG",
+			"assets/",
+			"../assets",
+			"![",
 			"TWBootstrapAppendToInput",
 			"node-gyp",
 			"\"\\^[^\\\"]*\\\"",
@@ -687,18 +683,7 @@
 			"\"",
 			"parent",
 			"\"",
-			"@bindable",
-			"setBatchInfo",
-			"eventChanged",
-			"setBatchInfo",
-			"castVoteCount",
-			"compile-spy",
-			"font-awesome@4.4.0",
-			"model",
-			"chartOptions",
-			"/",
-			"aurelia/[^ ]*",
-			"chartOptions"
+			"@bindable"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -717,75 +702,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "_posts/2015-10-18-bundling-with-jspm-and-aurelia.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15436,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14899,
-								14899
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 12472.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "_posts/2014-06-02-angularjs-directive-techniques-learnt-from-a-tinymce-directive.md",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 4136,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1,
-								1
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 39.0
+		"height": 35.0
 	},
 	"input":
 	{
@@ -830,7 +754,7 @@
 	"project": "blog.sublime-project",
 	"replace":
 	{
-		"height": 74.0
+		"height": 66.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -839,6 +763,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"tags",
+				"_data\\tags.yml"
+			],
 			[
 				"tag",
 				"_data\\tags.yml"
@@ -1346,10 +1274,6 @@
 			[
 				"aurelia-templ",
 				"jspm_packages\\github\\aurelia\\templating@0.14.4\\aurelia-templating.js"
-			],
-			[
-				"aurel",
-				"jspm_packages\\github\\aurelia\\framework@0.15.0\\aurelia-framework.js"
 			]
 		],
 		"width": 0.0
