@@ -22,7 +22,7 @@ Now before I continue with the solution below which works in SQL Server 2005 and
 
 In my particular data object I have a method, SaveDetail, that is passed a graph of objects which is then converted into XML.
 
-``
+```
 public static void SaveDetail(ScheduleDto schedule) 
 { 
 	StoredProcedureDAL.LM_Schedule_SaveXML(ConvertToXml(schedule).ToString(SaveOptions.DisableFormatting)); 
