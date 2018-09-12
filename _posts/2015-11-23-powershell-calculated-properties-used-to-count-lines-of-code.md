@@ -7,7 +7,7 @@ layout: post
 tags:
 - powershell
 ---
-I've completed committed myself to PowerShell in the last few months which means when I've got a problem that should be scripted I'll stick to my guns and make it work with PowerShell.
+I've completely committed myself to PowerShell in the last few months which means when I've got a problem that should be scripted I'll stick to my guns and make it work with PowerShell.
 
 I was trying to estimate some changes to some files in an existing Visual Studio .Net solution and turned to PowerShell for some statistics. My first question was easy, how many files with the extension `aspx` do I have:
 
@@ -81,4 +81,4 @@ The key break through for me to write this was the use of [calculated properties
 
 The purpose of the second `select` is to iterate through each group summing just the `LineCount` properties with a final `% sum` to isolate just the sum.
 
-And before I finish, some of this was written with the help of [Microsoft Refernece](https://www.microsoft.com/en-gb/download/confirmation.aspx?id=42554) which may well be used a lot more in the future :)
+And before I finish, some of this was written with the help of [Microsoft Reference](https://www.microsoft.com/en-gb/download/confirmation.aspx?id=42554) which may well be used a lot more in the future :)
