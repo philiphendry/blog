@@ -405,7 +405,7 @@ public class Football : ISport
 
 What this solution needs is a way to teach the Newtonsoft deserialiser how to read the JSON and decide from the JSON which object to create. This requires having a property on the JSON object used to determine the type to create and in my example above this will simply be the ```ISport.Name``` property - admittedly not the best choice since it's not a unique identifier but will demonstrate the method. In my real-life application I have a enumeration of field types and a ```FieldType``` property on ```FieldBase``` to determine which sub-type to include.
 
-> Newtonsoft can handle this polymorphism problem itself with [https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#TypeNameHandling])[TypeNameHandling] but this solution writes the full .Net Type information into the JSON which leads to a brittle solution and leaking implementation details to the client.
+> Newtonsoft can handle this polymorphism problem itself with [https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#TypeNameHandling](TypeNameHandling) but this solution writes the full .Net Type information into the JSON which leads to a brittle solution and leaking implementation details to the client.
 
 The following utility class is taken from [https://stackoverflow.com/questions/8030538/how-to-implement-custom-jsonconverter-in-json-net-to-deserialize-a-list-of-base](StackOverflow) and is used as a basis for the specific converters we need to write:
 
