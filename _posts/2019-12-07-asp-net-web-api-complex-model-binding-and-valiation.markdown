@@ -99,7 +99,7 @@ namespace JsonMapping.Controllers
 }
 ```
 
-With the initially coding done it's almost time to start up and test but before that open the project properties and in the Web tab change the _Start Action_ to _Don't open a page._ as I'm testing the API with [https://www.getpostman.com/downloads/](PostMan) and don't want an extra browser opening. Whilst in the project properties grab the _Project URL_ since this will be need in PostMan.
+With the initially coding done it's almost time to start up and test but before that open the project properties and in the Web tab change the _Start Action_ to _Don't open a page._ as I'm testing the API with [PostMan](https://www.getpostman.com/downloads/) and don't want an extra browser opening. Whilst in the project properties grab the _Project URL_ since this will be need in PostMan.
 
 # First Test
 
@@ -266,7 +266,7 @@ If I run the _GET_ request I see the following response:
 }
 ```
 
-I don't like that _0_ for a favourite colour and would much rather see the name of the colour instead. There are a number of different ways to implement this but for my simple implementation I've chosen to use a Newtonsoft out-of-the-box solution called [https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Converters_StringEnumConverter.htm](StringEnumConverter). The [https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#Converters](Serialization Settings documentation) states that this can be used in multiple different ways including adding it as an _Attribute_ to the model property. However, I want as little as possible (hopefully nothing) to be added to the model that is related to the serialisation mechanism. I also want have built-in 'standards' that 'just work' so having them declared globally is my chosen way. To that end I add the following to the ```WebApiConfig.Register``` method to fetch the Newtonsoft serialisation settings and add their provided ```StringEnumConverter```:
+I don't like that _0_ for a favourite colour and would much rather see the name of the colour instead. There are a number of different ways to implement this but for my simple implementation I've chosen to use a Newtonsoft out-of-the-box solution called [StringEnumConverter](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Converters_StringEnumConverter.htm). The [Serialization Settings documentation](https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#Converters) states that this can be used in multiple different ways including adding it as an _Attribute_ to the model property. However, I want as little as possible (hopefully nothing) to be added to the model that is related to the serialisation mechanism. I also want have built-in 'standards' that 'just work' so having them declared globally is my chosen way. To that end I add the following to the ```WebApiConfig.Register``` method to fetch the Newtonsoft serialisation settings and add their provided ```StringEnumConverter```:
 
 ```
 var serializerSettings = config.Formatters.JsonFormatter.SerializerSettings;
@@ -322,7 +322,7 @@ and now the response has camel cased property names:
 
 # Default values
 
-There is a serialisation setting called [https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#DefaultValueHandling](DefaultValueHandling) and if this is set to ```Populate``` then if a value is not provided in the posted JSON then the serialiser will populate the model with the value given by the [https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.defaultvalueattribute?redirectedfrom=MSDN&view=netframework-4.8](DefaultValueAttribute) configured for the property.
+There is a serialisation setting called [DefaultValueHandling](https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#DefaultValueHandling) and if this is set to ```Populate``` then if a value is not provided in the posted JSON then the serialiser will populate the model with the value given by the [DefaultValueAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.defaultvalueattribute?redirectedfrom=MSDN&view=netframework-4.8) configured for the property.
 
 However, my personal preference is the model itself sets it's own defaults so that whenever the model is ```new```'d then the defaults will already be set. Therefore I do this in the model which handles setting defaults on deserialisation:
 
@@ -366,7 +366,7 @@ public Person Get()
 }
 ```
 
-And to be honest... we're done! There is serialisation property called [https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#ReferenceLoopHandling](ReferenceLoopHandling) which may need to be set when including circular references but in this simple example there's nothing more to be done.
+And to be honest... we're done! There is serialisation property called [ReferenceLoopHandling](https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#ReferenceLoopHandling) which may need to be set when including circular references but in this simple example there's nothing more to be done.
 
 # Polymorhpic object handling
 
@@ -405,9 +405,9 @@ public class Football : ISport
 
 What this solution needs is a way to teach the Newtonsoft deserialiser how to read the JSON and decide from the JSON which object to create. This requires having a property on the JSON object used to determine the type to create and in my example above this will simply be the ```ISport.Name``` property - admittedly not the best choice since it's not a unique identifier but will demonstrate the method. In my real-life application I have a enumeration of field types and a ```FieldType``` property on ```FieldBase``` to determine which sub-type to include.
 
-> Newtonsoft can handle this polymorphism problem itself with [https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#TypeNameHandling](TypeNameHandling) but this solution writes the full .Net Type information into the JSON which leads to a brittle solution and leaking implementation details to the client.
+> Newtonsoft can handle this polymorphism problem itself with [TypeNameHandling](https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#TypeNameHandling) but this solution writes the full .Net Type information into the JSON which leads to a brittle solution and leaking implementation details to the client.
 
-The following utility class is taken from [https://stackoverflow.com/questions/8030538/how-to-implement-custom-jsonconverter-in-json-net-to-deserialize-a-list-of-base](StackOverflow) and is used as a basis for the specific converters we need to write:
+The following utility class is taken from [StackOverflow](https://stackoverflow.com/questions/8030538/how-to-implement-custom-jsonconverter-in-json-net-to-deserialize-a-list-of-base) and is used as a basis for the specific converters we need to write:
 
 ```
 using System;
@@ -588,7 +588,7 @@ public string Description { get; set; }
 
 I've chosen to use the ```AllowHtmlAttribute``` which is included in the ```Microsoft.AspNet.Mvc``` Nuget package which will need installing.
 
-I've chosen to implement a [https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#ContractResolver](ContractResolver) so solve this problem for me and rather than explaining how it works I'm just going to show how's it configured.
+I've chosen to implement a [ContractResolver](https://www.newtonsoft.com/json/help/html/SerializationSettings.htm#ContractResolver) so solve this problem for me and rather than explaining how it works I'm just going to show how's it configured.
 
 In ```WebApiConfig.Register``` I'll replace the existing ```ContractResolver``` property setter with the following:
 
@@ -671,7 +671,7 @@ namespace JsonMapping.Serialisation
 }
 ```
 
-I'm making use of a Nuget package called [https://github.com/mganss/HtmlSanitizer](HtmlSanitizer) which provides the means to sanitise HTML on a white list basis. It is possible to add html/css elements to this white list but for this example I've kept it very simple.
+I'm making use of a Nuget package called [HtmlSanitizer](https://github.com/mganss/HtmlSanitizer) which provides the means to sanitise HTML on a white list basis. It is possible to add html/css elements to this white list but for this example I've kept it very simple.
 
 And now test with a _POST_ like this:
 
