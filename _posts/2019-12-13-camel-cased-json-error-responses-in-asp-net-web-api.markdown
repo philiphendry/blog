@@ -44,9 +44,9 @@ And if I don't submit those fields to the _PUT_ method then I'll get back the fo
 }
 ```
 
-That problem here is that the naming strategy registered with NewtonSoft has kicked in after the ```ModelState``` has concatenated the field names and therefore only the first letter has been lowercased. In other words, where I see ```person.Address.PostCode``` I actually should see ```person.address.postCode```.
+The problem here is that the naming strategy registered with NewtonSoft has kicked in after the ```ModelState``` has concatenated the field names and therefore only the first letter has been lowercased. In other words, where I see ```person.Address.PostCode``` I actually should see ```person.address.postCode```.
 
-Like any good developer, before reading the docs, I took to google and within a couple of minutes found a (stackoverflow)[https://stackoverflow.com/questions/54308041/how-to-use-json-net-camelcasepropertynamescontractresolver-with-dot-separated-na] post which had the answer!
+Like any good developer, before reading the docs, I took to google and within a couple of minutes found a [stackoverflow](https://stackoverflow.com/questions/54308041/how-to-use-json-net-camelcasepropertynamescontractresolver-with-dot-separated-na) post which had the answer!
 
 The first place to change was in the ```WebApiConfig.Register```: 
 
