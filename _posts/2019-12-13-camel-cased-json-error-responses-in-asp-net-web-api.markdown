@@ -8,7 +8,7 @@ tags:
 - asp-net
 ---
 
-In my previous post {% post_url 2019-12-07-asp-net-web-api-complex-model-binding-and-valiation %} I had described how to use ```Request.CreateErrorResponse()``` in either a controller action or a filter to convert the errors held in ```ModelState``` into JSON that can be passed back to the client.
+In my previous post (ASP.NET Web Api Complex Model Binding and Validation)[{% post_url 2019-12-07-asp-net-web-api-complex-model-binding-and-valiation.markdown %}] I had described how to use ```Request.CreateErrorResponse()``` in either a controller action or a filter to convert the errors held in ```ModelState``` into JSON that can be passed back to the client.
 
 What I hadn't taken into account was the camel casing in the result that the framework had failed to fix. For example, given a class structure like this:
 

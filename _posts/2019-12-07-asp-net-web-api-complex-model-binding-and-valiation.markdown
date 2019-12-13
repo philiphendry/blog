@@ -697,4 +697,4 @@ That really was a very long post but it covers a lot of aspects of binding to an
 
 I'm also leaving open the question of how these global integrations are tested since it could be easy to break functionality without actually noticing it's simply no longer configured.
 
-*Update*: In my next post {% post_url 2019-12-13-camel-cased-json-error-responses-in-asp-net-web-api %} I discuss a issue with the camel casing in the JSON returned in errors.
+*Update*: In my next post (Camel Cased JSON Error Responses in ASP.NET WebAPI)[{% post_url 2019-12-13-camel-cased-json-error-responses-in-asp-net-web-api.markdown %}] I discuss a issue with the camel casing in the JSON returned in errors.
