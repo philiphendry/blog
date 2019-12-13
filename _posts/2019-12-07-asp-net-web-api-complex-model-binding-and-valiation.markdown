@@ -693,6 +693,8 @@ and notice how the reflected results has removed the javascript from the HTML ab
 
 # Summary
 
-That really was a very long post but it covers a lot of aspects of binding to an action method property without having to write lots of code in the method itself. I also see these methods proving very useful for peforming authorization checks such that the user has already been authenticated but now I want to check that data within the posted JSON is authorized for them to access (for example they've posted data which includes a organisation identifier but are they actually a member of that organisation?)
+That really was a very long post but it covers a lot of aspects of binding to an action method property without having to write lots of code in the method itself. I also see these methods proving very useful for peforming authorization checks such that the user has already been authenticated but now I want to check that data within the posted JSON is authorianzed for them to access (for example they've posted data which includes a organisation identifier but are they actually a member of that organisation?)
 
 I'm also leaving open the question of how these global integrations are tested since it could be easy to break functionality without actually noticing it's simply no longer configured.
+
+*Update*: In my next post {% post_url 2019-12-13-camel-cased-json-error-responses-in-asp-net-web-api} I discuss a issue with the camel casing in the JSON returned in errors.
