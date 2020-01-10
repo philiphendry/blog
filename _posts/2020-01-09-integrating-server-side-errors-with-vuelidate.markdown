@@ -11,9 +11,9 @@ I've been busy getting my ASP.NET WebAPI to return validation errors to my clien
 
 My client application is written using [Vue.JS](https://vuejs.org/) with [Vuelidate](https://vuelidate.js.org/) providing the framework for creating validation rules against my data models. However, I don't have a way to submit the data to the server and then respond to errors returned which gets returned as JSON looking something like this:
 
-```
+```json
 {
-    "Message": "The request is invalid.",z
+    "Message": "The request is invalid.",
     "ModelState": {
         "person.Name": [
             "The field Name must be a string with a maximum length of 10."
@@ -42,7 +42,7 @@ Before leaping into the implementation I'd like to cover some of the requirement
 
 Here's the script section first with inline comments describing the relevance of each part:
 
-```
+```javascript
 <script>
 import { required } from "vuelidate/lib/validators"
 import { merge } from "lodash"
@@ -136,11 +136,12 @@ export default {
         }
     }
 }
+</script>
 ```
 
-There are a couple of omissions here. One is the helper function ```removeProp``` which is used to remove the ```serverErrors``` objects added to the data:
+There are a couple of omissions here. One is the helper function `removeProp` which is used to remove the `serverErrors` objects added to the data:
 
-```
+```javascript
 function removeProp(obj, propName) {
   for (var p in obj) {
     if (obj.hasOwnProperty(p)) {
@@ -157,7 +158,7 @@ function removeProp(obj, propName) {
 
 The other omission is the key to making this work:
 
-```
+```javascript
 const serverError = function(fieldName) {
   return (value, vm) => {
     return !(
@@ -168,9 +169,9 @@ const serverError = function(fieldName) {
 };
 ```
 
-This is a [custom validator](https://vuelidate.js.org/#sub-simplest-example) which is passed the field name which it's validating and sees if there's a server error item - if there is there's a validation error. The trick here is the merge of server errors into the form (```merge(this.form, serverMessages)```) produces a data object like this:
+This is a [custom validator](https://vuelidate.js.org/#sub-simplest-example) which is passed the field name which it's validating and sees if there's a server error item - if there is there's a validation error. The trick here is the merge of server errors into the form (`merge(this.form, serverMessages)`) produces a data object like this:
 
-```
+```json
     {
         name: 'bob',
         serverErrors: {
@@ -179,11 +180,11 @@ This is a [custom validator](https://vuelidate.js.org/#sub-simplest-example) whi
     }
 ```
 
-When the input, bound to name, is modified the ```serverErrors.name``` property is removed by the ```clearServerError``` method and so the ```serverError``` validator sees the field as become valid.
+When the input, bound to name, is modified the `serverErrors.name` property is removed by the `clearServerError` method and so the `serverError` validator sees the field as become valid.
 
 Finally, the template needs to respond to the validators and display messages:
 
-```
+```html
 <template>
     <form @submit.prevent="onSubmit">
         <input 
@@ -203,7 +204,7 @@ Finally, the template needs to respond to the validators and display messages:
 </template>
 ```
 
-This template has standard Vuelidate syntax such as the v-model binding and the display of the required message. That slight updates for server-side include the ```@input``` event binding to clear the server-error as soon as the input changes and the display of the server errors from the data.
+This template has standard Vuelidate syntax such as the v-model binding and the display of the required message. That slight updates for server-side include the `@input` event binding to clear the server-error as soon as the input changes and the display of the server errors from the data.
 
 # Next Steps
 
