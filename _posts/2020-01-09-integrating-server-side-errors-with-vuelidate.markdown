@@ -173,9 +173,9 @@ This is a [custom validator](https://vuelidate.js.org/#sub-simplest-example) whi
 
 ```json
     {
-        name: 'bob',
-        serverErrors: {
-            name: 'The name if invalid according to the server'
+        "name": "bob",
+        "serverErrors": {
+            "name": "The name if invalid according to the server"
         }
     }
 ```
