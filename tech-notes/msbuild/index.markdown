@@ -313,208 +313,199 @@ This example highlights the _logger_ switch and the ability to write a custom lo
 
 #### Standard Tasks
 
-<table cellpadding="2" width="546" border="1" cellspacing="0">
+<table>
     <tbody>
         <tr>
-            <td width="176" valign="top">**Task Name**</td>
-            <td width="368" valign="top">**Description**</td>
+            <td><strong>Task Name</strong></td>
+            <td><strong>Description</strong></td>
         </tr>
         <tr>
-            <td width="179" valign="top">AL</td>
-            <td width="368" valign="top">Assembly Linker which creates an assembly with a manifest from one or more
+            <td>AL</td>
+            <td>Assembly Linker which creates an assembly with a manifest from one or more
                 modules or resource files.</td>
         </tr>
         <tr>
-            <td width="181" valign="top">AspNetCompiler</td>
-            <td width="368" valign="top">Wraps aspnet_compiler.exe.</td>
+            <td>AspNetCompiler</td>
+            <td>Wraps aspnet_compiler.exe.</td>
         </tr>
         <tr>
-            <td width="182" valign="top">AssignCulture</td>
-            <td width="368" valign="top">If provided a list of filenames with a Culture identifier embedded in the name,
+            <td>AssignCulture</td>
+            <td>If provided a list of filenames with a Culture identifier embedded in the name,
                 then it will assign the metaData Culture to it.</td>
         </tr>
         <tr>
-            <td width="183" valign="top">CallTarget</td>
-            <td width="368" valign="top">Invokes a specified target.</td>
+            <td>CallTarget</td>
+            <td>Invokes a specified target.</td>
         </tr>
         <tr>
-            <td width="183" valign="top">Copy</td>
-            <td width="368" valign="top">Copies files to a destination folder, or copies and renames if a list of
+            <td>Copy</td>
+            <td>Copies files to a destination folder, or copies and renames if a list of
                 destination files is specified with a one-to-one relationship with the source files.</td>
         </tr>
         <tr>
-            <td width="183" valign="top">CreateItem</td>
-            <td width="368" valign="top">Allows a new list to be created from another whilst also be filtered and new
+            <td>CreateItem</td>
+            <td>Allows a new list to be created from another whilst also be filtered and new
                 metadata being added.</td>
         </tr>
         <tr>
-            <td width="183" valign="top">CreateProperty</td>
-            <td width="368" valign="top">Creates a new property using the passed value. Use an embedded **Output** task
+            <td>CreateProperty</td>
+            <td>Creates a new property using the passed value. Use an embedded <strong>Output</strong> task
                 to create a named property.</td>
         </tr>
         <tr>
-            <td width="183" valign="top">Csc</td>
-            <td width="368" valign="top">Compiles C#.</td>
+            <td>Csc</td>
+            <td>Compiles C#.</td>
         </tr>
         <tr>
-            <td width="183" valign="top">Delete</td>
-            <td width="368" valign="top">Deletes a list of files.</td>
+            <td>Delete</td>
+            <td>Deletes a list of files.</td>
         </tr>
         <tr>
-            <td width="183" valign="top">Error</td>
-            <td width="368" valign="top">Stops the build and logs an error based on an evaluated conditional statement.
+            <td>Error</td>
+            <td>Stops the build and logs an error based on an evaluated conditional statement.
             </td>
         </tr>
         <tr>
-            <td width="183" valign="top">Exec</td>
-            <td width="368" valign="top">Runs a specified program with the specified arguments.</td>
+            <td>Exec</td>
+            <td>Runs a specified program with the specified arguments.</td>
         </tr>
         <tr>
-            <td width="183" valign="top">FindUnderPath</td>
-            <td width="368" valign="top">Discovers whether a list of files exist beneath a specified path.</td>
+            <td>FindUnderPath</td>
+            <td>Discovers whether a list of files exist beneath a specified path.</td>
         </tr>
         <tr>
-            <td width="183" valign="top">GenerateApplicationManifest</td>
-            <td width="368" valign="top">Generates a ClickOnce application manifest or a native manifest.</td>
+            <td>GenerateApplicationManifest</td>
+            <td>Generates a ClickOnce application manifest or a native manifest.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">GenerateBootstrapper</td>
-            <td width="368" valign="top">Provides an automated way to detect, download, and install an application and
+            <td>GenerateBootstrapper</td>
+            <td>Provides an automated way to detect, download, and install an application and
                 its prerequisites.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">
-                < td>
-            </td>
-            <td width="368" valign="top">
-                < application ClickOnce corresponding the indicating and locations, update settings specifying mode,
-                    online or install as such traits deployment identifying deployment, for identity unique a defining
-                    by an of describes manifest A manifest.>
-            </td>
-        </tr>
-        <tr>
-            <td width="184" valign="top">GenerateResource</td>
-            <td width="368" valign="top">Converts between .txt and .resx (XML-based resource format) files and common
+            <td>GenerateResource</td>
+            <td>Converts between .txt and .resx (XML-based resource format) files and common
                 language runtime binary .resources files that can be embedded in a runtime binary executable or compiled
                 into satellite assemblies. This task is typically used to convert .txt or .resx files to .resource
                 files. The GenerateResource task is functionally similar to
-                [resgen.exe](http://msdn2.microsoft.com/en-us/library/ccec7sz1.aspx).</td>
+                <a href='http://msdn2.microsoft.com/en-us/library/ccec7sz1.aspx'>resgen.exe</a>.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">GetAssemblyIdentity</td>
-            <td width="368" valign="top">Retrieves the assembly identities from the specified files and outputs the
+            <td>GetAssemblyIdentity</td>
+            <td>Retrieves the assembly identities from the specified files and outputs the
                 identity information.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">GetFrameworkPath</td>
-            <td width="368" valign="top">Retrieves the path to the .NET Framework assemblies. If several versions of the
+            <td>GetFrameworkPath</td>
+            <td>Retrieves the path to the .NET Framework assemblies. If several versions of the
                 .NET Framework are installed, this task returns the version that MSBuild is designed to run on.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">GetFrameworkSdkPath</td>
-            <td width="368" valign="top">Retrieves the path to the Windows Software Development Kit (SDK).</td>
+            <td>GetFrameworkSdkPath</td>
+            <td>Retrieves the path to the Windows Software Development Kit (SDK).</td>
         </tr>
         <tr>
-            <td width="184" valign="top">LC</td>
-            <td width="368" valign="top">Wraps LC.exe, which generates a .license file from a .licx file. For more
-                information on LC.exe, see [License Compiler
-                (Lc.exe)](http://msdn2.microsoft.com/en-us/library/ha0k3c9f.aspx).</td>
+            <td>LC</td>
+            <td>Wraps LC.exe, which generates a .license file from a .licx file. For more
+                information on LC.exe, see <a href='http://msdn2.microsoft.com/en-us/library/ha0k3c9f.aspx'>License Compiler
+                (Lc.exe)</a>.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">MakeDir</td>
-            <td width="368" valign="top">Creates directories and, if necessary, any parent directories.</td>
+            <td>MakeDir</td>
+            <td>Creates directories and, if necessary, any parent directories.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">Message</td>
-            <td width="368" valign="top">Logs a message during a build.</td>
+            <td>Message</td>
+            <td>Logs a message during a build.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">MSBuild</td>
-            <td width="368" valign="top">Builds MSBuild projects from another MSBuild project. Unlike using the Exec
+            <td>MSBuild</td>
+            <td>Builds MSBuild projects from another MSBuild project. Unlike using the Exec
                 Task to start MSBuild.exe, this task uses the same MSBuild process to build the child projects.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">ReadLinesFromFile</td>
-            <td width="368" valign="top">Reads a list of items from a text file.</td>
+            <td>ReadLinesFromFile</td>
+            <td>Reads a list of items from a text file.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">RegisterAssembly</td>
-            <td width="368" valign="top">Reads the metadata within the specified assembly and adds the necessary entries
+            <td>RegisterAssembly</td>
+            <td>Reads the metadata within the specified assembly and adds the necessary entries
                 to the registry, which allows COM clients to create .NET Framework classes transparently. The behavior
-                of this task is similar, but not identical, to that of the [Assembly Registration Tool
-                (Regasm.exe)](http://msdn2.microsoft.com/en-us/library/tzat5yw6.aspx).</td>
+                of this task is similar, but not identical, to that of the <a href='http://msdn2.microsoft.com/en-us/library/tzat5yw6.aspx'>Assembly Registration Tool
+                (Regasm.exe)</a>.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">RemoveDir</td>
-            <td width="368" valign="top">Removes the specified directories and all of its files and subdirectories.
+            <td>RemoveDir</td>
+            <td>Removes the specified directories and all of its files and subdirectories.
             </td>
         </tr>
         <tr>
-            <td width="184" valign="top">ResGen</td>
-            <td width="368" valign="top">Use the [GenerateResource
-                Task](http://msdn2.microsoft.com/en-us/library/ms164295.aspx) task to convert .txt and .resx files to
+            <td>ResGen</td>
+            <td>Use the <a'http://msdn2.microsoft.com/en-us/library/ms164295.aspx'>GenerateResource
+                Task</a> task to convert .txt and .resx files to
                 and from common language runtime binary .resources files.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">ResolveAssemblyReference</td>
-            <td width="368" valign="top">Determines all assemblies that depend on the specified assemblies, including
+            <td>ResolveAssemblyReference</td>
+            <td>Determines all assemblies that depend on the specified assemblies, including
                 second and nth-order dependencies.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">ResolveComReference</td>
-            <td width="368" valign="top">Takes a list of one or more type library names or .tlb files and resolves those
+            <td>ResolveComReference</td>
+            <td>Takes a list of one or more type library names or .tlb files and resolves those
                 type libraries to locations on disk.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">ResolveKeySource</td>
-            <td width="368" valign="top">Determines the strong name key source.</td>
+            <td>ResolveKeySource</td>
+            <td>Determines the strong name key source.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">ResolveNativeReference</td>
-            <td width="368" valign="top">Resolves native references.</td>
+            <td>ResolveNativeReference</td>
+            <td>Resolves native references.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">SGen</td>
-            <td width="368" valign="top">Creates an XML serialization assembly for types in the specified assembly. This
-                task wraps the XML Serializer Generator Tool (Sgen.exe). For more information, see [XML Serializer
-                Generator Tool (Sgen.exe)](http://msdn2.microsoft.com/en-us/library/bk3w6240.aspx).</td>
+            <td>SGen</td>
+            <td>Creates an XML serialization assembly for types in the specified assembly. This
+                task wraps the XML Serializer Generator Tool (Sgen.exe). For more information, see <a href='http://msdn2.microsoft.com/en-us/library/bk3w6240.aspx'>XML Serializer
+                Generator Tool (Sgen.exe</a>.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">SignFile</td>
-            <td width="368" valign="top">Signs the specified file using the specified certificate.</td>
+            <td>SignFile</td>
+            <td>Signs the specified file using the specified certificate.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">Touch</td>
-            <td width="368" valign="top">Sets the access and modification times of files.</td>
+            <td>Touch</td>
+            <td>Sets the access and modification times of files.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">UnregisterAssembly</td>
-            <td width="368" valign="top">Unregisters the specified assemblies for COM interop purposes. Performs the
-                reverse of the [RegisterAssembly task](http://msdn2.microsoft.com/en-us/library/dakwb8wf.aspx).</td>
+            <td>UnregisterAssembly</td>
+            <td>Unregisters the specified assemblies for COM interop purposes. Performs the
+                reverse of the <a href='http://msdn2.microsoft.com/en-us/library/dakwb8wf.aspx'>RegisterAssembly task</a>.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">Vbc</td>
-            <td width="368" valign="top">Wraps vbc.exe, which produces executables (.exe), dynamic-link libraries
-                (.dll), or code modules (.netmodule). For more information on vbc.exe, see [Visual Basic
-                Compiler](http://msdn2.microsoft.com/en-us/library/s4kbxexc.aspx).</td>
+            <td>Vbc</td>
+            <td>Wraps vbc.exe, which produces executables (.exe), dynamic-link libraries
+                (.dll), or code modules (.netmodule). For more information on vbc.exe, see <a href='http://msdn2.microsoft.com/en-us/library/s4kbxexc.aspx'>Visual Basic
+                Compiler</a>.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">VCBuild</td>
-            <td width="368" valign="top">Wraps vcbuild.exe, which builds Visual C++ projects and solutions which contain
-                Visual C++ projects. For more information, see [VCBUILD
-                Reference](http://msdn2.microsoft.com/en-us/library/hw9dzw3c.aspx).</td>
+            <td>VCBuild</td>
+            <td>Wraps vcbuild.exe, which builds Visual C++ projects and solutions which contain
+                Visual C++ projects. For more information, see <a href='http://msdn2.microsoft.com/en-us/library/hw9dzw3c.aspx'>VCBUILD
+                Reference</a>.</td>
         </tr>
         <tr>
-            <td width="184" valign="top">Warning</td>
-            <td width="368" valign="top">Logs a warning during a build based on an evaluated conditional statement.
+            <td>Warning</td>
+            <td>Logs a warning during a build based on an evaluated conditional statement.
             </td>
         </tr>
         <tr>
-            <td width="184" valign="top">WriteLinesToFile</td>
-            <td width="368" valign="top">Writes the paths of the specified items to the specified text file.</td>
+            <td>WriteLinesToFile</td>
+            <td>Writes the paths of the specified items to the specified text file.</td>
         </tr>
     </tbody>
 </table>
+
 
 #### Conditions
 
@@ -523,35 +514,35 @@ A table lifted straight from the MSDN docs...
 <table>
     <tbody>
         <tr>
-            <td>**Condition**
+            <td>Condition
             </td>
-            <td>**Description**
+            <td>Description
             </td>
         </tr>
         <tr>
-            <td>_'stringA' == 'stringB'_
+            <td>'stringA' == 'stringB'
             </td>
             <td>
                 Evaluates to true if stringA equals stringB. For example:
-                _ Condition="'$(CONFIG)'=='DEBUG'"_
+                <i>Condition="'$(CONFIG)'=='DEBUG'"</i>
                 Single quotes are not required for simple alphanumeric strings or boolean values. However, single quotes
                 are required for empty values.
             </td>
             ​
         </tr>
         <tr>
-            <td>_'stringA' != 'stringB'_
+            <td>'stringA' != 'stringB'
             </td>
             <td>
                 Evaluates to true if stringA is not equal to stringB. For example:
-                _ Condition="'$(CONFIG)'!='DEBUG'"_
+                <i>Condition="'$(CONFIG)'!='DEBUG'"</i>
                 Single quotes are not required for simple alphanumeric strings or boolean values. However, single quotes
                 are required for empty values.
             </td>
             ​
         </tr>
         <tr>
-            <td>_<,>, <=,>=_
+            <td><,>, <=,>=
             </td>
             <td>
                 Evaluates the numeric values of the operands. Returns true if the relational evaluation is true.
@@ -562,49 +553,49 @@ A table lifted straight from the MSDN docs...
             ​
         </tr>
         <tr>
-            <td>_Exists('stringA')_
+            <td>Exists('stringA')
             </td>
             <td>
                 Evaluates to true if a file or folder with the name stringA exists. For example:
-                _ Condition="!Exists('$(builtdir)')"
-                _Single quotes are not required for simple alphanumeric strings or boolean values. However, single
+                <i>Condition="!Exists('$(builtdir)')"</i>
+                Single quotes are not required for simple alphanumeric strings or boolean values. However, single
                 quotes are required for empty values.
             </td>
             ​
         </tr>
         <tr>
-            <td>_HasTrailingSlash('stringA')_
+            <td>HasTrailingSlash('stringA')
             </td>
             <td>
                 Evaluates to true if the specified string contains either a trailing backward slash (\) or forward slash
                 (/) character.
                 For example:
-                _ Condition="!HasTrailingSlash('$(OutputPath)')"
-                _Single quotes are not required for simple alphanumeric strings or boolean values. However, single
+                <i>Condition="!HasTrailingSlash('$(OutputPath)')"</i>
+                Single quotes are not required for simple alphanumeric strings or boolean values. However, single
                 quotes are required for empty values.
             </td>
             ​
         </tr>
         <tr>
-            <td>_!_
+            <td>!
             </td>
             <td>Evaluates to true if the operand evaluates to false.
             </td>
         </tr>
         <tr>
-            <td>_And_
+            <td>And
             </td>
             <td>Evaluates to true if both operands evaluate to true.
             </td>
         </tr>
         <tr>
-            <td>_Or_
+            <td>Or
             </td>
             <td>Evaluates to true if at least one of the operands evaluates to true.
             </td>
         </tr>
         <tr>
-            <td>_()_
+            <td>()
             </td>
             <td>Grouping mechanism that evaluates to true if expressions contained inside
                 evaluate to true.
@@ -612,3 +603,4 @@ A table lifted straight from the MSDN docs...
         </tr>
     </tbody>
 </table>
+
