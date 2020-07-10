@@ -16,6 +16,8 @@ wordpress_id: 48
   * [Open Source Build Tasks](http://msbuildtasks.tigris.org/)
   * [Reserved Properties](http://msdn2.microsoft.com/en-us/library/ms164309.aspx)
   * [Well-known Item Metadata](http://msdn2.microsoft.com/en-us/library/ms164313.aspx)
+  * [Incremental Builds](https://docs.microsoft.com/en-gb/visualstudio/msbuild/how-to-build-incrementally?view=vs-2019&redirectedfrom=MSDN)
+  * [Transforms](https://docs.microsoft.com/en-gb/visualstudio/msbuild/msbuild-transforms?view=vs-2019)
 
 ### Tools
 
@@ -102,13 +104,13 @@ Define a user-named collection of items by placing them in an **ItemGroup** then
 <Exec Command="findstr /i /c:@(Phrase, ' /c:') phrases.txt"/>
 ```
 
-Items can contain metadata and accessed using the _%(ItemMetadata)_ syntax. [Well-know Item Metadata](http://msdn2.microsoft.com/en-us/library/ms164313.aspx) contains a list of metadata items already defined for filenames. This allows for an expansion like :
+Items can contain **metadata** and accessed using the _%(ItemMetadata)_ syntax. [Well-know Item Metadata](http://msdn2.microsoft.com/en-us/library/ms164313.aspx) contains a list of metadata items already defined for filenames. This allows for an expansion like :
 
 ```xml
 <Exec Command="demo.exe /name:%(filename) @(filesToProcess)"/>
 ```
 
-Wildcards can be used to specify more than one file and from sub-directories. For example _Images\**\*.jpg_ specifies all jpg files found beneath all sub-directories of the _Images_ folder.
+**Wildcards** can be used to specify more than one file and from sub-directories. For example _Images\**\*.jpg_ specifies all jpg files found beneath all sub-directories of the _Images_ folder.
 
 ```xml
 <ItemGroup>
@@ -123,7 +125,7 @@ Wildcards can be used to specify more than one file and from sub-directories. Fo
 </ItemGroup>
 ```
 
-Transforms can be used to perform a one-to-one conversion of one item collection into another. However, the transform must use metadata to specify the new items such that the new list will be a product of the original. The following example converts a list of RESX files into a new list but with the 'resources' extension:
+**Transforms** can be used to perform a one-to-one conversion of one item collection into another and appear in the format _$(<ItemMetaDataName>)_. The transform must use metadata to specify the new items such that the new list will be a product of the original. The following example converts a list of RESX files into a new list but with the 'resources' extension:
 
 ```
 _@(RESXFile -> '%(filename).resources')_
@@ -214,7 +216,58 @@ Batching can be used in conjunction with the _Inputs_ and _Outputs_ attributes o
 </Project>
 ```
 
-####Tasks
+#### Incremental Builds
+
+If inputs to a build haven't changed compared with the ouputs they generate then there's no point in running that task.
+To cater for this those input and outputs can be specified on a **Target** which will automatically be skipped:
+
+```xml
+<Target Name="Build" Inputs="@(InputFiles)" Outputs="AnOutput.dll">
+```
+
+This technique can also be combined with **Transforms** to give a one-to-one dependency mapping which means the _Target_ will
+only be run for just the change files:
+
+```xml
+<Target Name="CopyOutputs" Inputs="@(SourceFiles)" Outputs="@(SourceFiles -> '$(OutputPath)%(Filename)%(Extension)')">
+```
+
+However, all outputs are passed on to dependent tasks even if only a portion had changed. In the following example
+the _GenerateContentFiles_ may only process a subset of the files but the _Build_ target will still receive them all.
+
+```xml
+<Project DefaultTargets="Build"
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+    <ItemGroup>
+        <TXTFile Include="*.txt"/>
+        <XMLFiles Include="\metadata\*.xml"/>
+    </ItemGroup>
+
+    <Target Name = "Convert"
+        Inputs="@(TXTFile)"
+        Outputs="@(TXTFile->'%(Filename).content')">
+
+        <GenerateContentFiles
+            Sources = "@(TXTFile)">
+            <Output TaskParameter = "OutputContentFiles"
+                ItemName = "ContentFiles"/>
+        </GenerateContentFiles>
+    </Target>
+
+    <Target Name = "Build" DependsOnTargets = "Convert"
+        Inputs="@(ContentFiles);@(XMLFiles)"
+        Outputs="$(MSBuildProjectName).help">
+
+        <BuildHelp
+            ContentFiles = "@(ContentFiles)"
+            MetadataFiles = "@(XMLFiles)"
+            OutputFileName = "$(MSBuildProjectName).help"/>
+    </Target>
+</Project>
+```
+
+#### Tasks
 
 Tasks are written in managed code, that implements the **ITask** interface, then mapped to MSBuild with a **UsingTask** element.
 
