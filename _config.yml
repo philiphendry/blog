@@ -34,7 +34,7 @@ markdown: redcarpet
 redcarpet:
     extensions: ["tables"]
 
-google_analytics_tracking_id: UA-51440511-1
+google_analytics_tracking_id: G-B5D7PJ8P5T
 
 
 ##############
